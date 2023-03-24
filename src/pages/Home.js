@@ -8,7 +8,7 @@ function HomePage() {
         Understand Widget Power.
         <span className="sm:block"> Increase Conversion. </span>
       </h1>
-      <p className="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
+      <p className="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-gray-900 dark:text-white">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
         tenetur fuga ducimus numquam ea!
       </p>

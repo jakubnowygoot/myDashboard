@@ -1,5 +1,5 @@
 import CardEntry from "../components/entry/CardEntry";
-import Form from "../components/entry/RegisterFom/Form";
+import Form from "../components/entry/registerFom/Form";
 
 function Register() {
   return (

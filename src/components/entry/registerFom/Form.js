@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
-import Button from "../../ui/Button";
 import Input from "../../ui/Input";
 import InputPassword from "../../ui/InputPassword";
-import RememberMe from "./RememberMe";
+import TermsAndCondition from "./TermsAndCondition";
+import Button from "../../ui/Button";
 
 function Form() {
   return (
-    <form className="space-y-4 md:space-y-6" action="src/components/entry#">
+    <form className="space-y-4 md:space-y-6" action="#">
+      <Input
+        htmlFor="fullName"
+        type="text"
+        name="fullName"
+        id="fullName"
+        placeholder="John Smith"
+      >
+        Full name
+      </Input>
+
       <Input
         htmlFor="email"
         type="email"
@@ -14,35 +24,32 @@ function Form() {
         id="email"
         placeholder="email@expample.com"
       >
-        Your Email
+        Your email
       </Input>
 
       <InputPassword htmlFor="password" name="password" id="password">
         Password
       </InputPassword>
 
-      <div className="flex items-center justify-between">
-        <RememberMe />
+      <InputPassword
+        htmlFor="confirmPassword"
+        name="confirmPassword"
+        id="confirmPassword"
+      >
+        Confirm password
+      </InputPassword>
 
-        <Link
-          to="#"
-          className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-        >
-          Forgot password?
-        </Link>
-      </div>
+      <TermsAndCondition />
 
-      <Button type="submit" href="/">
-        Sign in
-      </Button>
+      <Button type="submit">Sign in</Button>
 
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-        Don’t have an account yet?{" "}
+        Already have an account?{" "}
         <Link
           to="#"
           className="font-medium text-primary-600 hover:underline dark:text-primary-500"
         >
-          Sign up
+          Login here
         </Link>
       </p>
     </form>

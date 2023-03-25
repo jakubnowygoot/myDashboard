@@ -1,9 +1,9 @@
-import Card from "../components/StartPage/Card";
-import Button from "../components/StartPage/Button";
+import CardStartPage from "../components/startPage/CardStartPage";
+import Button from "../components/ui/Button";
 
 function HomePage() {
   return (
-    <Card>
+    <CardStartPage>
       <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
         Understand Widget Power.
         <span className="sm:block"> Increase Conversion. </span>
@@ -13,10 +13,14 @@ function HomePage() {
         tenetur fuga ducimus numquam ea!
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <Button href="/">Get Started</Button>
-        <Button href="/">Learn More</Button>
+        <Button href="/" type="button">
+          Get Started
+        </Button>
+        <Button href="/" type="button">
+          Learn More
+        </Button>
       </div>
-    </Card>
+    </CardStartPage>
   );
 }
 

@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import EyeIcon from "./EyeIcon";
 import CloseEyeIcon from "./CloseEyeIcon";
 
-function InputPassword({ children }) {
+function InputPassword({ children, name, id, htmlFor }) {
   const [hidePass, setHidePass] = useState(true);
 
   const ShowPassHandler = useCallback(() => {
@@ -12,7 +12,7 @@ function InputPassword({ children }) {
   return (
     <div>
       <label
-        htmlFor="confirmPassword"
+        htmlFor={htmlFor}
         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >
         {children}
@@ -20,8 +20,8 @@ function InputPassword({ children }) {
       <div className="flex justify-center items-center gap-2">
         <input
           type={hidePass ? "password" : "text"}
-          name="confirmPassword"
-          id="confirmPassword"
+          name={name}
+          id={id}
           className="bg-gray-50 border border-gray-300 text-gray-900 outline-primary-600 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
           placeholder="••••••••"
           required=""

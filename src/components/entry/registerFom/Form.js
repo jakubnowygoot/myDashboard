@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Input from "../../ui/Input";
 import InputPassword from "../../ui/InputPassword";
-import TermsAndCondition from "./TermsAndCondition";
+import TermsElem from "./TermsElem";
 import Button from "../../ui/Button";
 
 function Form() {
@@ -39,14 +39,14 @@ function Form() {
         Confirm password
       </InputPassword>
 
-      <TermsAndCondition />
+      <TermsElem />
 
       <Button type="submit">Sign in</Button>
 
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
         Already have an account?{" "}
         <Link
-          to="#"
+          to="/login"
           className="font-medium text-primary-600 hover:underline dark:text-primary-500"
         >
           Login here

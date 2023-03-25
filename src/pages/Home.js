@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import CardStartPage from "../components/startPage/CardStartPage";
-import Button from "../components/ui/Button";
 
 function HomePage() {
   return (
@@ -13,12 +13,22 @@ function HomePage() {
         tenetur fuga ducimus numquam ea!
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <Button href="/" type="button">
-          Get Started
-        </Button>
-        <Button href="/" type="button">
-          Learn More
-        </Button>
+        <Link to="/login">
+          <button
+            type="button"
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-4 md:mt-6"
+          >
+            Get Started
+          </button>
+        </Link>
+        <Link to="/login">
+          <button
+            type="button"
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-4 md:mt-6"
+          >
+            Learn More
+          </button>
+        </Link>
       </div>
     </CardStartPage>
   );

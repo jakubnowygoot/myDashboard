@@ -6,7 +6,7 @@ import RememberMe from "./RememberMe";
 
 function Form() {
   return (
-    <form className="space-y-4 md:space-y-6" action="src/components/entry#">
+    <form className="space-y-4 md:space-y-6" action="/main">
       <Input
         htmlFor="email"
         type="email"
@@ -38,7 +38,7 @@ function Form() {
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
         Don’t have an account yet?{" "}
         <Link
-          to="#"
+          to="/register"
           className="font-medium text-primary-600 hover:underline dark:text-primary-500"
         >
           Sign up

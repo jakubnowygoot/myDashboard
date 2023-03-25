@@ -1,4 +1,4 @@
-function TermsAndCondition() {
+function TermsElem() {
   return (
     <div className="flex items-start">
       <div className="flex items-center h-5">
@@ -18,7 +18,7 @@ function TermsAndCondition() {
           I accept the{" "}
           <a
             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-            href="#"
+            href="/TermsAndCondition.js"
           >
             Terms and Conditions
           </a>
@@ -28,4 +28,4 @@ function TermsAndCondition() {
   );
 }
 
-export default TermsAndCondition;
+export default TermsElem;

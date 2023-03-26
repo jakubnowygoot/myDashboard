@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import TermsAndCondition from "./pages/TermsAndCondition";
 import ForgotPass from "./pages/ForgotPass";
 import ResetPass from "./pages/ResetPass";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ function App() {
     {
       path: "/restart-password",
       element: <ResetPass />,
+    },
+    {
+      path: "/homePL",
+      element: <Dashboard />,
     },
   ]);
 

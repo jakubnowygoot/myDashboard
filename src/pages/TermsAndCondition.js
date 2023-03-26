@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CardEntry from "../components/entry/CardEntry";
 import Button from "../components/ui/Button";
 
@@ -6,6 +7,7 @@ function TermsAndCondition() {
     <CardEntry
       childrenStyle="overflow-auto sm:max-w-3xl"
       parentStyle="lg:py-8 lg:px-6"
+      darkStyle="dark:text-white"
     >
       <h2>
         <strong>Terms and Conditions</strong>
@@ -285,7 +287,9 @@ function TermsAndCondition() {
         are provided free of charge, we will not be liable for any loss or
         damage of any nature.
       </p>
-      <Button>Go back</Button>
+      <Link to="/register">
+        <Button type="button">Go back</Button>
+      </Link>
     </CardEntry>
   );
 }

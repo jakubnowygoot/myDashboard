@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function TermsElem() {
   return (
     <div className="flex items-start">
@@ -16,12 +18,12 @@ function TermsElem() {
           className="font-light text-gray-500 dark:text-gray-300"
         >
           I accept the{" "}
-          <a
+          <Link
             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-            href="/TermsAndCondition.js"
+            to="/terms-and-condition"
           >
             Terms and Conditions
-          </a>
+          </Link>
         </label>
       </div>
     </div>

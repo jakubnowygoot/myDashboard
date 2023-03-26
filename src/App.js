@@ -3,6 +3,7 @@ import HomePage from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TermsAndCondition from "./pages/TermsAndCondition";
+import ForgotPass from "./pages/ForgotPass";
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ function App() {
     {
       path: "/terms-and-condition",
       element: <TermsAndCondition />,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPass />,
     },
   ]);
 

@@ -26,7 +26,7 @@ function Form() {
         <RememberMe />
 
         <Link
-          to="#"
+          to="/forgot-password"
           className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
         >
           Forgot password?

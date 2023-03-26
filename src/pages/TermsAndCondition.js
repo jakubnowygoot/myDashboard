@@ -1,8 +1,12 @@
 import CardEntry from "../components/entry/CardEntry";
+import Button from "../components/ui/Button";
 
 function TermsAndCondition() {
   return (
-    <CardEntry>
+    <CardEntry
+      childrenStyle="overflow-auto sm:max-w-3xl"
+      parentStyle="lg:py-8 lg:px-6"
+    >
       <h2>
         <strong>Terms and Conditions</strong>
       </h2>
@@ -305,6 +309,7 @@ function TermsAndCondition() {
         are provided free of charge, we will not be liable for any loss or
         damage of any nature.
       </p>
+      <Button>Go back</Button>
     </CardEntry>
   );
 }

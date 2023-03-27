@@ -32,7 +32,7 @@ function Dashboard() {
             <div className="flex md:order-2">
               <button
                 type="button"
-                className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:mr-3 md:mr-0 dark:md:hover:bg-primary-700 "
+                className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:mr-3 md:mr-0 dark:md:hover:bg-primary-700 dark:md:focus:ring-primary-800 "
               >
                 Logout
               </button>

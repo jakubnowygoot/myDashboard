@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function LeftIcons() {
+function LeftColumn() {
   const [toggleWeather, setToggleWeather] = useState(false);
   const [toggleMoon, setToggleMoon] = useState(false);
   const [toggleCalendar, setToggleCalendar] = useState(false);
@@ -127,4 +127,4 @@ function LeftIcons() {
   );
 }
 
-export default LeftIcons;
+export default LeftColumn;

@@ -13,9 +13,11 @@ function LeftIcons() {
   function ToggleMoonIconHandler() {
     setToggleMoon(!toggleMoon);
   }
+
   function ToggleCalendarIconHandler() {
     setToggleCalendar(!toggleCalendar);
   }
+
   function ToggleToDoIconHandler() {
     setToggleToDo(!toggleToDo);
   }

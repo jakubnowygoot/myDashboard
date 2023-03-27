@@ -34,7 +34,7 @@ function App() {
       element: <ResetPass />,
     },
     {
-      path: "/homePL",
+      path: "/dashboard",
       element: <Dashboard />,
     },
   ]);

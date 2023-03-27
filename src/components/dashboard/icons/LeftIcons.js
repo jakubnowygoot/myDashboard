@@ -23,7 +23,7 @@ function LeftIcons() {
   }
 
   return (
-    <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-300">
+    <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-gray-300">
       <a className="flex items-center justify-center flex-shrink-0 w-full h-16 bg-primary-600">
         <img
           className="inline-block h-10 w-10 rounded-full ring-2 ring-primary-600"
@@ -32,8 +32,9 @@ function LeftIcons() {
         />
       </a>
       <button
-        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 ${
-          toggleWeather && "bg-primary-600 hover:bg-primary-600 "
+        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 dark:hover:bg-gray-700 ${
+          toggleWeather &&
+          "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
         }`}
         onClick={ToggleWeatherIconHandler}
       >
@@ -42,7 +43,7 @@ function LeftIcons() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          className={`w-5 h-5 ${
+          className={`w-5 h-5 dark:stroke-white ${
             toggleWeather ? "stroke-white" : "stroke-black"
           }`}
         >
@@ -54,8 +55,9 @@ function LeftIcons() {
         </svg>
       </button>
       <button
-        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 ${
-          toggleMoon && "bg-primary-600 hover:bg-primary-600 "
+        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 dark:hover:bg-gray-700 ${
+          toggleMoon &&
+          "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
         }`}
         onClick={ToggleMoonIconHandler}
       >
@@ -64,7 +66,9 @@ function LeftIcons() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          className={`w-5 h-5 ${toggleMoon ? "stroke-white" : "stroke-black"}`}
+          className={`w-5 h-5 dark:stroke-white ${
+            toggleMoon ? "stroke-white" : "stroke-black"
+          }`}
         >
           <path
             strokeLinecap="round"
@@ -74,8 +78,9 @@ function LeftIcons() {
         </svg>
       </button>
       <button
-        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 ${
-          toggleCalendar && "bg-primary-600 hover:bg-primary-600 "
+        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 dark:hover:bg-gray-700 ${
+          toggleCalendar &&
+          "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
         }`}
         onClick={ToggleCalendarIconHandler}
       >
@@ -84,7 +89,7 @@ function LeftIcons() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          className={`w-5 h-5 ${
+          className={`w-5 h-5 dark:stroke-white ${
             toggleCalendar ? "stroke-white" : "stroke-black"
           }`}
         >
@@ -96,8 +101,9 @@ function LeftIcons() {
         </svg>
       </button>
       <button
-        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 ${
-          toggleToDo && "bg-primary-600 hover:bg-primary-600 "
+        className={`flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300 dark:hover:bg-gray-700 ${
+          toggleToDo &&
+          "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
         }`}
         onClick={ToggleToDoIconHandler}
       >
@@ -106,7 +112,9 @@ function LeftIcons() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          className={`w-5 h-5 ${toggleToDo ? "stroke-white" : "stroke-black"}`}
+          className={`w-5 h-5 dark:stroke-white ${
+            toggleToDo ? "stroke-white" : "stroke-black"
+          }`}
         >
           <path
             strokeLinecap="round"

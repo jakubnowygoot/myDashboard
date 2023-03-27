@@ -84,20 +84,24 @@ function Dashboard() {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Settings
-                      </a>
+                      <div className="pb-1.5">
+                        <a
+                          href="#"
+                          className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Settings
+                        </a>
+                      </div>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Login
-                      </a>
+                      <div className="pt-1.5 border-t-gray-300 border-t">
+                        <a
+                          href="#"
+                          className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Logout
+                        </a>
+                      </div>
                     </li>
                   </ul>
                 </div>

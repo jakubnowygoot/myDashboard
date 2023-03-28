@@ -19,6 +19,9 @@ module.exports = {
         },
       },
     },
+    maxHeight: {
+      128: "85vh",
+    },
     fontFamily: {
       body: [
         "Inter",

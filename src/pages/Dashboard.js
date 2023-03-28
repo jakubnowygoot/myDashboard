@@ -1,4 +1,4 @@
-import LeftColumn from "../components/dashboard/icons/LeftColumn";
+import LeftColumn from "../components/dashboard/leftColumn/LeftColumn";
 import Body from "../components/dashboard/body/Body";
 import NavBar from "../components/dashboard/navigationBar/NavBar";
 

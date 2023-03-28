@@ -22,7 +22,9 @@ function ForgotPass() {
           requried
         />
 
-        <Button type="submit">Send link</Button>
+        <Button type="submit" addStyle="w-full">
+          Send link
+        </Button>
 
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Go back to{" "}

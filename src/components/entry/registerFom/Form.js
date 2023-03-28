@@ -41,7 +41,9 @@ function Form() {
 
       <TermsElem />
 
-      <Button type="submit">Sign in</Button>
+      <Button type="submit" addStyle="w-full mt-4 md:mt-6">
+        Sign in
+      </Button>
 
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
         Already have an account?{" "}

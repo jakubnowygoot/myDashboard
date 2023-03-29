@@ -13,7 +13,15 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
-    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+        packageDir: "./",
+      },
+    ],
     "react/prop-types": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",

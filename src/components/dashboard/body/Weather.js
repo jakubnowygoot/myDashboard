@@ -1,11 +1,12 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import axios from "axios";
 import { useState } from "react";
+
+import axios from "axios";
 
 function Weather() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [toggleInputLocation, setToggleInputLocation] = useState(true);
+  const [gap, setGap] = useState(4);
 
   const date = new Date().toDateString();
 
@@ -18,6 +19,7 @@ function Weather() {
       });
       setLocation("");
       setToggleInputLocation(!toggleInputLocation);
+      setGap(0);
     }
   }
 
@@ -27,7 +29,9 @@ function Weather() {
 
   return (
     <div className=" rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
-      <div className="flex flex-col bg-white rounded p-4 w-full dark:bg-gray-800">
+      <div
+        className={`flex flex-col bg-white rounded p-4 w-full dark:bg-gray-800 gap-${gap}`}
+      >
         {toggleInputLocation ? (
           <div>
             <input
@@ -35,7 +39,7 @@ function Weather() {
               onChange={(event) => setLocation(event.target.value)}
               type="text"
               onKeyDown={searchLocation}
-              className="bg-gray-50 border border-gray-300 text-gray-900 outline-primary-600 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+              className="bg-gray-50 border border-gray-300 text-gray-900 outline-primary-600 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
               placeholder="Enter location"
             />
           </div>

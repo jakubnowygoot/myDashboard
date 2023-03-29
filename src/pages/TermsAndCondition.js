@@ -288,7 +288,9 @@ function TermsAndCondition() {
         damage of any nature.
       </p>
       <Link to="/register">
-        <Button type="button">Go back</Button>
+        <Button type="button" addStyle="w-full mt-4 md:mt-6">
+          Go back
+        </Button>
       </Link>
     </CardEntry>
   );

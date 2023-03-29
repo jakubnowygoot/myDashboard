@@ -6,7 +6,6 @@ import TermsAndCondition from "./pages/TermsAndCondition";
 import ForgotPass from "./pages/ForgotPass";
 import ResetPass from "./pages/ResetPass";
 import Dashboard from "./pages/Dashboard";
-import SettingsMenu from "./components/dashboard/settings/SettingsMenu";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,10 +36,6 @@ function App() {
     {
       path: "/dashboard",
       element: <Dashboard />,
-    },
-    {
-      path: "/settings",
-      element: <SettingsMenu />,
     },
   ]);
 

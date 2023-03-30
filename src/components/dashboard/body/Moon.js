@@ -1,12 +1,14 @@
 function Moon() {
   return (
-    <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96">
-      <div className="flex justify-between h-full p-4 flex-col items-center">
-        <div className="text-xl xs:text-3xl font-bold">Thu Mar 30 2023</div>
+    <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
+      <div className=" rounded flex justify-between h-full p-4 flex-col items-center">
+        <div className="text-xl xs:text-3xl font-bold dark:text-gray-300">
+          Thu Mar 30 2023
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="qi-802 w-40 h-40 xs:w-48 xs:h-48"
+          className="qi-802 w-40 h-40 xs:w-48 xs:h-48 dark:fill-gray-300"
           viewBox="0 0 16 16"
         >
           <path d="M8 0c-.356.003-.712.03-1.065.079a7.992 7.992 0 0 0-.354 15.788h.001c.468.087.942.131 1.418.133A8 8 0 0 0 8 0Zm0 15.5a6.76 6.76 0 0 1-.725-.04A24.01 24.01 0 0 0 8.5 7.5 25.67 25.67 0 0 0 7.593.514C7.734.504 7.868.5 8 .5a7.5 7.5 0 1 1 0 15Z" />

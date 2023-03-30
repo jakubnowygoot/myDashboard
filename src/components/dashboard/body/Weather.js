@@ -10,7 +10,7 @@ function Weather() {
 
   const date = new Date().toDateString();
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=4f8d4b59e1c766c45b7ff48b89661bc5`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=62bf8f2f137d858cde8784170789de51`;
 
   function searchLocation(event) {
     if (event.key === "Enter") {
@@ -28,9 +28,9 @@ function Weather() {
   }
 
   return (
-    <div className=" rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
+    <div className=" rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
       <div
-        className={`flex flex-col bg-white rounded p-4 w-full dark:bg-gray-800 gap-${gap}`}
+        className={`flex flex-col bg-white rounded p-4 h-full w-full dark:bg-gray-800 gap-${gap}`}
       >
         {toggleInputLocation ? (
           <div>
@@ -45,13 +45,13 @@ function Weather() {
           </div>
         ) : (
           <div
-            className="font-bold text-xl cursor-pointer dark:text-gray-300"
+            className="font-bold text-xl xs:text-3xl cursor-pointer dark:text-gray-300"
             onDoubleClick={InputHandler}
           >
             {data.name}
           </div>
         )}
-        <div className="text-sm text-gray-500 dark:text-gray-300">{date}</div>
+        <div className="text-base text-gray-500 dark:text-gray-300">{date}</div>
         <div className="mt-6 text-6xl self-center inline-flex items-center justify-center rounded-lg text-indigo-400 h-24 w-24">
           <svg
             className="w-32 h-32 stroke-primary-600"
@@ -89,7 +89,9 @@ function Weather() {
         </div>
         <div className="flex flex-row justify-between mt-6">
           <div className="flex flex-col items-center">
-            <div className="font-medium text-sm dark:text-white">Wind</div>
+            <div className="font-medium text-base xs:text-lg dark:text-white">
+              Wind
+            </div>
             {data.wind ? (
               <div className="text-sm text-gray-500 dark:text-gray-300">
                 {data.wind.speed.toFixed()}km/h
@@ -97,7 +99,9 @@ function Weather() {
             ) : null}
           </div>
           <div className="flex flex-col items-center">
-            <div className="font-medium text-sm dark:text-white">Humidity</div>
+            <div className="font-medium text-base xs:text-lg dark:text-white">
+              Humidity
+            </div>
             {data.main ? (
               <span className="text-sm text-gray-500 dark:text-gray-300">
                 {data.main.humidity}%
@@ -105,7 +109,7 @@ function Weather() {
             ) : null}
           </div>
           <div className="flex flex-col items-center">
-            <div className="font-medium text-sm dark:text-white">
+            <div className="font-medium text-base xs:text-lg dark:text-white">
               Visibility
             </div>
             {data.visibility ? (

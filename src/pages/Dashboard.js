@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import LeftColumn from "../components/dashboard/leftColumn/LeftColumn";
-import Body from "../components/dashboard/body/Body";
 import SettingsMenu from "../components/dashboard/settings/SettingsMenu";
 import NavBar from "../components/dashboard/navigationBar/NavBar";
+import Weather from "../components/dashboard/body/Weather";
+import Moon from "../components/dashboard/body/Moon";
+import Card from "../components/dashboard/body/Card";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -20,7 +22,12 @@ function Dashboard() {
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
             <NavBar menuToggle={SettingsMenuHandler} />
           </div>
-          <Body />
+          <Card>
+            <Weather />
+            <Moon />
+            <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96" />
+            <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96" />
+          </Card>
         </div>
       </div>
     </>

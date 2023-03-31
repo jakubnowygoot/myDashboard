@@ -5,6 +5,7 @@ import NavBar from "../components/dashboard/navigationBar/NavBar";
 import Weather from "../components/dashboard/body/Weather";
 import Moon from "../components/dashboard/body/Moon";
 import Card from "../components/dashboard/body/Card";
+import WeatherDays from "../components/dashboard/body/WeatherDays";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -25,7 +26,7 @@ function Dashboard() {
           <Card>
             <Weather />
             <Moon />
-            <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96" />
+            <WeatherDays />
             <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96" />
           </Card>
         </div>

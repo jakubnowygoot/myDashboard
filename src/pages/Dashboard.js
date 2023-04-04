@@ -6,6 +6,7 @@ import Weather from "../components/dashboard/body/Weather";
 import Moon from "../components/dashboard/body/Moon";
 import Card from "../components/dashboard/body/Card";
 import WeatherDays from "../components/dashboard/body/WeatherDays";
+import Notes from "../components/dashboard/body/Notes";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -27,7 +28,7 @@ function Dashboard() {
             <Weather />
             <Moon />
             <WeatherDays />
-            <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96" />
+            <Notes />
           </Card>
         </div>
       </div>

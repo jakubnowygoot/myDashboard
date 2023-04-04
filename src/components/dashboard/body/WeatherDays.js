@@ -14,9 +14,11 @@ function WeatherDays() {
     if ((getHour - 2) % 3 === 0) {
       return getHour - 5;
     }
-
     if ((getHour - 1) % 3 === 0) {
       return getHour - 4;
+    }
+    if (getHour === 1 && 2) {
+      return 6;
     }
   }
 
@@ -25,7 +27,7 @@ function WeatherDays() {
       const resp = await axios.get(url);
       setDaysData(
         resp.data.list.filter((reading) =>
-          reading.dt_txt.includes(`${GetRightHour()}:00:00`)
+          reading.dt_txt.includes(`0${GetRightHour()}:00:00`.slice(-8))
         )
       );
     } catch (error) {

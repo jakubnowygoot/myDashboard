@@ -2,54 +2,54 @@ import Button from "../../ui/Button";
 
 function Notes() {
   return (
-    <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 ">
+    <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96  dark:bg-gray-800 ">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
         Notes
       </h1>
       <div className="overflow-auto h-[63.5%] p-4 space-y-3.5">
-        <div className="border-solid border-2 w-full  rounded">
+        <div className="border-solid border-2 w-full rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-gray-300 border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay
             </li>
           </ul>
         </div>
-        <div className="border-solid border-2 rounded">
+        <div className="border-solid border-2 rounded-3xl dark:bg-gray-700 dark:border-gray-600">
           <ul className="p-4">
             <li className="font-medium text-base xs:text-lg dark:text-white">
               Jurnay

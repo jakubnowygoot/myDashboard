@@ -10,6 +10,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      height: {
+        128: "63.5%",
+      },
       colors: {
         primary: {
           50: "#eef2ff",

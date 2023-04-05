@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 
-function Weather() {
+function Weather({ Icons }) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
@@ -74,12 +74,17 @@ function Weather() {
           </div>
           <div className="mt-6 text-6xl self-center inline-flex items-center justify-center rounded-lg text-indigo-400 h-24 w-24">
             <svg
-              className="w-32 h-32 stroke-primary-600"
-              fill="none"
-              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              width="100"
+              height="100"
+              className="qi-101 fill-primary-600"
+              viewBox="0 0 16 16"
             >
-              <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+              <path
+                d={`${
+                  Icons[`${data.weather ? `${data.weather[0].main}` : null}`]
+                }`}
+              />
             </svg>
           </div>
           <div className="flex flex-row items-center justify-center mt-6">

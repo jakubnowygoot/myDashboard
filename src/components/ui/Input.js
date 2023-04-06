@@ -1,4 +1,14 @@
-function Input({ htmlFor, children, type, name, id, placeholder, disabled }) {
+function Input({
+  htmlFor,
+  children,
+  type,
+  name,
+  id,
+  placeholder,
+  disabled,
+  onChange,
+  value,
+}) {
   return (
     <div>
       <label
@@ -8,6 +18,7 @@ function Input({ htmlFor, children, type, name, id, placeholder, disabled }) {
         {children}
       </label>
       <input
+        value={value}
         type={type}
         name={name}
         id={id}
@@ -15,6 +26,7 @@ function Input({ htmlFor, children, type, name, id, placeholder, disabled }) {
         placeholder={placeholder}
         required
         disabled={disabled}
+        onChange={onChange}
       />
     </div>
   );

@@ -70,7 +70,7 @@ function Moon() {
             className="qi-804 w-40 h-40 xs:w-48 xs:h-48 dark:fill-gray-300"
             viewBox="0 0 16 16"
           >
-            {isLoaded && <path d={`${iconData[`${IconNumber()}`]}`} />}
+            {isLoaded && <path d={`${iconData[`${IconNumber() - 1}`]}`} />}
           </svg>
           <div className="flex flex-row justify-between mt-6 w-full">
             <div className="flex flex-col items-center">

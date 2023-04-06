@@ -44,7 +44,7 @@ function WeatherDays({ Icons }) {
             className="flex flex-row items-center w-full justify-between"
             key={Math.random()}
           >
-            <div className="flex flex-col w-24">
+            <div className="flex flex-col w-20">
               <h1 className="font-medium text-base xs:text-lg sm:text-2xl md:text-lg dark:text-white">
                 {new Date(getData.dt_txt.split(" ")[0]).toLocaleDateString(
                   "en-us",

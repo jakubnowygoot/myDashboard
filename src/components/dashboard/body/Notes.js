@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import Button from "../../ui/Button";
 import Input from "../../ui/Input";
+import NotesList from "./NotesList";
 
 function Notes() {
   const [createNote, setCreateNote] = useState(false);
@@ -33,13 +34,7 @@ function Notes() {
             />
           </>
         ) : (
-          <div className="border-solid border-2 w-full rounded-3xl dark:bg-gray-700 dark:border-gray-600">
-            <ul className="p-4">
-              <li className="font-medium text-base xs:text-lg dark:text-white">
-                {title}
-              </li>
-            </ul>
-          </div>
+          <NotesList title={title} />
         )}
       </div>
       <div className="p-4 flex justify-between">

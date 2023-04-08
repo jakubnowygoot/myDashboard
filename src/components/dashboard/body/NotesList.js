@@ -1,30 +1,4 @@
-import { useState } from "react";
-
-function NotesList() {
-  const [notes, setNotes] = useState([
-    {
-      title: "shopping list",
-      text: "get bread",
-    },
-    {
-      title: "2",
-      text: "test",
-    },
-    {
-      title: "3",
-      text: "test",
-    },
-    {
-      title: "4",
-      text: "test test",
-    },
-    {
-      title: "5",
-      text: "test test test test",
-    },
-  ]);
-  console.log(setNotes);
-
+function NotesList({ notes }) {
   return (
     <>
       {notes.map((note) => (

@@ -8,6 +8,45 @@ function Notes() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
 
+  const [notes, setNotes] = useState([
+    {
+      title: "shopping list",
+      text: "get bread",
+    },
+    {
+      title: "2",
+      text: "test",
+    },
+    {
+      title: "3",
+      text: "test",
+    },
+    {
+      title: "4",
+      text: "test test",
+    },
+    {
+      title: "5",
+      text: "test test test test",
+    },
+  ]);
+
+  const AddNewNote = () => {
+    const newNote = {
+      title,
+      text,
+    };
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  };
+
+  function ShowAndSaveNoteHandler() {
+    setCreateNote(!createNote);
+    AddNewNote();
+    setText("");
+    setTitle("");
+  }
+
   const ShowNoteHandler = useCallback(() => {
     setCreateNote(!createNote);
   }, [createNote]);
@@ -34,7 +73,7 @@ function Notes() {
             />
           </>
         ) : (
-          <NotesList title={title} />
+          <NotesList title={title} text={text} notes={notes} />
         )}
       </div>
       <div className="p-4 flex justify-between">
@@ -48,7 +87,8 @@ function Notes() {
           </span>
         </div>
         {createNote ? (
-          <Button onClick={ShowNoteHandler}>Save</Button>
+          // eslint-disable-next-line react/jsx-no-bind
+          <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
         ) : (
           <Button onClick={ShowNoteHandler}>Add</Button>
         )}

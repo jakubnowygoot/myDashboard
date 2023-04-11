@@ -17,18 +17,6 @@ function Notes() {
       title: "2",
       text: "test",
     },
-    {
-      title: "3",
-      text: "test",
-    },
-    {
-      title: "4",
-      text: "test test",
-    },
-    {
-      title: "5",
-      text: "test test test test",
-    },
   ]);
 
   const AddNewNote = () => {
@@ -36,21 +24,23 @@ function Notes() {
       title,
       text,
     };
+
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   };
 
-  function ShowAndSaveNoteHandler() {
+  const ShowAndSaveNoteHandler = useCallback(() => {
     setCreateNote(!createNote);
     AddNewNote();
     setText("");
     setTitle("");
-  }
+  }, [createNote, title, text]);
 
   const ShowNoteHandler = useCallback(() => {
     setCreateNote(!createNote);
   }, [createNote]);
 
+  console.log();
   return (
     <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96  dark:bg-gray-800 ">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
@@ -73,7 +63,14 @@ function Notes() {
             />
           </>
         ) : (
-          <NotesList title={title} text={text} notes={notes} />
+          <NotesList
+            notes={notes}
+            setCreateNote={setCreateNote}
+            createNote={createNote}
+            title={title}
+            setText={setText}
+            setTitle={setTitle}
+          />
         )}
       </div>
       <div className="p-4 flex justify-between">
@@ -87,7 +84,6 @@ function Notes() {
           </span>
         </div>
         {createNote ? (
-          // eslint-disable-next-line react/jsx-no-bind
           <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
         ) : (
           <Button onClick={ShowNoteHandler}>Add</Button>

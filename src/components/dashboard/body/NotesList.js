@@ -1,8 +1,16 @@
-function NotesList({ notes, createNote, setCreateNote, setText, setTitle }) {
-  function test(note) {
+function NotesList({
+  notes,
+  createNote,
+  setCreateNote,
+  setText,
+  setTitle,
+  setId,
+}) {
+  function EditNote(note) {
     setCreateNote(!createNote);
     setTitle(note.title);
     setText(note.text);
+    setId(note.id);
   }
 
   return (
@@ -10,14 +18,11 @@ function NotesList({ notes, createNote, setCreateNote, setText, setTitle }) {
       {notes.map((note) => (
         <button
           key={Math.random()}
-          onClick={() => test(note)}
+          onClick={() => EditNote(note)}
           className="border-solid border-2 w-full rounded-3xl dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
         >
           <ul className="p-4 text-left">
-            <li
-              className="font-medium text-base xs:text-lg dark:text-white"
-              value={note.title}
-            >
+            <li className="font-medium text-base xs:text-lg dark:text-white">
               {note.title}
             </li>
           </ul>

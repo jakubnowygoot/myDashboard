@@ -7,26 +7,38 @@ function Notes() {
   const [createNote, setCreateNote] = useState(false);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [id, setId] = useState("");
 
   const [notes, setNotes] = useState([
     {
+      id: 0.213123123,
       title: "shopping list",
       text: "get bread",
-    },
-    {
-      title: "2",
-      text: "test",
     },
   ]);
 
   const AddNewNote = () => {
     const newNote = {
+      id: Math.random(),
       title,
       text,
     };
-
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
+  };
+
+  const EditNote = () => {
+    const tempArray = [...notes];
+    const index = tempArray.findIndex((element) => element.id === id);
+    tempArray[index] = {
+      id: Math.random(),
+      title,
+      text,
+    };
+    setNotes(tempArray);
+    setText("");
+    setTitle("");
+    setCreateNote(!createNote);
   };
 
   const ShowAndSaveNoteHandler = useCallback(() => {
@@ -40,7 +52,6 @@ function Notes() {
     setCreateNote(!createNote);
   }, [createNote]);
 
-  console.log();
   return (
     <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96  dark:bg-gray-800 ">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
@@ -57,8 +68,6 @@ function Notes() {
             <textarea
               value={text}
               className="h-4/6 rounded-lg bg-gray-50 w-full resize-none border-gray-300 border-solid border outline-primary-600 pl-2.5"
-              id="story"
-              name="story"
               onChange={(e) => setText(e.target.value)}
             />
           </>
@@ -70,6 +79,7 @@ function Notes() {
             title={title}
             setText={setText}
             setTitle={setTitle}
+            setId={setId}
           />
         )}
       </div>
@@ -84,7 +94,10 @@ function Notes() {
           </span>
         </div>
         {createNote ? (
-          <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+          <>
+            <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+            <Button onClick={EditNote}>Update</Button>
+          </>
         ) : (
           <Button onClick={ShowNoteHandler}>Add</Button>
         )}

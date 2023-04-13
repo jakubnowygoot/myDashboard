@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CardEntry from "../components/entry/CardEntry";
-import Input from "../components/ui/Input";
+import DefaultInput from "../components/ui/inputs/DefaultInput";
 import Button from "../components/ui/Button";
 
 function ForgotPass() {
@@ -13,7 +13,7 @@ function ForgotPass() {
         Enter your email and we we will send you link to reset your password.
       </p>
       <form className="space-y-4 md:space-y-6" action="/login">
-        <Input
+        <DefaultInput
           htmlFor="email"
           type="email"
           name="email"

@@ -1,4 +1,4 @@
-function Input({
+function DefaultInput({
   htmlFor,
   children,
   type,
@@ -32,4 +32,4 @@ function Input({
   );
 }
 
-export default Input;
+export default DefaultInput;

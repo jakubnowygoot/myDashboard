@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import Button from "../../ui/Button";
-import Input from "../../ui/Input";
-import InputPassword from "../../ui/InputPassword";
+import DefaultInput from "../../ui/inputs/DefaultInput";
+import InputPassword from "../../ui/inputs/InputPassword";
 import RememberMe from "./RememberMe";
 
 function Form() {
   return (
     <form className="space-y-4 md:space-y-6" action="/main">
-      <Input
+      <DefaultInput
         htmlFor="email"
         type="email"
         name="email"
@@ -16,7 +16,7 @@ function Form() {
         requried
       >
         Your Email
-      </Input>
+      </DefaultInput>
 
       <InputPassword htmlFor="password" name="password" id="password">
         Password

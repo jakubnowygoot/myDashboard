@@ -5,8 +5,10 @@ function NotesList({
   setText,
   setTitle,
   setId,
+  setShow,
 }) {
   function EditNote(note) {
+    setShow(true);
     setCreateNote(!createNote);
     setTitle(note.title);
     setText(note.text);

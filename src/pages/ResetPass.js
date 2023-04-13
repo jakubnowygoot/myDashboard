@@ -1,10 +1,10 @@
 import CardEntry from "../components/entry/CardEntry";
 import Button from "../components/ui/Button";
-import InputPassword from "../components/ui/InputPassword";
+import InputPassword from "../components/ui/inputs/InputPassword";
 
 function ResetPass() {
   return (
-    <CardEntry>
+    <CardEntry childrenStyle="sm:max-w-md">
       <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
         Reset your password
       </h1>

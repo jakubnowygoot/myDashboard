@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import Input from "../../ui/Input";
-import InputPassword from "../../ui/InputPassword";
+import DefaultInput from "../../ui/inputs/DefaultInput";
+import InputPassword from "../../ui/inputs/InputPassword";
 import TermsElem from "./TermsElem";
 import Button from "../../ui/Button";
 
 function Form() {
   return (
     <form className="space-y-4 md:space-y-6" action="#">
-      <Input
+      <DefaultInput
         htmlFor="fullName"
         type="text"
         name="fullName"
@@ -15,9 +15,9 @@ function Form() {
         placeholder="John Smith"
       >
         Full name
-      </Input>
+      </DefaultInput>
 
-      <Input
+      <DefaultInput
         htmlFor="email"
         type="email"
         name="email"
@@ -25,7 +25,7 @@ function Form() {
         placeholder="email@expample.com"
       >
         Your email
-      </Input>
+      </DefaultInput>
 
       <InputPassword htmlFor="password" name="password" id="password">
         Password

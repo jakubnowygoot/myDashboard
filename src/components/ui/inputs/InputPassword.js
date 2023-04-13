@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import EyeIcon from "./EyeIcon";
+import OpenEyeIcon from "./OpenEyeIcon";
 import CloseEyeIcon from "./CloseEyeIcon";
 
 function InputPassword({ children, name, id, htmlFor }) {
@@ -29,7 +29,7 @@ function InputPassword({ children, name, id, htmlFor }) {
         {hidePass ? (
           <CloseEyeIcon onClick={ShowPassHandler} />
         ) : (
-          <EyeIcon onClick={ShowPassHandler} />
+          <OpenEyeIcon onClick={ShowPassHandler} />
         )}
       </div>
     </div>

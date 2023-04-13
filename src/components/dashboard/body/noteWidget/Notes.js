@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import Button from "../../ui/Button";
-import Input from "../../ui/Input";
+import Button from "../../../ui/Button";
+import DefaultInput from "../../../ui/inputs/DefaultInput";
 import NotesList from "./NotesList";
 
 function Notes() {
@@ -8,14 +8,8 @@ function Notes() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [id, setId] = useState("");
-
-  const [notes, setNotes] = useState([
-    {
-      id: 0.213123123,
-      title: "shopping list",
-      text: "get bread",
-    },
-  ]);
+  const [show, setShow] = useState(false);
+  const [notes, setNotes] = useState([]);
 
   const AddNewNote = () => {
     const newNote = {
@@ -42,6 +36,7 @@ function Notes() {
   };
 
   const ShowAndSaveNoteHandler = useCallback(() => {
+    setShow(false);
     setCreateNote(!createNote);
     AddNewNote();
     setText("");
@@ -49,6 +44,7 @@ function Notes() {
   }, [createNote, title, text]);
 
   const ShowNoteHandler = useCallback(() => {
+    setShow(false);
     setCreateNote(!createNote);
   }, [createNote]);
 
@@ -57,10 +53,11 @@ function Notes() {
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
         Notes
       </h1>
+
       <div className="overflow-auto h-[63.5%] p-4 space-y-3.5">
         {createNote ? (
           <>
-            <Input
+            <DefaultInput
               value={title}
               placeholder="Title"
               onChange={(e) => setTitle(e.target.value)}
@@ -80,6 +77,7 @@ function Notes() {
             setText={setText}
             setTitle={setTitle}
             setId={setId}
+            setShow={setShow}
           />
         )}
       </div>
@@ -94,10 +92,13 @@ function Notes() {
           </span>
         </div>
         {createNote ? (
-          <>
-            <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
-            <Button onClick={EditNote}>Update</Button>
-          </>
+          <div>
+            {show ? (
+              <Button onClick={EditNote}>Update</Button>
+            ) : (
+              <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+            )}
+          </div>
         ) : (
           <Button onClick={ShowNoteHandler}>Add</Button>
         )}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import axios from "axios";
-import LoadingSpinner from "../../ui/LoadingSpinner";
+import LoadingSpinner from "../../../ui/LoadingSpinner";
 
 function Weather({ Icons }) {
   const [data, setData] = useState({});

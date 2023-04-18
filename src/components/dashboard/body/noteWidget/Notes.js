@@ -19,7 +19,7 @@ function Notes() {
       title,
       text,
     };
-    const newNotes = [...notes, newNote];
+    const newNotes = [newNote, ...notes];
     setNotes(newNotes);
   };
 

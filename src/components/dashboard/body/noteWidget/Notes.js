@@ -55,7 +55,7 @@ function Notes() {
   }, [showToDo]);
 
   return (
-    <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96  dark:bg-gray-800 ">
+    <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
         {showToDo ? "Tasks" : "Notes"}
       </h1>

@@ -5,10 +5,11 @@ function NotesList({
   setText,
   setTitle,
   setId,
-  setShow,
+  setButtonChange,
+  emptyNotes,
 }) {
   function EditNote(note) {
-    setShow(true);
+    setButtonChange(true);
     setCreateNote(!createNote);
     setTitle(note.title);
     setText(note.text);
@@ -17,6 +18,14 @@ function NotesList({
 
   return (
     <>
+      {emptyNotes ? (
+        <>
+          <hr />
+          <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
+            No notes
+          </h1>
+        </>
+      ) : null}
       {notes.map((note) => (
         <button
           key={Math.random()}

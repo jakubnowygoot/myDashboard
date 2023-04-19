@@ -2,26 +2,33 @@ import { useState } from "react";
 import DefaultInput from "../../../ui/inputs/DefaultInput";
 import ToDoTasks from "./ToDoTasks";
 
-function ToDoSection() {
+function ToDoSection({ setTaskList, taskList }) {
   const [taskText, setTaskText] = useState("");
-  const [task, setTask] = useState([]);
+  const [emptyTasks, setEmptyTasks] = useState(true);
 
   const AddNewTask = () => {
     const newTask = {
       id: Math.random(),
       task: taskText,
-      style: "",
     };
-    const newNotes = [newTask, ...task];
-    setTask(newNotes);
+    const newNotes = [newTask, ...taskList];
+    setTaskList(newNotes);
   };
 
-  function handleKeyPress(enter) {
-    if (enter.key === "Enter" && taskText.length > 0) {
+  function NewTaskHandler(e) {
+    if (e.key === "Enter" && taskText.length > 0) {
       AddNewTask();
+      setEmptyTasks(false);
       setTaskText("");
     }
   }
+
+  const DeleteTask = (id) => {
+    setTaskList(taskList.filter((item) => item.id !== id));
+    if (taskList.length === 1) {
+      setEmptyTasks(true);
+    }
+  };
 
   return (
     <>
@@ -30,11 +37,19 @@ function ToDoSection() {
           value={taskText}
           placeholder="Task to do"
           onChange={(e) => setTaskText(e.target.value)}
-          onKeyUp={(enter) => handleKeyPress(enter)}
+          onKeyDown={(e) => NewTaskHandler(e)}
         />
       </div>
       <div className="overflow-auto h-[48.3%] p-4 pt-2 space-y-3.5">
-        <ToDoTasks task={task} />
+        {emptyTasks ? (
+          <>
+            <hr />
+            <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
+              Add some tasks
+            </h1>
+          </>
+        ) : null}
+        <ToDoTasks taskList={taskList} DeleteTask={DeleteTask} />
       </div>
     </>
   );

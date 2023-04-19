@@ -8,7 +8,7 @@ function DefaultInput({
   disabled,
   onChange,
   value,
-  onKeyUp,
+  onKeyDown,
 }) {
   return (
     <div>
@@ -20,7 +20,7 @@ function DefaultInput({
       </label>
       <input
         value={value}
-        onKeyUp={onKeyUp}
+        onKeyDown={onKeyDown}
         type={type}
         name={name}
         id={id}

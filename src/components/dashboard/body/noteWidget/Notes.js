@@ -9,9 +9,11 @@ function Notes() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [id, setId] = useState("");
-  const [show, setShow] = useState(false);
+  const [emptyNotes, setEmptyNotes] = useState(true);
+  const [buttonChange, setButtonChange] = useState(false);
   const [showToDo, setShowToDo] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [taskList, setTaskList] = useState([]);
 
   const AddNewNote = () => {
     const newNote = {
@@ -38,7 +40,13 @@ function Notes() {
   };
 
   const ShowAndSaveNoteHandler = useCallback(() => {
-    setShow(false);
+    if (title.length === 0) {
+      return;
+    }
+    if (notes.length === 0) {
+      setEmptyNotes(false);
+    }
+    setButtonChange(false);
     setCreateNote(!createNote);
     AddNewNote();
     setText("");
@@ -46,7 +54,7 @@ function Notes() {
   }, [createNote, title, text]);
 
   const ShowNoteHandler = useCallback(() => {
-    setShow(false);
+    setButtonChange(false);
     setCreateNote(!createNote);
   }, [createNote]);
 
@@ -54,13 +62,17 @@ function Notes() {
     setShowToDo(!showToDo);
   }, [showToDo]);
 
+  const DeleteAllTasks = () => {
+    setTaskList([]);
+  };
+
   return (
     <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
         {showToDo ? "Tasks" : "Notes"}
       </h1>
       {showToDo ? (
-        <ToDoSection />
+        <ToDoSection setTaskList={setTaskList} taskList={taskList} />
       ) : (
         <NotesSection
           notes={notes}
@@ -70,22 +82,29 @@ function Notes() {
           setText={setText}
           setTitle={setTitle}
           setId={setId}
-          setShow={setShow}
+          setButtonChange={setButtonChange}
           text={text}
+          emptyNotes={emptyNotes}
         />
       )}
       <div className="p-4 flex justify-between">
         <ToDoSwitch ShowToDoHandler={ShowToDoHandler} />
-        {createNote ? (
+        {showToDo ? (
+          <Button onClick={DeleteAllTasks}>Clear all</Button>
+        ) : (
           <div>
-            {show ? (
-              <Button onClick={EditNote}>Update</Button>
+            {createNote ? (
+              <div>
+                {buttonChange ? (
+                  <Button onClick={EditNote}>Update</Button>
+                ) : (
+                  <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+                )}
+              </div>
             ) : (
-              <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+              <Button onClick={ShowNoteHandler}>Add</Button>
             )}
           </div>
-        ) : (
-          <Button onClick={ShowNoteHandler}>Add</Button>
         )}
       </div>
     </div>

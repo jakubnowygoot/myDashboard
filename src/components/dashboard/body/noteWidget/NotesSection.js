@@ -9,8 +9,9 @@ function NotesSection({
   setText,
   setTitle,
   setId,
-  setShow,
+  setButtonChange,
   text,
+  emptyNotes,
 }) {
   return (
     <div className="overflow-auto h-[63.5%] p-4 space-y-3.5">
@@ -36,7 +37,8 @@ function NotesSection({
           setText={setText}
           setTitle={setTitle}
           setId={setId}
-          setShow={setShow}
+          setButtonChange={setButtonChange}
+          emptyNotes={emptyNotes}
         />
       )}
     </div>

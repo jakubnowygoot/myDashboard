@@ -20,7 +20,7 @@ function ToDoTasks({ taskList, DeleteTask }) {
     <>
       {taskList.map((tasks) => (
         <div
-          className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+          className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-600 dark:bg-gray-700"
           key={tasks.id}
         >
           <input
@@ -43,7 +43,7 @@ function ToDoTasks({ taskList, DeleteTask }) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 m-3 cursor-pointer"
+            className="w-6 h-6 m-3 cursor-pointer dark:stroke-white"
             onClick={() => DeleteTask(tasks.id)}
           >
             <path

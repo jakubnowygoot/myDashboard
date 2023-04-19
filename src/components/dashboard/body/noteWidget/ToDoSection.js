@@ -2,9 +2,8 @@ import { useState } from "react";
 import DefaultInput from "../../../ui/inputs/DefaultInput";
 import ToDoTasks from "./ToDoTasks";
 
-function ToDoSection({ setTaskList, taskList }) {
+function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
   const [taskText, setTaskText] = useState("");
-  const [emptyTasks, setEmptyTasks] = useState(true);
 
   const AddNewTask = () => {
     const newTask = {

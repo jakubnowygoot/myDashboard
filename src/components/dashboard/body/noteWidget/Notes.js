@@ -14,6 +14,7 @@ function Notes() {
   const [showToDo, setShowToDo] = useState(false);
   const [notes, setNotes] = useState([]);
   const [taskList, setTaskList] = useState([]);
+  const [emptyTasks, setEmptyTasks] = useState(true);
 
   const AddNewNote = () => {
     const newNote = {
@@ -63,10 +64,14 @@ function Notes() {
 
   const ShowToDoHandler = useCallback(() => {
     setShowToDo(!showToDo);
+    if (taskList.length === 1) {
+      setEmptyNotes(true);
+    }
   }, [showToDo]);
 
   const DeleteAllTasks = () => {
     setTaskList([]);
+    setEmptyTasks(true);
   };
 
   const DeleteNotes = (e) => {
@@ -81,7 +86,12 @@ function Notes() {
         {showToDo ? "Tasks" : "Notes"}
       </h1>
       {showToDo ? (
-        <ToDoSection setTaskList={setTaskList} taskList={taskList} />
+        <ToDoSection
+          setTaskList={setTaskList}
+          taskList={taskList}
+          setEmptyTasks={setEmptyTasks}
+          emptyTasks={emptyTasks}
+        />
       ) : (
         <NotesSection
           notes={notes}

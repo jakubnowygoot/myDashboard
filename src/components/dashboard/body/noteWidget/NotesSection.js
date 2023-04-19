@@ -12,6 +12,7 @@ function NotesSection({
   setButtonChange,
   text,
   emptyNotes,
+  DeleteNotes,
 }) {
   return (
     <div className="overflow-auto h-[63.5%] p-4 space-y-3.5">
@@ -39,6 +40,7 @@ function NotesSection({
           setId={setId}
           setButtonChange={setButtonChange}
           emptyNotes={emptyNotes}
+          DeleteNotes={DeleteNotes}
         />
       )}
     </div>

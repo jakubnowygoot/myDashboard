@@ -26,6 +26,9 @@ function Notes() {
   };
 
   const EditNote = () => {
+    if (title.length === 0) {
+      return;
+    }
     const tempArray = [...notes];
     const index = tempArray.findIndex((element) => element.id === id);
     tempArray[index] = {
@@ -66,6 +69,12 @@ function Notes() {
     setTaskList([]);
   };
 
+  const DeleteNotes = (e) => {
+    setNotes(notes.filter((item) => item.id !== e));
+    if (notes.length === 1) {
+      setEmptyNotes(true);
+    }
+  };
   return (
     <div className="rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
       <h1 className="text-xl xs:text-3xl font-bold dark:text-gray-300 text-center p-4">
@@ -85,6 +94,7 @@ function Notes() {
           setButtonChange={setButtonChange}
           text={text}
           emptyNotes={emptyNotes}
+          DeleteNotes={DeleteNotes}
         />
       )}
       <div className="p-4 flex justify-between">

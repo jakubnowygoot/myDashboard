@@ -40,9 +40,11 @@ function Moon() {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <MoonInfoRender isLoaded={isLoaded} data={data} newError={newError} />
+        <>
+          <MoonInfoRender isLoaded={isLoaded} data={data} newError={newError} />
+          {newError && <ErrorMassage MoonData={MoonData} />}
+        </>
       )}
-      {newError && <ErrorMassage MoonData={MoonData} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 function ToDoSwitch({ ShowToDoHandler }) {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center z-0">
       <label className="relative inline-flex items-center cursor-pointer">
         <input
           type="checkbox"

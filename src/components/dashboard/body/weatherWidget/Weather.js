@@ -3,15 +3,22 @@ import { useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 
-function Weather({ Icons }) {
+function Weather({
+  Icons,
+  setShowNextDays,
+  weatherNextDays,
+  location,
+  setLocation,
+  showNextDays,
+}) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
-  const [location, setLocation] = useState("");
   const [toggleInputLocation, setToggleInputLocation] = useState(true);
   const [gap, setGap] = useState(4);
 
   const date = new Date().toDateString();
+
   const key = "62bf8f2f137d858cde8784170789de51";
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${key}`;
@@ -21,8 +28,9 @@ function Weather({ Icons }) {
       setIsLoading(true);
       try {
         const resp = await axios.get(url);
-        setData(resp.data);
+        weatherNextDays();
         setLocation("");
+        setData(resp.data);
         setGap(0);
         setToggleInputLocation(!toggleInputLocation);
         setIsLoading(false);
@@ -38,6 +46,15 @@ function Weather({ Icons }) {
 
   function InputHandler() {
     setToggleInputLocation(!toggleInputLocation);
+  }
+
+  function RenderNextDaysWeather() {
+    if (data.name === undefined) {
+      setShowNextDays(false);
+      setNewError(true);
+    } else {
+      setShowNextDays(!showNextDays);
+    }
   }
 
   return (
@@ -69,8 +86,26 @@ function Weather({ Icons }) {
               {data.name}
             </div>
           )}
-          <div className="text-base text-gray-500 dark:text-gray-300">
+          <div className="text-base text-gray-500 dark:text-gray-300 flex justify-between">
             {date}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              className="w-6 h-6 cursor-pointer stroke-gray-400 dark:stroke-white"
+              onClick={RenderNextDaysWeather}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d={
+                  showNextDays
+                    ? "M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    : "M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                }
+              />
+            </svg>
           </div>
           <div className="mt-6 text-6xl self-center inline-flex items-center justify-center rounded-lg text-indigo-400 h-24 w-24">
             <svg

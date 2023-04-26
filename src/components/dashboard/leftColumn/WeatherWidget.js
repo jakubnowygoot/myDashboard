@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-function WeatherWidgetIcon() {
+function WeatherWidgetIcon({ setShowWeather, showWeather }) {
   const [toggleWeatherIcon, setToggleWeatherIcon] = useState(false);
 
-  function handleClick() {
+  function ShowWidget() {
     setToggleWeatherIcon(!toggleWeatherIcon);
+    setShowWeather(!showWeather);
   }
 
   return (
@@ -13,7 +14,7 @@ function WeatherWidgetIcon() {
         toggleWeatherIcon &&
         "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
       }`}
-      onClick={handleClick}
+      onClick={ShowWidget}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

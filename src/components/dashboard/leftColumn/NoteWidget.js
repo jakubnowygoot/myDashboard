@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-function NoteWidgetIcon() {
+function NoteWidgetIcon({ setShowNote, showNote }) {
   const [toggleNoteIcon, setToggleNoteIcon] = useState(false);
 
-  function handleClick() {
+  function ShowWidget() {
     setToggleNoteIcon(!toggleNoteIcon);
+    setShowNote(!showNote);
   }
 
   return (
@@ -13,7 +14,7 @@ function NoteWidgetIcon() {
         toggleNoteIcon &&
         "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
       }`}
-      onClick={handleClick}
+      onClick={ShowWidget}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

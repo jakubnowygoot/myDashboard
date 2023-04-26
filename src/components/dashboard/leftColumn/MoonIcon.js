@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-function MoonWidgetIcon() {
+function MoonWidgetIcon({ setShowMoon, showMoon, RenderMoonData }) {
   const [toggleMoonIcon, setToggleMoonIcon] = useState(false);
 
-  function handleClick() {
+  function ShowWidget() {
     setToggleMoonIcon(!toggleMoonIcon);
+    setShowMoon(!showMoon);
+    RenderMoonData();
   }
 
   return (
@@ -13,7 +15,7 @@ function MoonWidgetIcon() {
         toggleMoonIcon &&
         "bg-primary-600 hover:bg-primary-600 dark:hover:bg-primary-600 "
       }`}
-      onClick={handleClick}
+      onClick={ShowWidget}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

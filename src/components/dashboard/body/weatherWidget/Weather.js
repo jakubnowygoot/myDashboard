@@ -117,7 +117,9 @@ function Weather({
             >
               <path
                 d={`${
-                  Icons[`${data.weather ? `${data.weather[0].main}` : null}`]
+                  Icons[
+                    `${data.weather ? `${data.weather[0].main}` : undefined}`
+                  ]
                 }`}
               />
             </svg>

@@ -9,6 +9,7 @@ import WeatherDays from "../components/dashboard/body/weatherWidget/WeatherDays"
 import Notes from "../components/dashboard/body/noteWidget/Notes";
 import { weatherIcon } from "../components/dashboard/data/WeatherIcon";
 import Moon from "../components/dashboard/body/moonWidget/Moon";
+import {GetRightHour} from "../components/ui/RightHour";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -18,7 +19,6 @@ function Dashboard() {
   const [showNote, setShowNote] = useState(false);
   const [location, setLocation] = useState("");
   const [daysData, setDaysData] = useState([]);
-
   const [dataMoon, setDataMoon] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
@@ -33,6 +33,8 @@ function Dashboard() {
   const keyMoon = "fed123ade789465db119dcf3d581e41a";
   const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
 
+  const keyWeather = "62bf8f2f137d858cde8784170789de51";
+  const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${keyWeather}`;
   const RenderMoonData = async () => {
     try {
       setIsLoading(true);
@@ -46,34 +48,9 @@ function Dashboard() {
     setIsLoading(false);
   };
 
-  const key = "62bf8f2f137d858cde8784170789de51";
-
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${key}`;
-
-  const SettingsMenuHandler = useCallback(() => {
-    setSettingsMenu(!settingsMenu);
-  }, [settingsMenu]);
-
-  const getHour = new Date().getHours();
-
-  function GetRightHour() {
-    if (getHour % 3 === 0) {
-      return getHour - 3;
-    }
-    if ((getHour - 2) % 3 === 0) {
-      return getHour - 5;
-    }
-    if ((getHour - 1) % 3 === 0) {
-      return getHour - 4;
-    }
-    if (getHour === 1 && 2) {
-      return 6;
-    }
-  }
-
   const weatherNextDays = async () => {
     try {
-      const resp = await axios.get(url);
+      const resp = await axios.get(urlWeather);
       setDaysData(
         resp.data.list.filter((reading) =>
           reading.dt_txt.includes(`0${GetRightHour()}:00:00`.slice(-8))
@@ -83,6 +60,10 @@ function Dashboard() {
       console.log(error);
     }
   };
+
+  const SettingsMenuHandler = useCallback(() => {
+    setSettingsMenu(!settingsMenu);
+  }, [settingsMenu]);
 
   return (
     <>

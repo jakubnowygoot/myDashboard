@@ -9,7 +9,7 @@ import WeatherDays from "../components/dashboard/body/weatherWidget/WeatherDays"
 import Notes from "../components/dashboard/body/noteWidget/Notes";
 import { weatherIcon } from "../components/dashboard/data/WeatherIcon";
 import Moon from "../components/dashboard/body/moonWidget/Moon";
-import {GetRightHour} from "../components/ui/RightHour";
+import { GetRightHour } from "../components/ui/RightHour";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -100,7 +100,7 @@ function Dashboard() {
             )}
             {showMoon && (
               <Moon
-                MoonData={RenderMoonData}
+                RenderMoonData={RenderMoonData}
                 dataMoon={dataMoon}
                 isLoading={isLoading}
                 newError={newError}

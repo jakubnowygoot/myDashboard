@@ -6,7 +6,7 @@ import RememberMe from "./RememberMe";
 
 function Form() {
   return (
-    <form className="space-y-4 md:space-y-6" action="/main">
+    <form className="space-y-4 md:space-y-6" action="/dashboard">
       <DefaultInput
         htmlFor="email"
         type="email"

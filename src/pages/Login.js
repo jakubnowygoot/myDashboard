@@ -5,7 +5,7 @@ import NavBarHome from "../components/dashboard/navigationBar/NavBarHome";
 function Login() {
   return (
     <>
-      <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
+      <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
         <NavBarHome />
       </div>
       <CardEntry childrenStyle="sm:max-w-md">

@@ -1,12 +1,12 @@
 import CardEntry from "../components/entry/CardEntry";
 import Form from "../components/entry/registerFom/Form";
-import NavBar from "../components/dashboard/navigationBar/NavBar";
+import NavBarHome from "../components/dashboard/navigationBar/NavBarHome";
 
 function Register() {
   return (
     <>
-      <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
-        <NavBar />
+      <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
+        <NavBarHome />
       </div>
       <CardEntry childrenStyle="sm:max-w-md">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">

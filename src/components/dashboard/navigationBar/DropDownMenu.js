@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function DropDownMenu({ menuToggle }) {
   const [dropDownMenu, setDropDownMenu] = useState(false);
@@ -24,12 +25,14 @@ function DropDownMenu({ menuToggle }) {
   }
   return (
     <div className="flex md:order-2">
-      <button
-        type="button"
-        className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:mr-3 md:mr-0 dark:md:hover:bg-primary-700 dark:md:focus:ring-primary-800 "
-      >
-        Logout
-      </button>
+      <Link to="/">
+        <button
+          type="button"
+          className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:mr-3 md:mr-0 dark:md:hover:bg-primary-700 dark:md:focus:ring-primary-800 "
+        >
+          Logout
+        </button>
+      </Link>
       <button
         data-collapse-toggle="navbar-cta"
         type="button"
@@ -83,12 +86,11 @@ function DropDownMenu({ menuToggle }) {
             </li>
             <li>
               <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
-                <a
-                  href="#"
-                  className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
-                >
-                  Logout
-                </a>
+                <Link to="/">
+                  <a className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white">
+                    Logout
+                  </a>
+                </Link>
               </div>
             </li>
           </ul>

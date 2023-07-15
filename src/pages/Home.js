@@ -7,9 +7,7 @@ import NavBarHome from "../components/dashboard/navigationBar/NavBarHome";
 function HomePage() {
   return (
     <>
-      <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
-        <NavBarHome />
-      </div>
+      <NavBarHome />
       <CardStartPage>
         <HomeText />
         <div className="mt-8 flex flex-wrap justify-center gap-4">

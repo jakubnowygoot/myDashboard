@@ -6,9 +6,9 @@ function DarkMode() {
   function ChangeDarkModeIcon() {
     setDarkModeActive(!darkModeActive);
     if (darkModeActive === false) {
-      document.body.classList.remove("dark");
-    } else {
       document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
     }
   }
 
@@ -20,7 +20,9 @@ function DarkMode() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         className={`w-5 h-5 dark:stroke-white ${
-          darkModeActive ? "stroke-gray-400" : "stroke-black"
+          darkModeActive
+            ? "stroke-gray-400 dark:stroke-gray-400"
+            : "stroke-black"
         }`}
       >
         <path

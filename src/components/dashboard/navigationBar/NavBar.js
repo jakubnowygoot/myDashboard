@@ -1,4 +1,5 @@
 import DropDownMenu from "./DropDownMenu";
+import DarkMode from "./DarkMode";
 
 function NavBar({ menuToggle }) {
   return (
@@ -8,7 +9,6 @@ function NavBar({ menuToggle }) {
           My Dashboard
         </span>
       </a>
-      <DropDownMenu menuToggle={menuToggle} />
       <div
         className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
         id="navbar-cta"
@@ -33,6 +33,10 @@ function NavBar({ menuToggle }) {
             </a>
           </li>
         </ul>
+      </div>
+      <div className="flex gap-2 flex-row-reverse md:order-1">
+        <DropDownMenu menuToggle={menuToggle} />
+        <DarkMode />
       </div>
     </div>
   );

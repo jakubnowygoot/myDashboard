@@ -29,7 +29,7 @@ function TermsElem() {
           </label>
         </div>
       </div>
-      <Button type="submit">Sign in</Button>
+      <Button type="submit">Sign up</Button>
     </div>
   );
 }

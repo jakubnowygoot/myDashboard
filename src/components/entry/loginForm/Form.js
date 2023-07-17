@@ -33,7 +33,7 @@ function Form() {
         </Link>
       </div>
 
-      <Button type="submit" addStyle="w-full mt-4 md:mt-6">
+      <Button type="submit" addStyle=" mt-4 md:mt-6">
         Sign in
       </Button>
 

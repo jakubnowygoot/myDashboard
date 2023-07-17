@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       height: {
         128: "63.5%",
+        91: "91vh",
       },
       colors: {
         primary: {

@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import DefaultInput from "../../ui/inputs/DefaultInput";
 import InputPassword from "../../ui/inputs/InputPassword";
 import TermsElem from "./TermsElem";
-import Button from "../../ui/Button";
 
 function Form() {
   return (
@@ -40,20 +38,6 @@ function Form() {
       </InputPassword>
 
       <TermsElem />
-
-      <Button type="submit" addStyle="w-full mt-4 md:mt-6">
-        Sign in
-      </Button>
-
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-        Already have an account?{" "}
-        <Link
-          to="/login"
-          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-        >
-          Login here
-        </Link>
-      </p>
     </form>
   );
 }

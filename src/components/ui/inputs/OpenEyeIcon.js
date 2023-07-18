@@ -5,10 +5,10 @@ function OpenEyeIcon({ onClick }) {
       fill="none"
       type="button"
       onClick={onClick}
-      viewBox="0 0 24 24"
+      viewBox="-10 0 48 24"
       cursor="pointer"
       strokeWidth={1.5}
-      className="w-5 stroke-black dark:stroke-white border-b border-r border-t border-gray-300 rounded-r-lg bg-gray-50"
+      className="w-10 stroke-black dark:stroke-white border-b border-r border-t border-gray-300 rounded-r-lg bg-gray-50"
     >
       <path
         strokeLinecap="round"

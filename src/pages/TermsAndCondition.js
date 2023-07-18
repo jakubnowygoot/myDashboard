@@ -15,7 +15,7 @@ function TermsAndCondition() {
       >
         <TermsText />
         <Link to="/register">
-          <Button type="button" addStyle="w-full mt-4 md:mt-6">
+          <Button type="button" addStyle="mt-4 md:mt-6">
             Go back
           </Button>
         </Link>

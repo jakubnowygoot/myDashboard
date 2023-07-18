@@ -8,7 +8,7 @@ function OpenEyeIcon({ onClick }) {
       viewBox="0 0 24 24"
       cursor="pointer"
       strokeWidth={1.5}
-      className="w-5 h-5 stroke-black dark:stroke-white"
+      className="w-5 stroke-black dark:stroke-white border-b border-r border-t border-gray-300 rounded-r-lg bg-gray-50"
     >
       <path
         strokeLinecap="round"

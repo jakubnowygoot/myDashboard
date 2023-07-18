@@ -1,4 +1,4 @@
-function CloseEyeIcon({ onClick }) {
+function CloseEyeIcon({ onClick, isFocused }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,12 @@ function CloseEyeIcon({ onClick }) {
       cursor="pointer"
       onClick={onClick}
       strokeWidth={1.5}
-      className="w-10 stroke-black dark:stroke-white border-b border-r border-t border-gray-300 rounded-r-lg bg-gray-50 "
+      className={`w-10 stroke-black dark:stroke-white border-b border-r border-t ${
+        isFocused ? "border-primary-600" : "border-gray-300"
+      } rounded-r-lg bg-gray-50 dark:bg-gray-700 ${
+        isFocused ? "dark:border-primary-600" : "dark:border-gray-600 "
+      }dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
+      `}
     >
       <path
         strokeLinecap="round"

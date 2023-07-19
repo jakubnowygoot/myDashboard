@@ -24,11 +24,9 @@ function ForgotPass() {
             placeholder="email@expample.com"
             requried
           />
-
-          <Button type="submit" addStyle="w-full">
+          <Button type="submit" addStyle="w-28">
             Send link
           </Button>
-
           <p className="text-sm font-light text-gray-500 dark:text-gray-400">
             Go back to{" "}
             <Link

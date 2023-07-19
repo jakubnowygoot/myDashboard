@@ -32,7 +32,7 @@ function Form() {
       </div>
 
       <div className="flex justify-center flex-col items-center gap-2">
-        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+        <p className="text-sm font-extralight text-gray-500 dark:text-gray-400">
           Did you{" "}
           <Link
             to="/forgot-password"
@@ -41,7 +41,7 @@ function Form() {
             forget password?
           </Link>
         </p>
-        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+        <p className="text-sm font-extralight text-gray-500 dark:text-gray-400 flex flex-nowrap">
           Don’t have an account yet?{" "}
           <Link
             to="/register"

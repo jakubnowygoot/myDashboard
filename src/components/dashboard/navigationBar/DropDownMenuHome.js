@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function DropDownMenu({ menuToggle }) {
+function DropDownMenu() {
   const [dropDownMenuHome, setDropDownMenuHome] = useState(false);
   const [toggleBurgerHome, setToggleBurgerHome] = useState(false);
 
@@ -16,12 +16,6 @@ function DropDownMenu({ menuToggle }) {
   function TwoFunctionBurger() {
     BurgerHandler();
     DropDownMenuHandler();
-  }
-
-  function SettingsMenu() {
-    menuToggle();
-    DropDownMenuHandler();
-    BurgerHandler();
   }
 
   return (
@@ -59,40 +53,18 @@ function DropDownMenu({ menuToggle }) {
       {dropDownMenuHome && (
         <div
           id="dropdown"
-          className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-800 absolute mt-12 mr-16 -ml-14 md:hidden"
+          className="z-10 bg-white divide-y divide-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg shadow w-32 dark:bg-gray-800 absolute mt-12 mr-16 -ml-14 md:hidden"
         >
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
             <li>
-              <a
-                href="#"
-                className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
-              >
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <div className="pb-1.5">
-                <a
-                  href="#"
-                  className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
-                  onClick={SettingsMenu}
-                >
-                  Settings
-                </a>
-              </div>
-            </li>
-            <li>
-              <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
-                <a
-                  href="#"
-                  className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
-                >
+              <Link to="/login">
+                <a className="block text-black px-4 py-2 dark:text-white">
                   Login
                 </a>
-              </div>
+              </Link>
             </li>
           </ul>
         </div>

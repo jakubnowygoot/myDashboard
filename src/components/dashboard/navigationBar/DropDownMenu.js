@@ -23,6 +23,7 @@ function DropDownMenu({ menuToggle }) {
     DropDownMenuHandler();
     BurgerHandler();
   }
+
   return (
     <div className="flex md:order-2">
       <Link to="/">
@@ -68,7 +69,7 @@ function DropDownMenu({ menuToggle }) {
             <li>
               <a
                 href="#"
-                className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
+                className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white"
               >
                 Dashboard
               </a>
@@ -77,7 +78,7 @@ function DropDownMenu({ menuToggle }) {
               <div className="pb-1.5">
                 <a
                   href="#"
-                  className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white"
+                  className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white"
                   onClick={SettingsMenu}
                 >
                   Settings
@@ -87,7 +88,7 @@ function DropDownMenu({ menuToggle }) {
             <li>
               <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
                 <Link to="/">
-                  <a className="block text-black px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-white">
+                  <a className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white">
                     Logout
                   </a>
                 </Link>

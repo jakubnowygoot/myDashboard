@@ -53,7 +53,7 @@ function DropDownMenu() {
       {dropDownMenuHome && (
         <div
           id="dropdown"
-          className="z-10 bg-white divide-y divide-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg shadow w-32 dark:bg-gray-800 absolute mt-12 mr-16 -ml-14 md:hidden"
+          className="z-10 bg-white divide-y divide-gray-100 dark:hover:bg-gray-700 rounded-lg shadow w-32 dark:bg-gray-800 absolute mt-12 mr-16 -ml-14 md:hidden"
         >
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -61,7 +61,7 @@ function DropDownMenu() {
           >
             <li>
               <Link to="/login">
-                <a className="block text-black px-4 py-2 dark:text-white">
+                <a className="block text-black px-4 py-2 hover:bg-gray-200 dark:text-white">
                   Login
                 </a>
               </Link>

@@ -14,7 +14,7 @@ function NavBarHome({ menuToggle }) {
           </Link>
         </a>
         <div className="flex flex-row-reverse gap-2">
-          <DarkMode />
+          <DarkMode addStyle="hidden" />
           <DropDownMenuHome menuToggle={menuToggle} />
         </div>
       </div>

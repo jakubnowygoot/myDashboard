@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function DarkMode() {
+function DarkMode({ addStyle }) {
   const [darkModeActive, setDarkModeActive] = useState(false);
 
   function ChangeDarkModeIcon() {
@@ -13,7 +13,9 @@ function DarkMode() {
   }
 
   return (
-    <div className="flex justify-center items-center z-0 gap-2">
+    <div
+      className={`justify-center items-center z-0 gap-2 md:flex ${addStyle}`}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

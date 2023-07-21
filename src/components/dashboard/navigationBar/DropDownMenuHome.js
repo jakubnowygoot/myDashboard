@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import DarkMode from "./DarkMode";
 
 function DropDownMenu() {
   const [dropDownMenuHome, setDropDownMenuHome] = useState(false);
@@ -59,6 +60,7 @@ function DropDownMenu() {
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
+            <DarkMode addStyle="flex" />
             <li>
               <Link to="/login">
                 <a className="block text-black px-4 py-2 hover:bg-gray-200 dark:text-white">

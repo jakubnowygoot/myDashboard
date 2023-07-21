@@ -3,7 +3,7 @@ import DarkMode from "./DarkMode";
 
 function NavBar({ menuToggle }) {
   return (
-    <div className="w-full flex flex-wrap items-center justify-between ">
+    <div className="w-full flex flex-wrap items-center xs:justify-between justify-center gap-1 ">
       <a className="flex items-center">
         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
           My Dashboard
@@ -34,7 +34,7 @@ function NavBar({ menuToggle }) {
           </li>
         </ul>
       </div>
-      <div className="flex gap-2 flex-row-reverse md:order-1">
+      <div className="flex gap-2 flex-row-reverse md:order-1 pl-2">
         <DropDownMenu menuToggle={menuToggle} />
         <DarkMode />
       </div>

@@ -15,6 +15,7 @@ function Notes() {
   const [notes, setNotes] = useState([]);
   const [taskList, setTaskList] = useState([]);
   const [emptyTasks, setEmptyTasks] = useState(true);
+  const [emptyTittleNote, setEmptyTittleNote] = useState(false);
 
   const AddNewNote = () => {
     const newNote = {
@@ -45,11 +46,13 @@ function Notes() {
 
   const ShowAndSaveNoteHandler = useCallback(() => {
     if (title.length === 0) {
+      setEmptyTittleNote(true);
       return;
     }
     if (notes.length === 0) {
       setEmptyNotes(false);
     }
+    setEmptyTittleNote(false);
     setButtonChange(false);
     setCreateNote(!createNote);
     AddNewNote();
@@ -132,6 +135,7 @@ function Notes() {
           text={text}
           emptyNotes={emptyNotes}
           DeleteNotes={DeleteNotes}
+          emptyTittleNote={emptyTittleNote}
         />
       )}
       <div className=" flex justify-between">

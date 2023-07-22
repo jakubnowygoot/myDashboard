@@ -13,6 +13,7 @@ function NotesSection({
   text,
   emptyNotes,
   DeleteNotes,
+  emptyTittleNote,
 }) {
   return (
     <div className="overflow-auto h-[63.5%]  space-y-3.5">
@@ -20,7 +21,7 @@ function NotesSection({
         <>
           <DefaultInput
             value={title}
-            placeholder="Title"
+            placeholder={`${emptyTittleNote ? "Invalid title" : "Title"}`}
             onChange={(e) => setTitle(e.target.value)}
           />
           <textarea

@@ -80,11 +80,38 @@ function Notes() {
       setEmptyNotes(true);
     }
   };
+
+  const ReturnButton = () => {
+    setCreateNote(false);
+  };
+
   return (
     <div className="flex p-4 justify-between flex-col rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
-      <h1 className="text-3xl font-bold dark:text-gray-300 text-center">
-        {showToDo ? "Tasks" : "Notes"}
-      </h1>
+      <div className="flex justify-between flex-row-reverse items-center">
+        <svg className="w-6 h-6" />
+        <h1 className="text-3xl font-bold dark:text-gray-300 text-center">
+          {showToDo ? "Tasks" : "Notes"}
+        </h1>
+        {createNote ? (
+          <button className="cursor-pointer" onClick={ReturnButton}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              className="w-6 h-6 cursor-pointer stroke-gray-400 dark:stroke-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+              />
+            </svg>
+          </button>
+        ) : (
+          <svg className="w-6 h-6 " />
+        )}
+      </div>
       {showToDo ? (
         <ToDoSection
           setTaskList={setTaskList}
@@ -107,7 +134,7 @@ function Notes() {
           DeleteNotes={DeleteNotes}
         />
       )}
-      <div className="p-4 flex justify-between">
+      <div className=" flex justify-between">
         <ToDoSwitch ShowToDoHandler={ShowToDoHandler} />
         {showToDo ? (
           <Button onClick={DeleteAllTasks}>Clear all</Button>

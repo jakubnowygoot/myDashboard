@@ -31,10 +31,10 @@ function NotesList({
         <div className="flex justify-center items-center" key={Math.random()}>
           <div className="border-solid border-2 w-full rounded-3xl dark:bg-gray-700 dark:border-gray-600 cursor-pointer flex items-center justify-between">
             <button
-              className="p-4 text-left break-all list-none w-full border-r-2 dark:border-gray-600"
+              className=" text-left break-all list-none w-full border-r-2 dark:border-gray-600"
               onClick={() => EditNote(note)}
             >
-              <li className="font-medium text-base xs:text-lg dark:text-white ">
+              <li className="font-medium p-4 text-base xs:text-lg dark:text-white ">
                 {note.title}
               </li>
             </button>

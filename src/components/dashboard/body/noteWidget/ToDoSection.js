@@ -31,7 +31,7 @@ function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
 
   return (
     <>
-      <div className="px-4 pb-2">
+      <div className=" pb-2">
         <DefaultInput
           value={taskText}
           placeholder="Task to do"
@@ -39,7 +39,7 @@ function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
           onKeyDown={(e) => NewTaskHandler(e)}
         />
       </div>
-      <div className="overflow-auto h-[48.3%] p-4 pt-2 space-y-3.5">
+      <div className="overflow-auto h-[48.3%]  pt-2 space-y-3.5">
         {emptyTasks ? (
           <>
             <hr />

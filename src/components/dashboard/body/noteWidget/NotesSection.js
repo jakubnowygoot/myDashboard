@@ -15,7 +15,7 @@ function NotesSection({
   DeleteNotes,
 }) {
   return (
-    <div className="overflow-auto h-[63.5%] p-4 space-y-3.5">
+    <div className="overflow-auto h-[63.5%]  space-y-3.5">
       {createNote ? (
         <>
           <DefaultInput

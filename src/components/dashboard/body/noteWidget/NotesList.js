@@ -22,7 +22,7 @@ function NotesList({
       {emptyNotes ? (
         <>
           <hr />
-          <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
+          <h1 className="font-medium text-base xs:text-lg dark:text-white text-center ">
             No notes
           </h1>
         </>

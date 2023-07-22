@@ -89,13 +89,13 @@ function Notes() {
   };
 
   return (
-    <div className="flex p-4 justify-between flex-col rounded-l border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
+    <div className="flex flex-col justify-between rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800 p-4">
       <div className="flex justify-between flex-row-reverse items-center">
         <svg className="w-6 h-6" />
         <h1 className="text-3xl font-bold dark:text-gray-300 text-center">
           {showToDo ? "Tasks" : "Notes"}
         </h1>
-        {createNote ? (
+        {createNote && !showToDo ? (
           <button className="cursor-pointer" onClick={ReturnButton}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ function Notes() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-q   3"
               />
             </svg>
           </button>
@@ -141,7 +141,7 @@ function Notes() {
       <div className=" flex justify-between">
         <ToDoSwitch ShowToDoHandler={ShowToDoHandler} />
         {showToDo ? (
-          <Button onClick={DeleteAllTasks}>Clear all</Button>
+          <Button onClick={DeleteAllTasks}>Clear</Button>
         ) : (
           <div>
             {createNote ? (

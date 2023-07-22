@@ -31,7 +31,7 @@ function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
 
   return (
     <>
-      <div className=" pb-2">
+      <div className="pb-2">
         <DefaultInput
           value={taskText}
           placeholder="Task to do"

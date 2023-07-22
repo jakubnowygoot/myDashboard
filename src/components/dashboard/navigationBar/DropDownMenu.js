@@ -67,7 +67,7 @@ function DropDownMenu({ menuToggle }) {
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
-            <DarkMode addStyle="flex" />
+            <DarkMode addStyle="flex px-4 py-2" />
             <li>
               <a
                 href="#"
@@ -90,9 +90,9 @@ function DropDownMenu({ menuToggle }) {
             <li>
               <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
                 <Link to="/">
-                  <a className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white">
+                  <div className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white">
                     Logout
-                  </a>
+                  </div>
                 </Link>
               </div>
             </li>

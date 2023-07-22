@@ -15,7 +15,6 @@ function Weather({
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
   const [toggleInputLocation, setToggleInputLocation] = useState(true);
-  const [gap, setGap] = useState(4);
 
   const date = new Date().toDateString();
 
@@ -31,7 +30,6 @@ function Weather({
         weatherNextDays();
         setLocation("");
         setData(resp.data);
-        setGap(0);
         setToggleInputLocation(!toggleInputLocation);
         setIsLoading(false);
         setNewError(false);
@@ -46,6 +44,7 @@ function Weather({
 
   function InputHandler() {
     setToggleInputLocation(!toggleInputLocation);
+    setData({});
   }
 
   function RenderNextDaysWeather() {
@@ -62,9 +61,14 @@ function Weather({
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <div
-          className={`flex flex-col bg-white rounded p-4 h-full w-full dark:bg-gray-800 gap-${gap}`}
-        >
+        <div className="flex justify-evenly flex-col bg-white rounded p-4 h-full w-full dark:bg-gray-800 ">
+          <h1
+            className={`text-3xl font-bold dark:text-gray-300 text-center justify-center ${
+              toggleInputLocation ? "flex" : "hidden"
+            }`}
+          >
+            Weather
+          </h1>
           {toggleInputLocation ? (
             <div>
               <input

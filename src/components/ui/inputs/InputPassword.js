@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from "react";
+import { useRef, useCallback, useState } from "react";
 import OpenEyeIcon from "./OpenEyeIcon";
 import CloseEyeIcon from "./CloseEyeIcon";
 
@@ -12,9 +12,6 @@ function InputPassword({ children, name, id, htmlFor }) {
   const [isFocused, setIsFocused] = useState(false);
   const ref = useRef(null);
 
-  useEffect(() => {
-    console.log("isFocused: ", isFocused);
-  }, [isFocused]);
   return (
     <div>
       <label

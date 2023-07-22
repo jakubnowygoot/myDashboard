@@ -60,7 +60,7 @@ function DropDownMenu() {
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
-            <DarkMode addStyle="flex" />
+            <DarkMode addStyle="flex px-4 py-2" />
             <li>
               <Link to="/login">
                 <a className="block text-black px-4 py-2 hover:bg-gray-200 dark:text-white">

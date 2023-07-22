@@ -15,14 +15,15 @@ function MoonInfoRender({ isLoaded, data, newError }) {
         newError ? "hidden" : "block"
       } rounded flex justify-between h-full p-4 flex-col items-center`}
     >
-      <div className="text-xl xs:text-3xl font-bold dark:text-gray-300">
+      <div className="text-2xl xs:text-3xl font-bold dark:text-gray-300 flex flex-col items-center">
+        Moon <hr />
         {dateWithDay}
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
-        className="qi-804 w-40 h-40 xs:w-48 xs:h-48 dark:fill-gray-300"
-        viewBox="0 0 17 17"
+        className="qi-804 w-40 h-40 dark:fill-gray-300"
+        viewBox="0 -1 17 17"
       >
         {isLoaded && <path d={`${moonIcons[`${IconNumber()}`]}`} />}
       </svg>

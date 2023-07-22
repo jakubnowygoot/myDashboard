@@ -61,7 +61,7 @@ function Weather({
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <div className="flex justify-evenly flex-col bg-white rounded p-4 h-full w-full dark:bg-gray-800 ">
+        <div className="flex justify-between flex-col bg-white rounded p-4 h-full w-full dark:bg-gray-800 ">
           <h1
             className={`text-3xl font-bold dark:text-gray-300 text-center justify-center ${
               toggleInputLocation ? "flex" : "hidden"
@@ -84,7 +84,7 @@ function Weather({
             </div>
           ) : (
             <div
-              className="font-bold text-xl xs:text-3xl cursor-pointer dark:text-gray-300"
+              className="font-bold text-3xl cursor-pointer dark:text-gray-300"
               onDoubleClick={InputHandler}
             >
               {data.name}

@@ -41,11 +41,11 @@ function Form() {
             forget password?
           </Link>
         </p>
-        <p className="text-sm font-extralight text-gray-500 dark:text-gray-400 flex flex-nowrap">
-          Don’t have an account yet?{" "}
+        <p className="text-sm font-extralight text-gray-500 dark:text-gray-400  whitespace-nowrap flex gap-1 flex-nowrap">
+          Don’t have an account yet?
           <Link
             to="/register"
-            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+            className=" text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
           >
             Sign up
           </Link>

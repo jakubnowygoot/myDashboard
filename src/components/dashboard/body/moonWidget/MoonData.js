@@ -16,8 +16,7 @@ function MoonInfoRender({ isLoaded, data, newError }) {
       } rounded flex justify-between h-full p-4 flex-col items-center`}
     >
       <div className="text-2xl xs:text-3xl font-bold dark:text-gray-300 flex flex-col items-center">
-        Moon <hr />
-        {dateWithDay}
+        Moon phase <hr />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +29,7 @@ function MoonInfoRender({ isLoaded, data, newError }) {
       <div className="flex flex-row justify-between mt-6 w-full">
         <div className="flex flex-col items-center">
           <div className="font-medium text-base xs:text-lg dark:text-white">
-            Moon phase
+            {dateWithDay}
           </div>
           <div className="text-sm text-gray-500 dark:text-gray-300">
             {data.name}

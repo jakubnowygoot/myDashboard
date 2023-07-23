@@ -68,7 +68,7 @@ function Notes() {
   const ShowToDoHandler = useCallback(() => {
     setShowToDo(!showToDo);
     if (taskList.length === 1) {
-      setEmptyNotes(true);
+      setEmptyNotes(false);
     }
   }, [showToDo]);
 

@@ -10,6 +10,7 @@ import Notes from "../components/dashboard/body/noteWidget/Notes";
 import { weatherIcon } from "../components/dashboard/data/WeatherIcon";
 import Moon from "../components/dashboard/body/moonWidget/Moon";
 import { GetRightHour } from "../components/ui/RightHour";
+import Calendar from "../components/dashboard/body/calendar/Calendar";
 
 function Dashboard() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -17,6 +18,7 @@ function Dashboard() {
   const [showWeather, setShowWeather] = useState(false);
   const [showMoon, setShowMoon] = useState(false);
   const [showNote, setShowNote] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [location, setLocation] = useState("");
   const [daysData, setDaysData] = useState([]);
   const [dataMoon, setDataMoon] = useState({});
@@ -77,6 +79,8 @@ function Dashboard() {
           showMoon={showMoon}
           setShowNote={setShowNote}
           showNote={showNote}
+          showCalendar={showCalendar}
+          setShowCalendar={setShowCalendar}
         />
         <div className="flex flex-col flex-grow">
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
@@ -108,6 +112,7 @@ function Dashboard() {
               />
             )}
             {showNote && <Notes />}
+            {showCalendar && <Calendar />}
           </Card>
         </div>
       </div>

@@ -2,6 +2,7 @@ import ProfilePicture from "./ProfilePicture";
 import WeatherWidgetIcon from "./WeatherWidget";
 import MoonWidgetIcon from "./MoonIcon";
 import NoteWidgetIcon from "./NoteWidget";
+import CalendarWidget from "./CalendarWidget";
 
 function LeftColumn({
   setShowWeather,
@@ -11,6 +12,8 @@ function LeftColumn({
   setShowNote,
   showNote,
   RenderMoonData,
+  showCalendar,
+  setShowCalendar,
 }) {
   return (
     <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-gray-300">
@@ -25,6 +28,10 @@ function LeftColumn({
         RenderMoonData={RenderMoonData}
       />
       <NoteWidgetIcon setShowNote={setShowNote} showNote={showNote} />
+      <CalendarWidget
+        showCalendar={showCalendar}
+        setShowCalendar={setShowCalendar}
+      />
     </div>
   );
 }

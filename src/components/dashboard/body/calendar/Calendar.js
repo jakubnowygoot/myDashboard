@@ -1,10 +1,13 @@
 function Calendar() {
   return (
     <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
-      <div className=" flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
+      <div className="grid xs:block flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
+        <h1 className="text-3xl font-bold dark:text-gray-300 text-center justify-center ">
+          Calendar
+        </h1>
         <div className="px-4 flex items-center justify-between">
           <span className="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">
-            October 2020
+            October 2023
           </span>
           <div className="flex items-center">
             <button
@@ -43,7 +46,7 @@ function Calendar() {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between pt-12 overflow-x-auto">
+        <div className="flex items-center justify-between pt-8 overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr>
@@ -101,10 +104,10 @@ function Calendar() {
             <tbody>
               <tr>
                 <td className="pt-6">
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center" />
+                  <div className=" cursor-pointer flex w-full justify-center" />
                 </td>
                 <td className="pt-6">
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center" />
+                  <div className="cursor-pointer flex w-full justify-center" />
                 </td>
                 <td>
                   <div className="px-2 py-2 cursor-pointer flex w-full justify-center" />
@@ -131,7 +134,7 @@ function Calendar() {
                   </div>
                 </td>
                 <td className="pt-6">
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pl-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100">
                       4
                     </p>
@@ -140,7 +143,7 @@ function Calendar() {
               </tr>
               <tr>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pr-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100 font-medium">
                       5
                     </p>
@@ -188,7 +191,7 @@ function Calendar() {
                   </div>
                 </td>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pl-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100">
                       11
                     </p>
@@ -197,7 +200,7 @@ function Calendar() {
               </tr>
               <tr>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pr-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100 font-medium">
                       12
                     </p>
@@ -239,7 +242,7 @@ function Calendar() {
                   </div>
                 </td>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pl-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100">
                       18
                     </p>
@@ -248,7 +251,7 @@ function Calendar() {
               </tr>
               <tr>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pr-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100 font-medium">
                       19
                     </p>
@@ -290,7 +293,7 @@ function Calendar() {
                   </div>
                 </td>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pl-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100">
                       25
                     </p>
@@ -299,7 +302,7 @@ function Calendar() {
               </tr>
               <tr>
                 <td>
-                  <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                  <div className="pr-2 py-2 cursor-pointer flex w-full justify-center">
                     <p className="text-base text-gray-500 dark:text-gray-100 font-medium">
                       26
                     </p>

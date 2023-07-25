@@ -1,11 +1,11 @@
 function Calendar() {
   return (
     <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
-      <div className="grid xs:block flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
+      <div className="grid xxs:block flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
         <h1 className="text-3xl font-bold dark:text-gray-300 text-center justify-center ">
           Calendar
         </h1>
-        <div className="px-4 flex items-center justify-between">
+        <div className=" pt-6 flex items-center justify-between">
           <span className="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">
             October 2023
           </span>
@@ -46,55 +46,55 @@ function Calendar() {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between pt-8 overflow-x-auto">
+        <div className="flex items-center justify-between overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full pr-2 py-2  ">
+                    <p className="text-base font-medium float-left text-gray-800 dark:text-gray-100">
                       Mo
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full px-2 py-2  ">
+                    <p className="text-base font-medium float-left text-gray-800 dark:text-gray-100">
                       Tu
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full px-2 py-2  ">
+                    <p className="text-base font-medium float-left text-gray-800 dark:text-gray-100">
                       We
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full px-2 py-2  ">
+                    <p className="text-base font-medium  float-left text-gray-800 dark:text-gray-100">
                       Th
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full px-2 py-2  ">
+                    <p className="text-base font-medium float-left text-gray-800 dark:text-gray-100">
                       Fr
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full  px-2 py-2 ">
+                    <p className="text-base font-medium  float-left text-gray-800 dark:text-gray-100">
                       Sa
                     </p>
                   </div>
                 </th>
                 <th>
-                  <div className="w-full  justify-center">
-                    <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                  <div className="w-full pl-2 py-2 ">
+                    <p className="text-base font-medium float-left text-gray-800 dark:text-gray-100">
                       Su
                     </p>
                   </div>

@@ -72,6 +72,15 @@ function Calendar() {
     end: endOfMonth(firstDayCurrentMonth),
   });
 
+  const colStartClasses = [
+    "",
+    "col-start-1",
+    "col-start-3",
+    "col-start-4",
+    "col-start-5",
+    "col-start-6",
+    "col-start-7",
+  ];
   function previousMonth() {
     const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
@@ -83,14 +92,14 @@ function Calendar() {
   }
 
   return (
-    <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-auto dark:bg-gray-800">
+    <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
       <div className="grid xxs:block flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
         <div className="md:grid md:divide-x md:divide-gray-200">
           <div>
-            <h1 className="text-3xl font-bold pb-2 dark:text-gray-300 text-center justify-center">
+            <h1 className="text-3xl font-bold pb-5 dark:text-gray-300 text-center justify-center">
               Calendar
             </h1>
-            <div className="flex items-center">
+            <div className="flex items-center pb-1">
               <h2 className="flex-auto font-semibold text-gray-900">
                 {format(firstDayCurrentMonth, "MMMM yyyy")}
               </h2>
@@ -99,7 +108,6 @@ function Calendar() {
                 onClick={previousMonth}
                 className="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
               >
-                <span className="sr-only">Previous month</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -151,9 +159,7 @@ function Calendar() {
                 <div
                   key={day.toString()}
                   className={classNames(
-                    // eslint-disable-next-line no-use-before-define
-                    dayIdx === 0 && colStartClasses[getDay(day)],
-                    "py-1.5"
+                    dayIdx === 0 && colStartClasses[getDay(day)]
                   )}
                 >
                   <button
@@ -281,15 +287,5 @@ function Calendar() {
 //     </li>
 //   );
 // }
-
-let colStartClasses = [
-  "",
-  "col-start-2",
-  "col-start-3",
-  "col-start-4",
-  "col-start-5",
-  "col-start-6",
-  "col-start-7",
-];
 
 export default Calendar;

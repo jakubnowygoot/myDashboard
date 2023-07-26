@@ -34,7 +34,7 @@ function NavBar({ menuToggle }) {
           </li>
         </ul>
       </div>
-      <div className="flex gap-2 md:flex-row-reverse flex-row md:order-1">
+      <div className="flex gap-2 md:flex-row flex-row md:order-1">
         <DropDownMenu menuToggle={menuToggle} />
         <DarkMode addStyle="hidden" />
       </div>

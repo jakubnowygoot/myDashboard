@@ -100,21 +100,20 @@ function Calendar() {
               Calendar
             </h1>
             <div className="flex items-center pb-1">
-              <h2 className="flex-auto font-semibold text-gray-900">
+              <h2 className="flex-auto font-semibold text-gray-900 dark:text-white">
                 {format(firstDayCurrentMonth, "MMMM yyyy")}
               </h2>
               <button
                 type="button"
                 onClick={previousMonth}
-                className="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                className="-my-1.5 flex flex-none items-center justify-center p-1.5"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:stroke-white stroke-gray-400 hover:stroke-black dark:hover:stroke-gray-400"
                 >
                   <path
                     strokeLinecap="round"
@@ -126,16 +125,14 @@ function Calendar() {
               <button
                 onClick={nextMonth}
                 type="button"
-                className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5"
               >
-                <span className="sr-only">Next month</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-5 h-5 stroke-gray-400 dark:stroke-white hover:stroke-black dark:hover:stroke-gray-400"
                 >
                   <path
                     strokeLinecap="round"
@@ -166,10 +163,10 @@ function Calendar() {
                     type="button"
                     onClick={() => setSelectedDay(day)}
                     className={classNames(
-                      isEqual(day, selectedDay) && "text-white",
+                      isEqual(day, selectedDay) && "text-white bg-primary-600",
                       !isEqual(day, selectedDay) &&
                         isToday(day) &&
-                        "text-red-500",
+                        "text-red-500 dark:text-red-500",
                       !isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
@@ -182,10 +179,10 @@ function Calendar() {
                       isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         "bg-gray-900",
-                      !isEqual(day, selectedDay) && "hover:bg-gray-200",
+                      !isEqual(day, selectedDay) && "hover:bg-primary-600",
                       (isEqual(day, selectedDay) || isToday(day)) &&
                         "font-semibold",
-                      "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
+                      "mx-auto flex h-8 w-8 items-center justify-center rounded-full dark:text-white hover:text-white"
                     )}
                   >
                     <time dateTime={format(day, "yyyy-MM-dd")}>

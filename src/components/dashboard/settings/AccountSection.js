@@ -10,7 +10,6 @@ function AccountSection() {
           name="email"
           id="email"
           placeholder="email@example.com"
-          disabled="true"
         >
           Email
         </DefaultInput>

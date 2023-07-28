@@ -58,6 +58,14 @@ const meetings = [
     startDatetime: "2022-05-13T14:00",
     endDatetime: "2022-05-13T14:30",
   },
+  {
+    id: 6,
+    name: "Michael Foster",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2023-07-13T14:00",
+    endDatetime: "2022-05-13T14:30",
+  },
 ];
 
 function classNames(...classes) {
@@ -84,6 +92,7 @@ function Calendar() {
     "col-start-6",
     "col-start-7",
   ];
+
   function previousMonth() {
     const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
@@ -205,23 +214,31 @@ function Calendar() {
               ))}
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14">
-            <h2 className="font-semibold text-gray-900">
-              Schedule for{" "}
-              <time dateTime={format(selectedDay, "yyyy-MM-dd")}>
-                {format(selectedDay, "MMM dd, yyy")}
-              </time>
-            </h2>
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {selectedDayMeetings.length > 0 ? (
-                selectedDayMeetings.map((meeting) => (
-                  <Meeting meeting={meeting} key={meeting.id} />
-                ))
-              ) : (
-                <p>No meetings for today.</p>
-              )}
-            </ol>
-          </section>
+          <div className="rounded border-white bg-white dark:border-gray-700 border-2 h-96 dark:bg-gray-800">
+            <div className="grid xxs:block flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
+              <div className="md:grid md:divide-x md:divide-gray-200">
+                <div>
+                  <section className="mt-12 md:mt-0 md:pl-14">
+                    <h2 className="font-semibold text-gray-900">
+                      Schedule for{" "}
+                      <time dateTime={format(selectedDay, "yyyy-MM-dd")}>
+                        {format(selectedDay, "MMM dd, yyy")}
+                      </time>
+                    </h2>
+                    <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+                      {selectedDayMeetings.length > 0 ? (
+                        selectedDayMeetings.map((meeting) => (
+                          <Meeting meeting={meeting} key={meeting.id} />
+                        ))
+                      ) : (
+                        <p>No meetings for today.</p>
+                      )}
+                    </ol>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

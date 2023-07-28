@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { startOfToday } from "date-fns";
 import axios from "axios";
 import LeftColumn from "../components/dashboard/leftColumn/LeftColumn";
 import SettingsMenu from "../components/dashboard/settings/SettingsMenu";
@@ -11,8 +12,10 @@ import { weatherIcon } from "../components/dashboard/data/WeatherIcon";
 import Moon from "../components/dashboard/body/moonWidget/Moon";
 import { GetRightHour } from "../components/ui/RightHour";
 import Calendar from "../components/dashboard/body/calendar/Calendar";
+import Events from "../components/dashboard/body/calendar/Events";
 
 function Dashboard() {
+  const today = startOfToday();
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [showNextDays, setShowNextDays] = useState(false);
   const [showWeather, setShowWeather] = useState(false);
@@ -25,6 +28,7 @@ function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(today);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -112,7 +116,13 @@ function Dashboard() {
               />
             )}
             {showNote && <Notes />}
-            {showCalendar && <Calendar />}
+            {showCalendar && (
+              <Calendar
+                selectedDay={selectedDay}
+                setSelectedDay={setSelectedDay}
+              />
+            )}
+            {showCalendar && <Events selectedDay={selectedDay} />}
           </Card>
         </div>
       </div>

@@ -48,7 +48,7 @@ function Calendar({ selectedDay, setSelectedDay, setAddEvent }) {
         setCurrentMonth={setCurrentMonth}
         firstDayCurrentMonth={firstDayCurrentMonth}
       />
-      <div className="grid grid-cols-7 mt-2.5 text-xs leading-6 text-center text-gray-500">
+      <div className="grid grid-cols-7 mt-2.5 text-xs leading-6 text-center text-gray-400">
         <div>S</div>
         <div>M</div>
         <div>T</div>

@@ -20,7 +20,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Calendar({ selectedDay, setSelectedDay }) {
+function Calendar({ selectedDay, setSelectedDay, setAddEvent }) {
   const today = startOfToday();
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
@@ -39,70 +39,67 @@ function Calendar({ selectedDay, setSelectedDay }) {
     "col-start-6",
     "col-start-7",
   ];
-
   return (
     <Card>
-      <div>
-        <h1 className="text-3xl font-bold pb-5 dark:text-gray-300 text-center justify-center">
-          Calendar
-        </h1>
-        <CalendarButtons
-          setCurrentMonth={setCurrentMonth}
-          firstDayCurrentMonth={firstDayCurrentMonth}
-        />
-        <div className="grid grid-cols-7 mt-2.5 text-xs leading-6 text-center text-gray-500">
-          <div>S</div>
-          <div>M</div>
-          <div>T</div>
-          <div>W</div>
-          <div>T</div>
-          <div>F</div>
-          <div>S</div>
-        </div>
-        <div className="grid grid-cols-7 mt-2 text-sm">
-          {days.map((day, dayIdx) => (
-            <div
-              key={day.toString()}
+      <h1 className="text-3xl font-bold pb-5 dark:text-gray-300 text-center justify-center ">
+        Calendar
+      </h1>
+      <CalendarButtons
+        setCurrentMonth={setCurrentMonth}
+        firstDayCurrentMonth={firstDayCurrentMonth}
+      />
+      <div className="grid grid-cols-7 mt-2.5 text-xs leading-6 text-center text-gray-500">
+        <div>S</div>
+        <div>M</div>
+        <div>T</div>
+        <div>W</div>
+        <div>T</div>
+        <div>F</div>
+        <div>S</div>
+      </div>
+      <div className="grid grid-cols-7 mt-2 text-sm">
+        {days.map((day, dayIdx) => (
+          <div
+            key={day.toString()}
+            className={classNames(dayIdx === 0 && colStartClasses[getDay(day)])}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedDay(day);
+                setAddEvent(true);
+              }}
               className={classNames(
-                dayIdx === 0 && colStartClasses[getDay(day)]
+                isEqual(day, selectedDay) && "text-white bg-primary-600",
+                !isEqual(day, selectedDay) &&
+                  isToday(day) &&
+                  "text-red-500 dark:text-red-500",
+                !isEqual(day, selectedDay) &&
+                  !isToday(day) &&
+                  isSameMonth(day, firstDayCurrentMonth) &&
+                  "text-gray-900",
+                !isEqual(day, selectedDay) &&
+                  !isToday(day) &&
+                  !isSameMonth(day, firstDayCurrentMonth) &&
+                  "text-gray-400",
+                isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
+                isEqual(day, selectedDay) && !isToday(day) && "bg-gray-900",
+                !isEqual(day, selectedDay) && "hover:bg-primary-600",
+                (isEqual(day, selectedDay) || isToday(day)) && "font-semibold",
+                "mx-auto flex h-8 w-8 items-center justify-center rounded-full dark:text-white hover:text-white"
               )}
             >
-              <button
-                type="button"
-                onClick={() => setSelectedDay(day)}
-                className={classNames(
-                  isEqual(day, selectedDay) && "text-white bg-primary-600",
-                  !isEqual(day, selectedDay) &&
-                    isToday(day) &&
-                    "text-red-500 dark:text-red-500",
-                  !isEqual(day, selectedDay) &&
-                    !isToday(day) &&
-                    isSameMonth(day, firstDayCurrentMonth) &&
-                    "text-gray-900",
-                  !isEqual(day, selectedDay) &&
-                    !isToday(day) &&
-                    !isSameMonth(day, firstDayCurrentMonth) &&
-                    "text-gray-400",
-                  isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
-                  isEqual(day, selectedDay) && !isToday(day) && "bg-gray-900",
-                  !isEqual(day, selectedDay) && "hover:bg-primary-600",
-                  (isEqual(day, selectedDay) || isToday(day)) &&
-                    "font-semibold",
-                  "mx-auto flex h-8 w-8 items-center justify-center rounded-full dark:text-white hover:text-white"
-                )}
-              >
-                <time dateTime={format(day, "yyyy-MM-dd")}>
-                  {format(day, "d")}
-                </time>
-              </button>
-              <div className="w-1 h-1 mx-auto mt-1">
-                {meetings.some((meeting) =>
-                  isSameDay(parseISO(meeting.startDatetime), day)
-                ) && <div className="w-1 h-1 rounded-full bg-sky-500" />}
-              </div>
+              <time dateTime={format(day, "yyyy-MM-dd")}>
+                {format(day, "d")}
+              </time>
+            </button>
+            <div className="w-1 h-1 mx-auto mt-1">
+              {meetings.some((meeting) =>
+                isSameDay(parseISO(meeting.startDatetime), day)
+              ) && <div className="w-1 h-1 rounded-full bg-sky-500" />}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </Card>
   );

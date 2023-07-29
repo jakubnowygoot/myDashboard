@@ -29,6 +29,7 @@ function Dashboard() {
   const [newError, setNewError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedDay, setSelectedDay] = useState(today);
+  const [addEvent, setAddEvent] = useState(true);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -120,9 +121,16 @@ function Dashboard() {
               <Calendar
                 selectedDay={selectedDay}
                 setSelectedDay={setSelectedDay}
+                setAddEvent={setAddEvent}
               />
             )}
-            {showCalendar && <Events selectedDay={selectedDay} />}
+            {showCalendar && (
+              <Events
+                selectedDay={selectedDay}
+                addEvent={addEvent}
+                setAddEvent={setAddEvent}
+              />
+            )}
           </Card>
         </div>
       </div>

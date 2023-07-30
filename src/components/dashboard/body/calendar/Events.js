@@ -41,6 +41,12 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
     setAddEvent(!addEvent);
   }, [addEvent]);
 
+  const AddSecondEvent = useCallback(() => {
+    setAddEvent(!addEvent);
+    // eslint-disable-next-line no-unused-expressions
+    selectedDayMeetings.length;
+  }, [addEvent]);
+
   return (
     <Card scroll="overflow-scroll">
       <div className="flex flex-col h-full">
@@ -71,17 +77,10 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
         <ol
           className={`mt-4  ${
             selectedDayMeetings.length > 0
-              ? "flex flex-col-reverse justify-between items-start"
+              ? "flex flex-col items-start overflow-scroll "
               : undefined
           } space-y-1 text-sm leading-6 text-gray-400 h-full`}
         >
-          {selectedDayMeetings.length > 0 ? (
-            <Button addStyle="self-end" onClick={AddEvent}>
-              Add another plan
-            </Button>
-          ) : (
-            <div />
-          )}
           {selectedDayMeetings.length > 0 ? (
             selectedDayMeetings.map((meeting) => (
               <Meeting
@@ -136,6 +135,13 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
             </div>
           )}
         </ol>
+        {selectedDayMeetings.length > 0 ? (
+          <Button addStyle="self-end" onClick={AddSecondEvent}>
+            Add another plan
+          </Button>
+        ) : (
+          <div />
+        )}
       </div>
     </Card>
   );

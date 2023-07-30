@@ -1,5 +1,5 @@
 import { format, isSameDay, parseISO } from "date-fns";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Card from "./Card";
 import Meeting from "./Meeting";
 import DefaultInput from "../../../ui/inputs/DefaultInput";
@@ -37,9 +37,9 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
     setSecondTime("");
   };
 
-  function AddEvent() {
+  const AddEvent = useCallback(() => {
     setAddEvent(!addEvent);
-  }
+  }, [addEvent]);
 
   return (
     <Card scroll="overflow-scroll">
@@ -68,7 +68,20 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
         ) : (
           <div />
         )}
-        <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-400 h-full ">
+        <ol
+          className={`mt-4  ${
+            selectedDayMeetings.length > 0
+              ? "flex flex-col-reverse justify-between items-start"
+              : undefined
+          } space-y-1 text-sm leading-6 text-gray-400 h-full`}
+        >
+          {selectedDayMeetings.length > 0 ? (
+            <Button addStyle="self-end" onClick={AddEvent}>
+              Add another plan
+            </Button>
+          ) : (
+            <div />
+          )}
           {selectedDayMeetings.length > 0 ? (
             selectedDayMeetings.map((meeting) => (
               <Meeting
@@ -82,35 +95,22 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
               {addEvent ? (
                 <>
                   <p>No meetings for today.</p>
-                  <button onClick={AddEvent}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 stroke-gray-400 dark:stroke-gray-400 hover:stroke-black dark:hover:stroke-white"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </button>
+                  <Button addStyle="self-end" onClick={AddEvent}>
+                    Add new plan
+                  </Button>
                 </>
               ) : (
                 <div className="flex flex-col w-full h-full">
                   <form className="h-full" onSubmit={onSubmit}>
                     <div className="h-full flex flex-col justify-between">
-                      <div className="flex flex-col gap-4 ">
+                      <div className="flex flex-col xxs:gap-4 gap-1">
                         <DefaultInput
                           placeholder="What are your plans ?"
                           type="text-area"
                           value={textArea}
                           onChange={(e) => setTextArea(e.target.value)}
                         />
-                        <div className="flex gap-4 items-baseline">
+                        <div className="flex xxs:flex-row xxs:flex-nowrap xxs:gap-4 xxs:items-baseline gap-1 flex-wrap content-center items-center flex-col">
                           <DefaultInput
                             type="time"
                             addStyle="w-2/4"
@@ -127,7 +127,7 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
                         </div>
                       </div>
                       <div className="flex flex-row-reverse">
-                        <Button type="submit">Add</Button>
+                        <Button type="submit">Save</Button>
                       </div>
                     </div>
                   </form>

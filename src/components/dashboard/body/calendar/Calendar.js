@@ -92,7 +92,7 @@ function Calendar({ selectedDay, setSelectedDay, setAddEvent, events }) {
                 {format(day, "d")}
               </time>
             </button>
-            <div className="w-1 h-1 mx-auto mt-1">
+            <div className="w-1 h-1 mx-auto mb-1">
               {events.some((meeting) =>
                 isSameDay(parseISO(meeting.startDatetime), day)
               ) && <div className="w-1 h-1 rounded-full bg-sky-500" />}

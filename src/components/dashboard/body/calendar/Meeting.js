@@ -8,7 +8,7 @@ function Meeting({ meeting, classNames }) {
   const endDateTime = parseISO(meeting.endDatetime);
 
   return (
-    <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 dark:focus-within:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
+    <li className="flex w-full items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 dark:focus-within:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
       <div className="flex-auto">
         <p className="text-gray-900 dark:text-white">{meeting.name}</p>
         <p className="mt-0.5">

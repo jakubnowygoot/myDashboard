@@ -1,6 +1,6 @@
 import { format, isSameDay, parseISO } from "date-fns";
+import { useState } from "react";
 import Card from "./Card";
-import { meetings } from "./EventsData";
 import Meeting from "./Meeting";
 import DefaultInput from "../../../ui/inputs/DefaultInput";
 import Button from "../../../ui/Button";
@@ -9,17 +9,36 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Events({ selectedDay, setAddEvent, addEvent }) {
-  const selectedDayMeetings = meetings.filter((meeting) =>
+function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
+  const [textArea, setTextArea] = useState("");
+  const [firstTime, setFirstTime] = useState("");
+  const [secondTime, setSecondTime] = useState("");
+
+  const AddNewEvent = () => {
+    const newEvent = {
+      id: Math.random(),
+      name: textArea,
+      startDatetime: `${format(selectedDay, "yyyy-MM-dd")}T${firstTime}`,
+      endDatetime: `${format(selectedDay, "yyyy-MM-dd")}T${secondTime}`,
+    };
+    const newEvents = [newEvent, ...events];
+    setEvents(newEvents);
+  };
+
+  const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
+  const onSubmit = (event) => {
+    event.preventDefault();
+    AddNewEvent();
+    setAddEvent(true);
+    setTextArea("");
+    setFirstTime("");
+    setSecondTime("");
+  };
 
   function AddEvent() {
     setAddEvent(!addEvent);
-  }
-
-  function test() {
-    console.log();
   }
 
   return (
@@ -82,23 +101,33 @@ function Events({ selectedDay, setAddEvent, addEvent }) {
                 </>
               ) : (
                 <div className="flex flex-col w-full h-full">
-                  <form className="h-full">
+                  <form className="h-full" onSubmit={onSubmit}>
                     <div className="h-full flex flex-col justify-between">
                       <div className="flex flex-col gap-4 ">
                         <DefaultInput
                           placeholder="What are your plans ?"
                           type="text-area"
+                          value={textArea}
+                          onChange={(e) => setTextArea(e.target.value)}
                         />
                         <div className="flex gap-4 items-baseline">
-                          <DefaultInput type="time" addStyle="w-2/4" />
+                          <DefaultInput
+                            type="time"
+                            addStyle="w-2/4"
+                            value={firstTime}
+                            onChange={(e) => setFirstTime(e.target.value)}
+                          />
                           To
-                          <DefaultInput type="time" addStyle="w-2/4" />
+                          <DefaultInput
+                            type="time"
+                            addStyle="w-2/4"
+                            value={secondTime}
+                            onChange={(e) => setSecondTime(e.target.value)}
+                          />
                         </div>
                       </div>
                       <div className="flex flex-row-reverse">
-                        <Button onClick={test()} type="submit">
-                          Add
-                        </Button>
+                        <Button type="submit">Add</Button>
                       </div>
                     </div>
                   </form>

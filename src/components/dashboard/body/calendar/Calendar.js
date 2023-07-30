@@ -13,14 +13,13 @@ import {
 } from "date-fns";
 import { useState } from "react";
 import Card from "./Card";
-import { meetings } from "./EventsData";
 import CalendarButtons from "./CalendarButtons";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Calendar({ selectedDay, setSelectedDay, setAddEvent }) {
+function Calendar({ selectedDay, setSelectedDay, setAddEvent, events }) {
   const today = startOfToday();
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
@@ -94,7 +93,7 @@ function Calendar({ selectedDay, setSelectedDay, setAddEvent }) {
               </time>
             </button>
             <div className="w-1 h-1 mx-auto mt-1">
-              {meetings.some((meeting) =>
+              {events.some((meeting) =>
                 isSameDay(parseISO(meeting.startDatetime), day)
               ) && <div className="w-1 h-1 rounded-full bg-sky-500" />}
             </div>

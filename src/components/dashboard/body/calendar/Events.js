@@ -1,4 +1,4 @@
-import { format, isSameDay, parseISO } from "date-fns";
+import { format } from "date-fns";
 import { useCallback, useState } from "react";
 import Card from "./Card";
 import Meeting from "./Meeting";
@@ -9,7 +9,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
+function Events({
+  selectedDay,
+  setAddEvent,
+  addEvent,
+  setEvents,
+  events,
+  test,
+  settest,
+  selectedDayMeetings,
+}) {
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
@@ -25,9 +34,6 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
     setEvents(newEvents);
   };
 
-  const selectedDayMeetings = events.filter((meeting) =>
-    isSameDay(parseISO(meeting.startDatetime), selectedDay)
-  );
   const onSubmit = (event) => {
     event.preventDefault();
     AddNewEvent();
@@ -35,16 +41,26 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
     setTextArea("");
     setFirstTime("");
     setSecondTime("");
+    settest(1);
+  };
+
+  const deleteById = (id) => {
+    setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
+    settest(0);
   };
 
   const AddEvent = useCallback(() => {
     setAddEvent(!addEvent);
+    if (selectedDayMeetings.length > 0) {
+      settest(1);
+    } else {
+      settest(0);
+    }
   }, [addEvent]);
 
   const AddSecondEvent = useCallback(() => {
     setAddEvent(!addEvent);
-    // eslint-disable-next-line no-unused-expressions
-    selectedDayMeetings.length;
+    settest(0);
   }, [addEvent]);
 
   return (
@@ -75,25 +91,26 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
           <div />
         )}
         <ol
-          className={`mt-4  ${
-            selectedDayMeetings.length > 0
+          className={`mt-4 ${
+            test === 1
               ? "flex flex-col items-start overflow-scroll "
               : undefined
           } space-y-1 text-sm leading-6 text-gray-400 h-full`}
         >
-          {selectedDayMeetings.length > 0 ? (
+          {test === 1 ? (
             selectedDayMeetings.map((meeting) => (
               <Meeting
                 meeting={meeting}
                 key={meeting.id}
                 classNames={classNames}
+                deleteById={deleteById}
               />
             ))
           ) : (
             <div className="h-full flex justify-between items-start">
               {addEvent ? (
                 <>
-                  <p>No meetings for today.</p>
+                  <p>No plans for today.</p>
                   <Button addStyle="self-end" onClick={AddEvent}>
                     Add new plan
                   </Button>
@@ -135,7 +152,7 @@ function Events({ selectedDay, setAddEvent, addEvent, setEvents, events }) {
             </div>
           )}
         </ol>
-        {selectedDayMeetings.length > 0 ? (
+        {test === 1 ? (
           <Button addStyle="self-end" onClick={AddSecondEvent}>
             Add another plan
           </Button>

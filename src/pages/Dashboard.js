@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { startOfToday } from "date-fns";
+import { isSameDay, parseISO, startOfToday } from "date-fns";
 import axios from "axios";
 import LeftColumn from "../components/dashboard/leftColumn/LeftColumn";
 import SettingsMenu from "../components/dashboard/settings/SettingsMenu";
@@ -31,12 +31,17 @@ function Dashboard() {
   const [selectedDay, setSelectedDay] = useState(today);
   const [addEvent, setAddEvent] = useState(true);
   const [events, setEvents] = useState([]);
+  const [test, settest] = useState(0);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
   const year = date.getFullYear();
   const currentDate = `${year}${month}${day}`;
+
+  const selectedDayMeetings = events.filter((meeting) =>
+    isSameDay(parseISO(meeting.startDatetime), selectedDay)
+  );
 
   const keyMoon = "fed123ade789465db119dcf3d581e41a";
   const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
@@ -124,6 +129,9 @@ function Dashboard() {
                 setSelectedDay={setSelectedDay}
                 setAddEvent={setAddEvent}
                 events={events}
+                selectedDayMeetings={selectedDayMeetings}
+                settest={settest}
+                test={test}
               />
             )}
             {showCalendar && (
@@ -133,6 +141,9 @@ function Dashboard() {
                 setAddEvent={setAddEvent}
                 setEvents={setEvents}
                 events={events}
+                selectedDayMeetings={selectedDayMeetings}
+                settest={settest}
+                test={test}
               />
             )}
           </Card>

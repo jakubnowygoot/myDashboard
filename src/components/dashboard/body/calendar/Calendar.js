@@ -19,7 +19,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Calendar({ selectedDay, setSelectedDay, setAddEvent, events }) {
+function Calendar({
+  selectedDay,
+  setSelectedDay,
+  setAddEvent,
+  events,
+  setCheckEvent,
+  setSelectedDayMeetingsNew,
+}) {
   const today = startOfToday();
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
@@ -38,6 +45,7 @@ function Calendar({ selectedDay, setSelectedDay, setAddEvent, events }) {
     "col-start-6",
     "col-start-7",
   ];
+
   return (
     <Card>
       <h1 className="text-3xl font-bold pb-5 dark:text-gray-300 text-center justify-center ">
@@ -65,6 +73,15 @@ function Calendar({ selectedDay, setSelectedDay, setAddEvent, events }) {
             <button
               type="button"
               onClick={() => {
+                const selectedDayMeetingDay = events.filter((meeting) =>
+                  isSameDay(parseISO(meeting.startDatetime), day)
+                );
+                setSelectedDayMeetingsNew(selectedDayMeetingDay.length);
+                if (selectedDayMeetingDay.length > 0) {
+                  setCheckEvent(1);
+                } else {
+                  setCheckEvent(0);
+                }
                 setSelectedDay(day);
                 setAddEvent(true);
               }}

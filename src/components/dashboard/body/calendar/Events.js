@@ -15,9 +15,10 @@ function Events({
   addEvent,
   setEvents,
   events,
-  test,
-  settest,
+  setCheckEvent,
   selectedDayMeetings,
+  checkEvent,
+  selectedDayMeetingsNew,
 }) {
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
@@ -41,26 +42,35 @@ function Events({
     setTextArea("");
     setFirstTime("");
     setSecondTime("");
-    settest(1);
+    setCheckEvent(1);
   };
 
-  const deleteById = (id) => {
-    setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
-    settest(0);
-  };
+  const deleteById = useCallback(
+    (id) => {
+      setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
+      console.log(selectedDayMeetingsNew);
+      if (selectedDayMeetingsNew > 0) {
+        setCheckEvent(1);
+      } else {
+        setCheckEvent(0);
+      }
+    },
+    [addEvent]
+  );
 
   const AddEvent = useCallback(() => {
     setAddEvent(!addEvent);
-    if (selectedDayMeetings.length > 0) {
-      settest(1);
+    console.log(selectedDayMeetingsNew);
+    if (selectedDayMeetingsNew > 0) {
+      setCheckEvent(1);
     } else {
-      settest(0);
+      setCheckEvent(0);
     }
   }, [addEvent]);
 
   const AddSecondEvent = useCallback(() => {
     setAddEvent(!addEvent);
-    settest(0);
+    setCheckEvent(0);
   }, [addEvent]);
 
   return (
@@ -92,12 +102,12 @@ function Events({
         )}
         <ol
           className={`mt-4 ${
-            test === 1
+            checkEvent === 1
               ? "flex flex-col items-start overflow-scroll "
               : undefined
           } space-y-1 text-sm leading-6 text-gray-400 h-full`}
         >
-          {test === 1 ? (
+          {checkEvent === 1 ? (
             selectedDayMeetings.map((meeting) => (
               <Meeting
                 meeting={meeting}
@@ -152,7 +162,7 @@ function Events({
             </div>
           )}
         </ol>
-        {test === 1 ? (
+        {checkEvent === 1 ? (
           <Button addStyle="self-end" onClick={AddSecondEvent}>
             Add another plan
           </Button>

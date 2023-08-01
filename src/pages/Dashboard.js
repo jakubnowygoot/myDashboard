@@ -31,7 +31,8 @@ function Dashboard() {
   const [selectedDay, setSelectedDay] = useState(today);
   const [addEvent, setAddEvent] = useState(true);
   const [events, setEvents] = useState([]);
-  const [test, settest] = useState(0);
+  const [checkEvent, setCheckEvent] = useState(0);
+  const [selectedDayMeetingsNew, setSelectedDayMeetingsNew] = useState(0);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -129,9 +130,8 @@ function Dashboard() {
                 setSelectedDay={setSelectedDay}
                 setAddEvent={setAddEvent}
                 events={events}
-                selectedDayMeetings={selectedDayMeetings}
-                settest={settest}
-                test={test}
+                setCheckEvent={setCheckEvent}
+                setSelectedDayMeetingsNew={setSelectedDayMeetingsNew}
               />
             )}
             {showCalendar && (
@@ -142,8 +142,9 @@ function Dashboard() {
                 setEvents={setEvents}
                 events={events}
                 selectedDayMeetings={selectedDayMeetings}
-                settest={settest}
-                test={test}
+                setCheckEvent={setCheckEvent}
+                checkEvent={checkEvent}
+                selectedDayMeetingsNew={selectedDayMeetingsNew}
               />
             )}
           </Card>

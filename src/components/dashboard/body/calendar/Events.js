@@ -22,7 +22,8 @@ function Events({
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
-  const [Id, setID] = useState("");
+  const [editId, setEditId] = useState("");
+  const [checkEdit, setCheckEdit] = useState(false);
 
   const AddNewEvent = () => {
     const newEvent = {
@@ -48,7 +49,6 @@ function Events({
   const deleteById = useCallback(
     (id) => {
       setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
-      console.log(Id);
     },
     [addEvent]
   );
@@ -73,8 +73,27 @@ function Events({
     setTextArea(meeting.name);
     setFirstTime(meeting.startDatetime.slice(-5));
     setSecondTime(meeting.endDatetime.slice(-5));
-    setID(meeting.id);
+    setEditId(meeting.id);
+    setCheckEdit(true);
   }, []);
+
+  const EditNote = () => {
+    const tempArray = [...events];
+    const index = tempArray.findIndex((element) => element.id === editId);
+    tempArray[index] = {
+      id: Math.random(),
+      name: textArea,
+      startDatetime: `${format(selectedDay, "yyyy-MM-dd")}T${firstTime}`,
+      endDatetime: `${format(selectedDay, "yyyy-MM-dd")}T${secondTime}`,
+    };
+    setEvents(tempArray);
+    setTextArea("");
+    setFirstTime("");
+    setSecondTime("");
+    setCheckEvent(1);
+    setAddEvent(true);
+    setCheckEdit(false);
+  };
 
   return (
     <Card scroll="overflow-scroll">
@@ -157,7 +176,11 @@ function Events({
                         </div>
                       </div>
                       <div className="flex flex-row-reverse">
-                        <Button type="submit">Save</Button>
+                        {checkEdit ? (
+                          <Button onClick={EditNote}>Save</Button>
+                        ) : (
+                          <Button type="submit">Save</Button>
+                        )}
                       </div>
                     </div>
                   </form>

@@ -45,7 +45,7 @@ function Meeting({ meeting, classNames, deleteById, EditEvent }) {
                 {({ active }) => (
                   <a
                     href="#"
-                    onClick={EditEvent(meeting)}
+                    onClick={() => EditEvent(meeting)}
                     className={classNames(
                       active
                         ? "bg-gray-100 text-gray-900 dark:hover:bg-gray-700 "

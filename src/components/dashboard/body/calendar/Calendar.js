@@ -25,7 +25,6 @@ function Calendar({
   setAddEvent,
   events,
   setCheckEvent,
-  setSelectedDayMeetingsNew,
 }) {
   const today = startOfToday();
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -76,7 +75,6 @@ function Calendar({
                 const selectedDayMeetingDay = events.filter((meeting) =>
                   isSameDay(parseISO(meeting.startDatetime), day)
                 );
-                setSelectedDayMeetingsNew(selectedDayMeetingDay.length);
                 if (selectedDayMeetingDay.length > 0) {
                   setCheckEvent(1);
                 } else {

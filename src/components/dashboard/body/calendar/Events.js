@@ -18,11 +18,11 @@ function Events({
   setCheckEvent,
   selectedDayMeetings,
   checkEvent,
-  selectedDayMeetingsNew,
 }) {
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
+  const [Id, setID] = useState("");
 
   const AddNewEvent = () => {
     const newEvent = {
@@ -48,20 +48,14 @@ function Events({
   const deleteById = useCallback(
     (id) => {
       setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
-      console.log(selectedDayMeetingsNew);
-      if (selectedDayMeetingsNew > 0) {
-        setCheckEvent(1);
-      } else {
-        setCheckEvent(0);
-      }
+      console.log(Id);
     },
     [addEvent]
   );
 
   const AddEvent = useCallback(() => {
     setAddEvent(!addEvent);
-    console.log(selectedDayMeetingsNew);
-    if (selectedDayMeetingsNew > 0) {
+    if (selectedDayMeetings.length > 0) {
       setCheckEvent(1);
     } else {
       setCheckEvent(0);
@@ -72,6 +66,15 @@ function Events({
     setAddEvent(!addEvent);
     setCheckEvent(0);
   }, [addEvent]);
+
+  const EditEvent = useCallback((meeting) => {
+    setAddEvent(false);
+    setCheckEvent(0);
+    setTextArea(meeting.name);
+    setFirstTime(meeting.startDatetime.slice(-5));
+    setSecondTime(meeting.endDatetime.slice(-5));
+    setID(meeting.id);
+  }, []);
 
   return (
     <Card scroll="overflow-scroll">
@@ -110,6 +113,7 @@ function Events({
           {checkEvent === 1 ? (
             selectedDayMeetings.map((meeting) => (
               <Meeting
+                EditEvent={EditEvent}
                 meeting={meeting}
                 key={meeting.id}
                 classNames={classNames}
@@ -121,7 +125,7 @@ function Events({
               {addEvent ? (
                 <>
                   <p>No plans for today.</p>
-                  <Button addStyle="self-end" onClick={AddEvent}>
+                  <Button addStyle="self-end" onClick={AddSecondEvent}>
                     Add new plan
                   </Button>
                 </>

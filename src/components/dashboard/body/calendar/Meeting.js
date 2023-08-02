@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { DotsVerticalIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
 
-function Meeting({ meeting, classNames, deleteById }) {
+function Meeting({ meeting, classNames, deleteById, EditEvent }) {
   const startDateTime = parseISO(meeting.startDatetime);
   const endDateTime = parseISO(meeting.endDatetime);
 
@@ -45,6 +45,7 @@ function Meeting({ meeting, classNames, deleteById }) {
                 {({ active }) => (
                   <a
                     href="#"
+                    onClick={EditEvent(meeting)}
                     className={classNames(
                       active
                         ? "bg-gray-100 text-gray-900 dark:hover:bg-gray-700 "

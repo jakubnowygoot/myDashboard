@@ -60,6 +60,9 @@ function Events({
     } else {
       setCheckEvent(0);
     }
+    setTextArea("");
+    setFirstTime("");
+    setSecondTime("");
   }, [addEvent]);
 
   const AddSecondEvent = useCallback(() => {

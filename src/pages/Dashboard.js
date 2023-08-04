@@ -32,6 +32,10 @@ function Dashboard() {
   const [addEvent, setAddEvent] = useState(true);
   const [events, setEvents] = useState([]);
   const [checkEvent, setCheckEvent] = useState(0);
+  const [textArea, setTextArea] = useState("");
+  const [firstTime, setFirstTime] = useState("");
+  const [secondTime, setSecondTime] = useState("");
+  const [checkEdit, setCheckEdit] = useState(false);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -130,6 +134,10 @@ function Dashboard() {
                 setAddEvent={setAddEvent}
                 events={events}
                 setCheckEvent={setCheckEvent}
+                setFirstTime={setFirstTime}
+                setSecondTime={setSecondTime}
+                setTextArea={setTextArea}
+                setCheckEdit={setCheckEdit}
               />
             )}
             {showCalendar && (
@@ -142,6 +150,14 @@ function Dashboard() {
                 selectedDayMeetings={selectedDayMeetings}
                 setCheckEvent={setCheckEvent}
                 checkEvent={checkEvent}
+                textArea={textArea}
+                setTextArea={setTextArea}
+                firstTime={firstTime}
+                setFirstTime={setFirstTime}
+                secondTime={secondTime}
+                setSecondTime={setSecondTime}
+                setCheckEdit={setCheckEdit}
+                checkEdit={checkEdit}
               />
             )}
           </Card>

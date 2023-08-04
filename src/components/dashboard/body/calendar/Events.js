@@ -18,12 +18,16 @@ function Events({
   setCheckEvent,
   selectedDayMeetings,
   checkEvent,
+  setTextArea,
+  setFirstTime,
+  setSecondTime,
+  textArea,
+  firstTime,
+  secondTime,
+  setCheckEdit,
+  checkEdit,
 }) {
-  const [textArea, setTextArea] = useState("");
-  const [firstTime, setFirstTime] = useState("");
-  const [secondTime, setSecondTime] = useState("");
   const [editId, setEditId] = useState("");
-  const [checkEdit, setCheckEdit] = useState(false);
 
   const AddNewEvent = () => {
     const newEvent = {

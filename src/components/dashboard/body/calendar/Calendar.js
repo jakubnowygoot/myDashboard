@@ -25,6 +25,10 @@ function Calendar({
   setAddEvent,
   events,
   setCheckEvent,
+  setFirstTime,
+  setSecondTime,
+  setTextArea,
+  setCheckEdit,
 }) {
   const today = startOfToday();
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -82,6 +86,10 @@ function Calendar({
                 }
                 setSelectedDay(day);
                 setAddEvent(true);
+                setTextArea("");
+                setFirstTime("");
+                setSecondTime("");
+                setCheckEdit(false);
               }}
               className={classNames(
                 isEqual(day, selectedDay) && "text-white bg-primary-600",

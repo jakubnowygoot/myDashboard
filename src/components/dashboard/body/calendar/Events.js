@@ -50,13 +50,6 @@ function Events({
     setCheckEvent(1);
   };
 
-  const deleteById = useCallback(
-    (id) => {
-      setEvents((oldValues) => oldValues.filter((fruit) => fruit.id !== id));
-    },
-    [addEvent]
-  );
-
   const AddEvent = useCallback(() => {
     setAddEvent(!addEvent);
     if (selectedDayMeetings.length > 0) {
@@ -74,17 +67,20 @@ function Events({
     setCheckEvent(0);
   }, [addEvent]);
 
-  const EditEvent = useCallback((meeting) => {
-    setAddEvent(false);
-    setCheckEvent(0);
-    setTextArea(meeting.name);
-    setFirstTime(meeting.startDatetime.slice(-5));
-    setSecondTime(meeting.endDatetime.slice(-5));
-    setEditId(meeting.id);
-    setCheckEdit(true);
-  }, []);
+  const EditEvent = useCallback(
+    (meeting) => {
+      setAddEvent(false);
+      setCheckEvent(0);
+      setTextArea(meeting.name);
+      setFirstTime(meeting.startDatetime.slice(-5));
+      setSecondTime(meeting.endDatetime.slice(-5));
+      setEditId(meeting.id);
+      setCheckEdit(true);
+    },
+    [addEvent]
+  );
 
-  const EditNote = () => {
+  const SaveEditedEvent = () => {
     const tempArray = [...events];
     const index = tempArray.findIndex((element) => element.id === editId);
     tempArray[index] = {
@@ -130,7 +126,7 @@ function Events({
           <div />
         )}
         <ol
-          className={`mt-4 ${
+          className={`xxs:mt-4 ${
             checkEvent === 1
               ? "flex flex-col items-start overflow-scroll "
               : undefined
@@ -143,7 +139,9 @@ function Events({
                 meeting={meeting}
                 key={meeting.id}
                 classNames={classNames}
-                deleteById={deleteById}
+                setEvents={setEvents}
+                setCheckEvent={setCheckEvent}
+                selectedDayMeetings={selectedDayMeetings}
               />
             ))
           ) : (
@@ -175,6 +173,7 @@ function Events({
                           />
                           To
                           <DefaultInput
+                            addSecondStyle="mb-0"
                             type="time"
                             addStyle="w-2/4"
                             value={secondTime}
@@ -184,7 +183,7 @@ function Events({
                       </div>
                       <div className="flex flex-row-reverse">
                         {checkEdit ? (
-                          <Button onClick={EditNote}>Save</Button>
+                          <Button onClick={SaveEditedEvent}>Save</Button>
                         ) : (
                           <Button type="submit">Save</Button>
                         )}

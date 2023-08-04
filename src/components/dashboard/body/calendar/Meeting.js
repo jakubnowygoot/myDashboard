@@ -3,13 +3,29 @@ import { Menu, Transition } from "@headlessui/react";
 import { DotsVerticalIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
 
-function Meeting({ meeting, classNames, deleteById, EditEvent }) {
+function Meeting({
+  meeting,
+  classNames,
+  EditEvent,
+  setEvents,
+  selectedDayMeetings,
+  setCheckEvent,
+}) {
   const startDateTime = parseISO(meeting.startDatetime);
   const endDateTime = parseISO(meeting.endDatetime);
 
+  function deleteById(id) {
+    setEvents((oldValues) => oldValues.filter((event) => event.id !== id));
+    if (selectedDayMeetings.length - 1 > 0) {
+      setCheckEvent(1);
+    } else {
+      setCheckEvent(0);
+    }
+  }
+
   return (
     <li className="flex w-full items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 dark:focus-within:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
-      <div className="flex-auto">
+      <div className="flex-auto break-words	w-0.5	">
         <p className="text-gray-900 dark:text-white">{meeting.name}</p>
         <p className="mt-0.5">
           <time dateTime={meeting.startDatetime}>

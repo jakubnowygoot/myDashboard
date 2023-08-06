@@ -7,12 +7,12 @@ import NavBar from "../components/dashboard/navigationBar/NavBar";
 import Weather from "../components/dashboard/body/weatherWidget/Weather";
 import Card from "../components/dashboard/body/Card";
 import WeatherDays from "../components/dashboard/body/weatherWidget/WeatherDays";
-import Notes from "../components/dashboard/body/noteWidget/Notes";
 import { weatherIcon } from "../components/dashboard/data/WeatherIcon";
 import Moon from "../components/dashboard/body/moonWidget/Moon";
 import { GetRightHour } from "../components/ui/RightHour";
 import Calendar from "../components/dashboard/body/calendar/Calendar";
 import Events from "../components/dashboard/body/calendar/Events";
+import Notes from "../components/dashboard/body/noteWidget/Notes";
 
 function Dashboard() {
   const today = startOfToday();
@@ -102,31 +102,6 @@ function Dashboard() {
             <NavBar menuToggle={SettingsMenuHandler} />
           </div>
           <Card>
-            {showWeather && (
-              <>
-                <Weather
-                  Icons={weatherIcon}
-                  setShowNextDays={setShowNextDays}
-                  showNextDays={showNextDays}
-                  weatherNextDays={weatherNextDays}
-                  location={location}
-                  setLocation={setLocation}
-                />
-                {showNextDays ? (
-                  <WeatherDays Icons={weatherIcon} daysData={daysData} />
-                ) : null}
-              </>
-            )}
-            {showMoon && (
-              <Moon
-                RenderMoonData={RenderMoonData}
-                dataMoon={dataMoon}
-                isLoading={isLoading}
-                newError={newError}
-                isLoaded={isLoaded}
-              />
-            )}
-            {showNote && <Notes />}
             {showCalendar && (
               <Calendar
                 selectedDay={selectedDay}
@@ -160,6 +135,31 @@ function Dashboard() {
                 checkEdit={checkEdit}
               />
             )}
+            {showWeather && (
+              <>
+                <Weather
+                  Icons={weatherIcon}
+                  setShowNextDays={setShowNextDays}
+                  showNextDays={showNextDays}
+                  weatherNextDays={weatherNextDays}
+                  location={location}
+                  setLocation={setLocation}
+                />
+                {showNextDays ? (
+                  <WeatherDays Icons={weatherIcon} daysData={daysData} />
+                ) : null}
+              </>
+            )}
+            {showMoon && (
+              <Moon
+                RenderMoonData={RenderMoonData}
+                dataMoon={dataMoon}
+                isLoading={isLoading}
+                newError={newError}
+                isLoaded={isLoaded}
+              />
+            )}
+            {showNote && <Notes />}
           </Card>
         </div>
       </div>

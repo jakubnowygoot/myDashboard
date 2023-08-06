@@ -114,7 +114,7 @@ function Events({
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             onClick={AddEvent}
-            className="w-5 h-5 cursor-pointer stroke-gray-400 dark:stroke-gray-400 hover:stroke-black dark:hover:stroke-white"
+            className="w-6 h-6 cursor-pointer stroke-gray-400 dark:stroke-gray-400 hover:stroke-black dark:hover:stroke-white"
           >
             <path
               strokeLinecap="round"

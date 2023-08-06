@@ -16,6 +16,7 @@ function Notes() {
   const [taskList, setTaskList] = useState([]);
   const [emptyTasks, setEmptyTasks] = useState(true);
   const [emptyTittleNote, setEmptyTittleNote] = useState(false);
+  const [getInput, setGetInput] = useState(false);
 
   const AddNewNote = () => {
     const newNote = {
@@ -42,6 +43,7 @@ function Notes() {
     setText("");
     setTitle("");
     setCreateNote(!createNote);
+    setButtonChange(false);
   };
 
   const ShowAndSaveNoteHandler = useCallback(() => {
@@ -60,13 +62,10 @@ function Notes() {
     setTitle("");
   }, [createNote, title, text]);
 
-  const ShowNoteHandler = useCallback(() => {
-    setButtonChange(false);
-    setCreateNote(!createNote);
-  }, [createNote]);
-
   const ShowToDoHandler = useCallback(() => {
     setShowToDo(!showToDo);
+    setGetInput(!getInput);
+    setCreateNote(false);
     if (taskList.length === 1) {
       setEmptyNotes(false);
     }
@@ -74,7 +73,9 @@ function Notes() {
 
   const DeleteAllTasks = () => {
     setTaskList([]);
+    setNotes([]);
     setEmptyTasks(true);
+    setEmptyNotes(true);
   };
 
   const DeleteNotes = (e) => {
@@ -93,16 +94,16 @@ function Notes() {
       <div className="flex justify-between flex-row-reverse items-center">
         <svg className="w-6 h-6" />
         <h1 className="text-3xl font-bold dark:text-gray-300 text-center">
-          {showToDo ? "Tasks" : "Notes"}
+          {showToDo ? "Notes" : "Tasks"}
         </h1>
-        {createNote && !showToDo ? (
-          <button className="cursor-pointer" onClick={ReturnButton}>
+        {createNote ? (
+          <button onClick={ReturnButton}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              className="w-6 h-6 cursor-pointer stroke-gray-400 dark:stroke-white"
+              className="w-5 h-5 cursor-pointer stroke-gray-400 dark:stroke-gray-400 hover:stroke-black dark:hover:stroke-white"
             >
               <path
                 strokeLinecap="round"
@@ -112,51 +113,58 @@ function Notes() {
             </svg>
           </button>
         ) : (
-          <svg className="w-6 h-6 " />
+          <svg className="w-5 h-5 " />
         )}
       </div>
-      {showToDo ? (
-        <ToDoSection
-          setTaskList={setTaskList}
-          taskList={taskList}
-          setEmptyTasks={setEmptyTasks}
-          emptyTasks={emptyTasks}
-        />
-      ) : (
-        <NotesSection
-          notes={notes}
-          setCreateNote={setCreateNote}
-          createNote={createNote}
-          title={title}
-          setText={setText}
-          setTitle={setTitle}
-          setId={setId}
-          setButtonChange={setButtonChange}
-          text={text}
-          emptyNotes={emptyNotes}
-          DeleteNotes={DeleteNotes}
-          emptyTittleNote={emptyTittleNote}
-        />
-      )}
+      <ToDoSection
+        setTaskList={setTaskList}
+        taskList={taskList}
+        setEmptyTasks={setEmptyTasks}
+        emptyTasks={emptyTasks}
+        notes={notes}
+        setCreateNote={setCreateNote}
+        createNote={createNote}
+        title={title}
+        setText={setText}
+        setTitle={setTitle}
+        setId={setId}
+        setButtonChange={setButtonChange}
+        text={text}
+        emptyNotes={emptyNotes}
+        DeleteNotes={DeleteNotes}
+        emptyTittleNote={emptyTittleNote}
+        getInput={getInput}
+      />
+      <NotesSection
+        notes={notes}
+        setCreateNote={setCreateNote}
+        createNote={createNote}
+        title={title}
+        setText={setText}
+        setTitle={setTitle}
+        setId={setId}
+        setButtonChange={setButtonChange}
+        text={text}
+        emptyNotes={emptyNotes}
+        DeleteNotes={DeleteNotes}
+        emptyTittleNote={emptyTittleNote}
+      />
       <div className=" flex justify-between">
         <ToDoSwitch ShowToDoHandler={ShowToDoHandler} />
-        {showToDo ? (
-          <Button onClick={DeleteAllTasks}>Clear</Button>
-        ) : (
-          <div>
-            {createNote ? (
-              <div>
-                {buttonChange ? (
-                  <Button onClick={EditNote}>Update</Button>
-                ) : (
-                  <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
-                )}
-              </div>
-            ) : (
-              <Button onClick={ShowNoteHandler}>Add</Button>
-            )}
-          </div>
-        )}
+        <div>
+          {buttonChange ? (
+            <Button onClick={EditNote}>Update</Button>
+          ) : (
+            <>
+              {" "}
+              {createNote ? (
+                <Button onClick={ShowAndSaveNoteHandler}>Save</Button>
+              ) : (
+                <Button onClick={DeleteAllTasks}>Clear</Button>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

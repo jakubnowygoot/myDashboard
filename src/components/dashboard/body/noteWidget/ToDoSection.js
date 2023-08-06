@@ -1,8 +1,24 @@
-import { useState } from "react";
-import DefaultInput from "../../../ui/inputs/DefaultInput";
+import { useCallback, useState } from "react";
 import ToDoTasks from "./ToDoTasks";
+import NotesList from "./NotesList";
 
-function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
+function ToDoSection({
+  setTaskList,
+  taskList,
+  emptyTasks,
+  setEmptyTasks,
+  notes,
+  setCreateNote,
+  createNote,
+  title,
+  setText,
+  setTitle,
+  setId,
+  setButtonChange,
+  emptyNotes,
+  DeleteNotes,
+  getInput,
+}) {
   const [taskText, setTaskText] = useState("");
 
   const AddNewTask = () => {
@@ -29,27 +45,67 @@ function ToDoSection({ setTaskList, taskList, emptyTasks, setEmptyTasks }) {
     }
   };
 
+  const getNote = useCallback(() => {
+    setCreateNote(true);
+  }, []);
+
   return (
     <>
-      <div className="pb-2">
-        <DefaultInput
-          value={taskText}
-          placeholder="Task to do"
-          onChange={(e) => setTaskText(e.target.value)}
-          onKeyDown={(e) => NewTaskHandler(e)}
-        />
-      </div>
-      <div className="overflow-auto h-[48.3%]  pt-2 space-y-3.5">
-        {emptyTasks ? (
-          <>
-            <hr />
-            <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
-              Add some tasks
-            </h1>
-          </>
-        ) : null}
-        <ToDoTasks taskList={taskList} DeleteTask={DeleteTask} />
-      </div>
+      {" "}
+      {createNote ? null : (
+        <>
+          <div className="pb-2">
+            <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                {getInput ? (
+                  <input
+                    onClick={getNote}
+                    value={taskText}
+                    onChange={(e) => setTaskText(e.target.value)}
+                    onKeyDown={(e) => NewTaskHandler(e)}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 outline-none sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
+                    placeholder="Write a note"
+                    required
+                  />
+                ) : (
+                  <input
+                    value={taskText}
+                    onChange={(e) => setTaskText(e.target.value)}
+                    onKeyDown={(e) => NewTaskHandler(e)}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 outline-none sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
+                    placeholder="Task to do"
+                    required
+                  />
+                )}
+              </label>
+            </div>
+          </div>
+          <div className="overflow-auto h-[48.3%] overflow-anywhere	pt-2 space-y-3.5">
+            {emptyTasks && emptyNotes ? (
+              <>
+                <hr />
+                <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
+                  Empty list
+                </h1>
+              </>
+            ) : null}
+            <ToDoTasks taskList={taskList} DeleteTask={DeleteTask} />
+            <NotesList
+              notes={notes}
+              setCreateNote={setCreateNote}
+              createNote={createNote}
+              title={title}
+              setText={setText}
+              setTitle={setTitle}
+              setId={setId}
+              setButtonChange={setButtonChange}
+              emptyNotes={emptyNotes}
+              DeleteNotes={DeleteNotes}
+            />
+          </div>
+        </>
+      )}
     </>
   );
 }

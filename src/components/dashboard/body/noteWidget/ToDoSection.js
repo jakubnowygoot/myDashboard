@@ -57,7 +57,7 @@ function ToDoSection({
           <div className="pb-2">
             <div>
               {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm text-gray-900 dark:text-white">
                 {getInput ? (
                   <input
                     onClick={getNote}

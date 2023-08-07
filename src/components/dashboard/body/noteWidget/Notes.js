@@ -86,6 +86,8 @@ function Notes() {
   };
 
   const ReturnButton = () => {
+    setText("");
+    setTitle("");
     setCreateNote(false);
   };
 
@@ -129,24 +131,17 @@ function Notes() {
         setTitle={setTitle}
         setId={setId}
         setButtonChange={setButtonChange}
-        text={text}
         emptyNotes={emptyNotes}
         DeleteNotes={DeleteNotes}
-        emptyTittleNote={emptyTittleNote}
         getInput={getInput}
       />
       <NotesSection
         notes={notes}
-        setCreateNote={setCreateNote}
         createNote={createNote}
         title={title}
         setText={setText}
         setTitle={setTitle}
-        setId={setId}
-        setButtonChange={setButtonChange}
         text={text}
-        emptyNotes={emptyNotes}
-        DeleteNotes={DeleteNotes}
         emptyTittleNote={emptyTittleNote}
       />
       <div className=" flex justify-between">

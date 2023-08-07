@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import axios from "axios";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import DefaultInput from "../../../ui/inputs/DefaultInput";
 
 function Weather({
   Icons,
@@ -71,7 +72,7 @@ function Weather({
           </h1>
           {toggleInputLocation ? (
             <div>
-              <input
+              <DefaultInput
                 value={location}
                 onChange={(event) => setLocation(event.target.value)}
                 type="text"

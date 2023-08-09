@@ -36,6 +36,7 @@ function Dashboard() {
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
+  const [units, setUnits] = useState(false);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -51,7 +52,7 @@ function Dashboard() {
   const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
 
   const keyWeather = "62bf8f2f137d858cde8784170789de51";
-  const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${keyWeather}`;
+  const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${keyWeather}`;
   const RenderMoonData = async () => {
     try {
       setIsLoading(true);
@@ -84,7 +85,13 @@ function Dashboard() {
 
   return (
     <>
-      {settingsMenu && <SettingsMenu onClick={SettingsMenuHandler} />}
+      {settingsMenu && (
+        <SettingsMenu
+          setSettingsMenu={setSettingsMenu}
+          settingsMenu={settingsMenu}
+          setUnits={setUnits}
+        />
+      )}
       <div className="flex w-screen h-screen text-gray-700 dark:bg-gray-800  ">
         <LeftColumn
           setShowWeather={setShowWeather}

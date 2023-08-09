@@ -8,23 +8,25 @@ import PasswordSection from "./PasswordSection";
 function SettingsMenu({ onClick }) {
   return (
     <CardSettings>
-      <ImageSection />
-      <div className="bg-white space-y-6 dark:bg-gray-800">
-        <AccountSection />
-        <hr className=" dark:border-gray-600" />
-        <InfoSection />
-        <hr className=" dark:border-gray-600" />
-        <PasswordSection />
-        <hr className=" dark:border-gray-600" />
-      </div>
-      <div className="flex justify-end gap-6 w-full p-4 text-right text-gray-500 bg-white dark:bg-gray-800">
-        <Button type="button" onClick={onClick}>
-          Save
-        </Button>
-        <Button type="button" onClick={onClick}>
-          Cancel
-        </Button>
-      </div>
+      <form>
+        <ImageSection />
+        <div className="bg-white space-y-6 dark:bg-gray-800">
+          <AccountSection />
+          <hr className=" dark:border-gray-600" />
+          <InfoSection />
+          <hr className=" dark:border-gray-600" />
+          <PasswordSection />
+          <hr className=" dark:border-gray-600" />
+        </div>
+        <div className="flex justify-end gap-6 w-full p-4 text-right text-gray-500 bg-white dark:bg-gray-800">
+          <Button type="button" onClick={onClick}>
+            Save
+          </Button>
+          <Button type="button" onClick={onClick}>
+            Cancel
+          </Button>
+        </div>
+      </form>
     </CardSettings>
   );
 }

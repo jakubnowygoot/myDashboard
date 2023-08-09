@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import ToDoTasks from "./ToDoTasks";
 import NotesList from "./NotesList";
 
@@ -18,9 +18,9 @@ function ToDoSection({
   emptyNotes,
   DeleteNotes,
   getInput,
+  setTaskText,
+  taskText,
 }) {
-  const [taskText, setTaskText] = useState("");
-
   const AddNewTask = () => {
     const newTask = {
       id: Math.random(),

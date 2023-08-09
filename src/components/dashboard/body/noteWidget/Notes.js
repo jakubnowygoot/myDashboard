@@ -17,6 +17,7 @@ function Notes() {
   const [emptyTasks, setEmptyTasks] = useState(true);
   const [emptyTittleNote, setEmptyTittleNote] = useState(false);
   const [getInput, setGetInput] = useState(false);
+  const [taskText, setTaskText] = useState("");
 
   const AddNewNote = () => {
     const newNote = {
@@ -65,6 +66,7 @@ function Notes() {
   const ShowToDoHandler = useCallback(() => {
     setShowToDo(!showToDo);
     setGetInput(!getInput);
+    setTaskText("");
     setCreateNote(false);
     if (taskList.length === 1) {
       setEmptyNotes(false);
@@ -89,6 +91,7 @@ function Notes() {
     setText("");
     setTitle("");
     setCreateNote(false);
+    setButtonChange(false);
   };
 
   return (
@@ -134,6 +137,8 @@ function Notes() {
         emptyNotes={emptyNotes}
         DeleteNotes={DeleteNotes}
         getInput={getInput}
+        setTaskText={setTaskText}
+        taskText={taskText}
       />
       <NotesSection
         notes={notes}

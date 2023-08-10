@@ -6,11 +6,17 @@ import InfoSection from "./InfoSection";
 import PasswordSection from "./PasswordSection";
 import WeatherSection from "./WeatherSection";
 
-function SettingsMenu({ onClick, setSettingsMenu, settingsMenu }) {
+function SettingsMenu({
+  onClick,
+  setSettingsMenu,
+  settingsMenu,
+  setUnits,
+  units,
+}) {
   const onSubmit = (event) => {
     event.preventDefault();
     setSettingsMenu(!settingsMenu);
-    console.log();
+    console.log(units);
   };
   return (
     <CardSettings>
@@ -23,7 +29,7 @@ function SettingsMenu({ onClick, setSettingsMenu, settingsMenu }) {
           <hr className="dark:border-gray-600" />
           <PasswordSection />
           <hr className="dark:border-gray-600" />
-          <WeatherSection />
+          <WeatherSection setUnits={setUnits} />
           <hr className="dark:border-gray-600" />
         </div>
         <div className="flex justify-end gap-6 w-full p-4 text-right text-gray-500 bg-white dark:bg-gray-800">

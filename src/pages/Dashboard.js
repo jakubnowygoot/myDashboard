@@ -36,7 +36,7 @@ function Dashboard() {
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
-  const [units, setUnits] = useState(false);
+  const [units, setUnits] = useState("");
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -90,6 +90,7 @@ function Dashboard() {
           setSettingsMenu={setSettingsMenu}
           settingsMenu={settingsMenu}
           setUnits={setUnits}
+          units={units}
         />
       )}
       <div className="flex w-screen h-screen text-gray-700 dark:bg-gray-800  ">

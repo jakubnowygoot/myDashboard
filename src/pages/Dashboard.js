@@ -36,7 +36,7 @@ function Dashboard() {
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
-  const [units, setUnits] = useState("");
+  const [units, setUnits] = useState("metric");
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);

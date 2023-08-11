@@ -11,6 +11,9 @@ function Weather({
   location,
   setLocation,
   showNextDays,
+  units,
+  setTemperature,
+  temperature,
 }) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +24,17 @@ function Weather({
 
   const key = "62bf8f2f137d858cde8784170789de51";
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${key}`;
+
+  function setRightUnits() {
+    if (units === "metric") {
+      setTemperature("°C");
+    } else if (units === "standard") {
+      setTemperature("°K");
+    } else if (units === "imperial") {
+      setTemperature("°F");
+    }
+  }
 
   const searchLocation = async (event) => {
     if (event.key === "Enter") {
@@ -31,6 +44,7 @@ function Weather({
         weatherNextDays();
         setLocation("");
         setData(resp.data);
+        setRightUnits();
         setToggleInputLocation(!toggleInputLocation);
         setIsLoading(false);
         setNewError(false);
@@ -53,6 +67,7 @@ function Weather({
       setShowNextDays(false);
       setNewError(true);
     } else {
+      setRightUnits();
       setShowNextDays(!showNextDays);
     }
   }
@@ -132,7 +147,8 @@ function Weather({
           <div className="flex flex-row items-center justify-center mt-6">
             {data.main ? (
               <div className="font-medium text-6xl dark:text-gray-300">
-                {data.main.temp.toFixed()}°C
+                {data.main.temp.toFixed()}
+                {temperature}
               </div>
             ) : null}
             <div className="flex flex-col items-center ml-6 dark:text-gray-300">
@@ -141,14 +157,16 @@ function Weather({
                 <span className="text-sm" />
                 {data.main ? (
                   <span className="text-sm font-light text-gray-500 dark:text-gray-300">
-                    {data.main.temp_max.toFixed()}°C
+                    {data.main.temp_max.toFixed()}
+                    {temperature}
                   </span>
                 ) : null}
               </div>
               <div>
                 {data.main ? (
                   <span className="text-sm font-light text-gray-500 dark:text-gray-300">
-                    {data.main.temp_min.toFixed()}°C
+                    {data.main.temp_min.toFixed()}
+                    {temperature}
                   </span>
                 ) : null}
               </div>

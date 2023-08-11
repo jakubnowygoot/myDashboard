@@ -37,6 +37,7 @@ function Dashboard() {
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
   const [units, setUnits] = useState("metric");
+  const [temperature, setTemperature] = useState("");
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -104,6 +105,7 @@ function Dashboard() {
           showNote={showNote}
           showCalendar={showCalendar}
           setShowCalendar={setShowCalendar}
+          setShowNextDays={setShowNextDays}
         />
         <div className="flex flex-col flex-grow">
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
@@ -152,9 +154,16 @@ function Dashboard() {
                   weatherNextDays={weatherNextDays}
                   location={location}
                   setLocation={setLocation}
+                  units={units}
+                  setTemperature={setTemperature}
+                  temperature={temperature}
                 />
                 {showNextDays ? (
-                  <WeatherDays Icons={weatherIcon} daysData={daysData} />
+                  <WeatherDays
+                    Icons={weatherIcon}
+                    daysData={daysData}
+                    temperature={temperature}
+                  />
                 ) : null}
               </>
             )}

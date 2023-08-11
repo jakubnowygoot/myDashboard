@@ -14,6 +14,7 @@ function LeftColumn({
   RenderMoonData,
   showCalendar,
   setShowCalendar,
+  setShowNextDays,
 }) {
   return (
     <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-gray-300">
@@ -21,6 +22,7 @@ function LeftColumn({
       <WeatherWidgetIcon
         showWeather={showWeather}
         setShowWeather={setShowWeather}
+        setShowNextDays={setShowNextDays}
       />
       <MoonWidgetIcon
         setShowMoon={setShowMoon}

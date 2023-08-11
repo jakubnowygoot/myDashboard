@@ -10,7 +10,6 @@ function SettingsMenu({ setSettingsMenu, settingsMenu, setUnits, units }) {
   const onSubmit = (event) => {
     event.preventDefault();
     setSettingsMenu(!settingsMenu);
-    console.log(units);
   };
   return (
     <CardSettings>

@@ -1,4 +1,4 @@
-function WeatherDays({ Icons, daysData }) {
+function WeatherDays({ Icons, daysData, temperature }) {
   return (
     <div className="rounded-l border-white dark:border-gray-700 border-2 h-96">
       <div className="flex flex-col justify-center items-center bg-white rounded p-4 h-full w-full dark:bg-gray-800 justify-between">
@@ -48,7 +48,8 @@ function WeatherDays({ Icons, daysData }) {
               />
             </svg>
             <p className="font-medium text-base xs:text-lg sm:text-2xl md:text-lg dark:text-white text-center">
-              {getData.main.temp_max.toFixed()}°C
+              {getData.main.temp_max.toFixed()}
+              {temperature}
             </p>
           </div>
         ))}

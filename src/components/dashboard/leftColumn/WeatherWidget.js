@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-function WeatherWidgetIcon({ setShowWeather, showWeather }) {
+function WeatherWidgetIcon({ setShowWeather, showWeather, setShowNextDays }) {
   const [toggleWeatherIcon, setToggleWeatherIcon] = useState(false);
 
   function ShowWidget() {
     setToggleWeatherIcon(!toggleWeatherIcon);
     setShowWeather(!showWeather);
+    setShowNextDays(false);
   }
 
   return (

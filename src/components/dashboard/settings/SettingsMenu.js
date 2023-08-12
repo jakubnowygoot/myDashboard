@@ -20,6 +20,12 @@ function SettingsMenu({
     setSettingsMenu(!settingsMenu);
     setMainProfilePicture(profilePicture);
   };
+
+  const CancelBtn = () => {
+    setSettingsMenu(false);
+    setProfilePicture("");
+  };
+
   return (
     <CardSettings>
       <form>
@@ -38,7 +44,9 @@ function SettingsMenu({
           <Button type="submit" onClick={onSubmit}>
             Save
           </Button>
-          <Button type="button">Cancel</Button>
+          <Button type="button" onClick={CancelBtn}>
+            Cancel
+          </Button>
         </div>
       </form>
     </CardSettings>

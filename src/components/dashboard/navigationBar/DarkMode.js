@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function DarkMode({ addStyle }) {
-  const [darkModeActive, setDarkModeActive] = useState(false);
+  const [darkModeActive, setDarkModeActive] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
+  const [darkModeSwitch, setDarkModeSwitch] = useState(
+    localStorage.getItem("darkModeSwitch") === "true"
+  );
 
-  function ChangeDarkModeIcon() {
-    setDarkModeActive(!darkModeActive);
-    if (darkModeActive === false) {
+  useEffect(() => {
+    localStorage.setItem("darkMode", darkModeActive.toString());
+    if (darkModeActive === true) {
       document.body.classList.add("dark");
     } else {
       document.body.classList.remove("dark");
     }
+  }, [darkModeActive]);
+
+  function ChangeDarkModeIcon() {
+    setDarkModeActive(!darkModeActive);
   }
 
   return (
@@ -35,9 +44,14 @@ function DarkMode({ addStyle }) {
       </svg>
       <label className="relative inline-flex items-center cursor-pointer ">
         <input
+          checked={darkModeSwitch}
           type="checkbox"
           className="sr-only peer"
-          onChange={ChangeDarkModeIcon}
+          onChange={(e) => {
+            localStorage.setItem("darkModeSwitch", `${e.target.checked}`);
+            setDarkModeSwitch(e.target.checked);
+            ChangeDarkModeIcon();
+          }}
         />
         <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600" />
       </label>

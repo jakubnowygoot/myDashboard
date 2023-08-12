@@ -6,17 +6,26 @@ import InfoSection from "./InfoSection";
 import PasswordSection from "./PasswordSection";
 import WeatherSection from "./WeatherSection";
 
-function SettingsMenu({ setSettingsMenu, settingsMenu, setUnits, units }) {
+function SettingsMenu({
+  setSettingsMenu,
+  settingsMenu,
+  setUnits,
+  units,
+  setProfilePicture,
+  profilePicture,
+  setMainProfilePicture,
+}) {
   const onSubmit = (event) => {
     event.preventDefault();
     setSettingsMenu(!settingsMenu);
+    setMainProfilePicture(profilePicture);
   };
   return (
     <CardSettings>
       <form>
-        <ImageSection />
+        <ImageSection profilePicture={profilePicture} />
         <div className="bg-white space-y-6 dark:bg-gray-800">
-          <AccountSection />
+          <AccountSection setProfilePicture={setProfilePicture} />
           <hr className="dark:border-gray-600" />
           <InfoSection />
           <hr className="dark:border-gray-600" />

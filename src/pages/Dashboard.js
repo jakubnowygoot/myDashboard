@@ -38,6 +38,8 @@ function Dashboard() {
   const [checkEdit, setCheckEdit] = useState(false);
   const [units, setUnits] = useState("metric");
   const [temperature, setTemperature] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [mainProfilePicture, setMainProfilePicture] = useState("");
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -92,6 +94,9 @@ function Dashboard() {
           settingsMenu={settingsMenu}
           setUnits={setUnits}
           units={units}
+          setProfilePicture={setProfilePicture}
+          profilePicture={profilePicture}
+          setMainProfilePicture={setMainProfilePicture}
         />
       )}
       <div className="flex w-screen h-screen text-gray-700 dark:bg-gray-800  ">
@@ -106,6 +111,7 @@ function Dashboard() {
           showCalendar={showCalendar}
           setShowCalendar={setShowCalendar}
           setShowNextDays={setShowNextDays}
+          mainProfilePicture={mainProfilePicture}
         />
         <div className="flex flex-col flex-grow">
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">

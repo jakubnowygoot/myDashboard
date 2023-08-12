@@ -15,10 +15,11 @@ function LeftColumn({
   showCalendar,
   setShowCalendar,
   setShowNextDays,
+  mainProfilePicture,
 }) {
   return (
     <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-gray-300">
-      <ProfilePicture />
+      <ProfilePicture mainProfilePicture={mainProfilePicture} />
       <WeatherWidgetIcon
         showWeather={showWeather}
         setShowWeather={setShowWeather}

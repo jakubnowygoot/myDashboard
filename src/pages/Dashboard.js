@@ -24,7 +24,6 @@ function Dashboard() {
   const [newError, setNewError] = useState(false);
   const [selectedDay, setSelectedDay] = useState(today);
   const [addEvent, setAddEvent] = useState(true);
-  const [events, setEvents] = useState([]);
   const [checkEvent, setCheckEvent] = useState(0);
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
@@ -34,6 +33,12 @@ function Dashboard() {
   const [temperature, setTemperature] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [mainProfilePicture, setMainProfilePicture] = useState("");
+  const [events, setEvents] = useState(() => {
+    const savedStateCalendar = localStorage.getItem("calendarData");
+    const calendarData = JSON.parse(savedStateCalendar);
+    return calendarData || [];
+  });
+
   const [showNote, setShowNote] = useState(
     JSON.parse(localStorage.getItem("note")) || false
   );
@@ -65,7 +70,9 @@ function Dashboard() {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
-
+  useEffect(() => {
+    localStorage.setItem("calendarData", JSON.stringify(events));
+  }, [events]);
   useEffect(() => {
     localStorage.setItem("weather", showWeather.toString());
   }, [showWeather]);

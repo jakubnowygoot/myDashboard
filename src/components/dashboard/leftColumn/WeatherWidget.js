@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function WeatherWidgetIcon({ setShowWeather, showWeather, setShowNextDays }) {
-  const [toggleWeatherIcon, setToggleWeatherIcon] = useState(false);
+  const [toggleWeatherIcon, setToggleWeatherIcon] = useState(
+    JSON.parse(localStorage.getItem("weatherIcon")) || false
+  );
 
+  useEffect(() => {
+    localStorage.setItem("weatherIcon", toggleWeatherIcon.toString());
+  }, [toggleWeatherIcon]);
   function ShowWidget() {
     setToggleWeatherIcon(!toggleWeatherIcon);
     setShowWeather(!showWeather);

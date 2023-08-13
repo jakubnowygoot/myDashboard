@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { isSameDay, parseISO, startOfToday } from "date-fns";
 import axios from "axios";
 import LeftColumn from "../components/dashboard/leftColumn/LeftColumn";
@@ -18,16 +18,12 @@ function Dashboard() {
   const today = startOfToday();
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [showNextDays, setShowNextDays] = useState(false);
-  const [showWeather, setShowWeather] = useState(false);
-  const [showMoon, setShowMoon] = useState(false);
   const [showNote, setShowNote] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [location, setLocation] = useState("");
   const [daysData, setDaysData] = useState([]);
-  const [dataMoon, setDataMoon] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [selectedDay, setSelectedDay] = useState(today);
   const [addEvent, setAddEvent] = useState(true);
   const [events, setEvents] = useState([]);
@@ -40,29 +36,50 @@ function Dashboard() {
   const [temperature, setTemperature] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [mainProfilePicture, setMainProfilePicture] = useState("");
+  const [dataMoon, setDataMoon] = useState(() => {
+    const savedStateMoon = localStorage.getItem("moonData");
+    const moonData = JSON.parse(savedStateMoon);
+    return moonData || {};
+  });
+  const [showWeather, setShowWeather] = useState(
+    JSON.parse(localStorage.getItem("weather")) || false
+  );
+  const [showMoon, setShowMoon] = useState(
+    JSON.parse(localStorage.getItem("moon")) || false
+  );
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
   const year = date.getFullYear();
   const currentDate = `${year}${month}${day}`;
+  const keyMoon = "fed123ade789465db119dcf3d581e41a";
+  const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
+  const keyWeather = "62bf8f2f137d858cde8784170789de51";
+  const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${keyWeather}`;
 
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
 
-  const keyMoon = "fed123ade789465db119dcf3d581e41a";
-  const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
+  useEffect(() => {
+    localStorage.setItem("weather", showWeather.toString());
+  }, [showWeather]);
 
-  const keyWeather = "62bf8f2f137d858cde8784170789de51";
-  const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${keyWeather}`;
+  useEffect(() => {
+    localStorage.setItem("moon", showMoon.toString());
+  }, [showMoon]);
+
+  useEffect(() => {
+    localStorage.setItem("moonData", JSON.stringify(dataMoon));
+  }, [dataMoon]);
+
   const RenderMoonData = async () => {
     try {
       setIsLoading(true);
       const resp = await axios.get(urlMoon);
       setDataMoon(resp.data.moonPhase[0]);
       setNewError(false);
-      setIsLoaded(true);
     } catch (error) {
       setNewError(true);
     }
@@ -179,7 +196,6 @@ function Dashboard() {
                 dataMoon={dataMoon}
                 isLoading={isLoading}
                 newError={newError}
-                isLoaded={isLoaded}
               />
             )}
             {showNote && <Notes />}

@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function MoonWidgetIcon({ setShowMoon, showMoon, RenderMoonData }) {
-  const [toggleMoonIcon, setToggleMoonIcon] = useState(false);
+  const [toggleMoonIcon, setToggleMoonIcon] = useState(
+    JSON.parse(localStorage.getItem("moonIcon")) || false
+  );
 
+  useEffect(() => {
+    localStorage.setItem("moonIcon", toggleMoonIcon.toString());
+  }, [toggleMoonIcon]);
   function ShowWidget() {
     setToggleMoonIcon(!toggleMoonIcon);
     setShowMoon(!showMoon);

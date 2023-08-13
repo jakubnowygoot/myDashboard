@@ -1,6 +1,6 @@
 import { moonIcons } from "../../data/MoonIcons";
 
-function MoonInfoRender({ isLoaded, data, newError }) {
+function MoonInfoRender({ data, newError }) {
   const date = new Date();
   const dateWithDay = date.toDateString();
 
@@ -24,7 +24,7 @@ function MoonInfoRender({ isLoaded, data, newError }) {
         className="qi-804 w-40 h-40 dark:fill-gray-300"
         viewBox="0 -1 17 17"
       >
-        {isLoaded && <path d={`${moonIcons[`${IconNumber()}`]}`} />}
+        <path d={`${moonIcons[`${IconNumber()}`]}`} />
       </svg>
       <div className="flex flex-row justify-between mt-6 w-full">
         <div className="flex flex-col items-center">

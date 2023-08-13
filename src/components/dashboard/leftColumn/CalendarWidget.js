@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CalendarWidget({ showCalendar, setShowCalendar }) {
-  const [toggleCalenderIcon, setToggleCalendarIcon] = useState(false);
+  const [toggleCalenderIcon, setToggleCalendarIcon] = useState(
+    JSON.parse(localStorage.getItem("calendarIcon")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("calendarIcon", toggleCalenderIcon.toString());
+  }, [toggleCalenderIcon]);
 
   function ShowWidget() {
     setToggleCalendarIcon(!toggleCalenderIcon);

@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function NoteWidgetIcon({ setShowNote, showNote }) {
-  const [toggleNoteIcon, setToggleNoteIcon] = useState(false);
+  const [toggleNoteIcon, setToggleNoteIcon] = useState(
+    JSON.parse(localStorage.getItem("noteIcon")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("noteIcon", toggleNoteIcon.toString());
+  }, [toggleNoteIcon]);
 
   function ShowWidget() {
     setToggleNoteIcon(!toggleNoteIcon);

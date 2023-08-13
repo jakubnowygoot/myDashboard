@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Button from "../../../ui/Button";
 import NotesSection from "./NotesSection";
 import ToDoSwitch from "./ToDoSwitch";
@@ -11,14 +11,38 @@ function Notes() {
   const [id, setId] = useState("");
   const [emptyNotes, setEmptyNotes] = useState(true);
   const [buttonChange, setButtonChange] = useState(false);
-  const [showToDo, setShowToDo] = useState(false);
-  const [notes, setNotes] = useState([]);
-  const [taskList, setTaskList] = useState([]);
   const [emptyTasks, setEmptyTasks] = useState(true);
   const [emptyTittleNote, setEmptyTittleNote] = useState(false);
-  const [getInput, setGetInput] = useState(false);
   const [taskText, setTaskText] = useState("");
+  const [showToDo, setShowToDo] = useState(
+    JSON.parse(localStorage.getItem("showToDo")) || false
+  );
+  const [notes, setNotes] = useState(() => {
+    const savedStateNotes = localStorage.getItem("notesData");
+    const notesData = JSON.parse(savedStateNotes);
+    return notesData || [];
+  });
+  const [taskList, setTaskList] = useState(() => {
+    const savedStateToDo = localStorage.getItem("toDoData");
+    const toDoData = JSON.parse(savedStateToDo);
+    return toDoData || [];
+  });
+  const [getInput, setGetInput] = useState(
+    JSON.parse(localStorage.getItem("setInputVal")) || false
+  );
 
+  useEffect(() => {
+    localStorage.setItem("setInputVal", JSON.stringify(getInput));
+  }, [getInput]);
+  useEffect(() => {
+    localStorage.setItem("showToDo", JSON.stringify(showToDo));
+  }, [showToDo]);
+  useEffect(() => {
+    localStorage.setItem("notesData", JSON.stringify(notes));
+  }, [notes]);
+  useEffect(() => {
+    localStorage.setItem("toDoData", JSON.stringify(taskList));
+  }, [taskList]);
   const AddNewNote = () => {
     const newNote = {
       id: Math.random(),
@@ -143,7 +167,6 @@ function Notes() {
       <NotesSection
         notes={notes}
         createNote={createNote}
-        title={title}
         setText={setText}
         setTitle={setTitle}
         text={text}

@@ -5,17 +5,14 @@ import NotesList from "./NotesList";
 function ToDoSection({
   setTaskList,
   taskList,
-  emptyTasks,
   setEmptyTasks,
   notes,
   setCreateNote,
   createNote,
-  title,
   setText,
   setTitle,
   setId,
   setButtonChange,
-  emptyNotes,
   DeleteNotes,
   getInput,
   setTaskText,
@@ -82,7 +79,7 @@ function ToDoSection({
             </div>
           </div>
           <div className="overflow-auto h-[48.3%] overflow-anywhere	pt-2 space-y-3.5">
-            {emptyTasks && emptyNotes ? (
+            {taskList.length === 0 && notes.length === 0 ? (
               <>
                 <hr />
                 <h1 className="font-medium text-base xs:text-lg dark:text-white text-center">
@@ -95,12 +92,10 @@ function ToDoSection({
               notes={notes}
               setCreateNote={setCreateNote}
               createNote={createNote}
-              title={title}
               setText={setText}
               setTitle={setTitle}
               setId={setId}
               setButtonChange={setButtonChange}
-              emptyNotes={emptyNotes}
               DeleteNotes={DeleteNotes}
             />
           </div>

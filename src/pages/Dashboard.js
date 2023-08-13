@@ -18,8 +18,6 @@ function Dashboard() {
   const today = startOfToday();
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [showNextDays, setShowNextDays] = useState(false);
-  const [showNote, setShowNote] = useState(false);
-  const [showCalendar, setShowCalendar] = useState(false);
   const [location, setLocation] = useState("");
   const [daysData, setDaysData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,6 +34,12 @@ function Dashboard() {
   const [temperature, setTemperature] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [mainProfilePicture, setMainProfilePicture] = useState("");
+  const [showNote, setShowNote] = useState(
+    JSON.parse(localStorage.getItem("note")) || false
+  );
+  const [showCalendar, setShowCalendar] = useState(
+    JSON.parse(localStorage.getItem("calendar")) || false
+  );
   const [dataMoon, setDataMoon] = useState(() => {
     const savedStateMoon = localStorage.getItem("moonData");
     const moonData = JSON.parse(savedStateMoon);
@@ -73,6 +77,14 @@ function Dashboard() {
   useEffect(() => {
     localStorage.setItem("moonData", JSON.stringify(dataMoon));
   }, [dataMoon]);
+
+  useEffect(() => {
+    localStorage.setItem("calendar", JSON.stringify(showCalendar));
+  }, [showCalendar]);
+
+  useEffect(() => {
+    localStorage.setItem("note", JSON.stringify(showNote));
+  }, [showNote]);
 
   const RenderMoonData = async () => {
     try {

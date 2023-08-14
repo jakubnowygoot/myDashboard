@@ -30,9 +30,8 @@ function Dashboard() {
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
   const [units, setUnits] = useState("metric");
-  const [temperature, setTemperature] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
-  const [mainProfilePicture, setMainProfilePicture] = useState("");
+  const [temperature, setTemperature] = useState("");
   const [events, setEvents] = useState(() => {
     const savedStateCalendar = localStorage.getItem("calendarData");
     const calendarData = JSON.parse(savedStateCalendar);
@@ -56,6 +55,12 @@ function Dashboard() {
   const [showMoon, setShowMoon] = useState(
     JSON.parse(localStorage.getItem("moon")) || false
   );
+  const [mainProfilePicture, setMainProfilePicture] = useState(
+    JSON.parse(localStorage.getItem("profilePicture")) || []
+  );
+  const [name, setName] = useState(
+    JSON.parse(localStorage.getItem("name")) || []
+  );
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -70,6 +75,22 @@ function Dashboard() {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
+
+  useEffect(() => {
+    localStorage.setItem("name", JSON.stringify(name));
+  }, [name]);
+
+  useEffect(() => {
+    if (mainProfilePicture.length === 0) {
+      console.log("sad");
+    } else {
+      localStorage.setItem(
+        "profilePicture",
+        JSON.stringify(mainProfilePicture)
+      );
+    }
+  }, [mainProfilePicture]);
+
   useEffect(() => {
     localStorage.setItem("calendarData", JSON.stringify(events));
   }, [events]);
@@ -133,6 +154,8 @@ function Dashboard() {
           setProfilePicture={setProfilePicture}
           profilePicture={profilePicture}
           setMainProfilePicture={setMainProfilePicture}
+          name={name}
+          setName={setName}
         />
       )}
       <div className="flex w-screen h-screen text-gray-700 dark:bg-gray-800  ">

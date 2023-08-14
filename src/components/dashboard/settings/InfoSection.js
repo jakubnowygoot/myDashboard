@@ -1,6 +1,6 @@
 import DefaultInput from "../../ui/inputs/DefaultInput";
 
-function InfoSection({ name, setName }) {
+function InfoSection({ name, setName, telNumber, setTelNumber }) {
   return (
     <div className="md:inline-flex  space-y-4 md:space-y-0  w-full p-4 text-gray-500 items-center">
       <h2 className="md:w-1/3 mx-auto max-w-sm dark:text-gray-300">
@@ -13,7 +13,12 @@ function InfoSection({ name, setName }) {
         >
           Change full name
         </DefaultInput>
-        <DefaultInput placeholder="+48 499 232 123">
+        <DefaultInput
+          placeholder={`+48 ${
+            telNumber.length === 0 ? "499421231" : telNumber
+          }`}
+          onChange={(e) => setTelNumber(e.target.value)}
+        >
           Change phone number
         </DefaultInput>
       </div>

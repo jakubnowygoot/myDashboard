@@ -16,6 +16,8 @@ function SettingsMenu({
   setMainProfilePicture,
   name,
   setName,
+  telNumber,
+  setTelNumber,
 }) {
   const onSubmit = (event) => {
     event.preventDefault();
@@ -35,7 +37,12 @@ function SettingsMenu({
         <div className="bg-white space-y-6 dark:bg-gray-800">
           <AccountSection setProfilePicture={setProfilePicture} />
           <hr className="dark:border-gray-600" />
-          <InfoSection name={name} setName={setName} />
+          <InfoSection
+            name={name}
+            setName={setName}
+            setTelNumber={setTelNumber}
+            telNumber={telNumber}
+          />
           <hr className="dark:border-gray-600" />
           <PasswordSection />
           <hr className="dark:border-gray-600" />

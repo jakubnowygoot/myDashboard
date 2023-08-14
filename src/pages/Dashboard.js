@@ -61,7 +61,9 @@ function Dashboard() {
   const [name, setName] = useState(
     JSON.parse(localStorage.getItem("name")) || []
   );
-
+  const [telNumber, setTelNumber] = useState(
+    JSON.parse(localStorage.getItem("telNumber")) || []
+  );
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
@@ -75,6 +77,9 @@ function Dashboard() {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
+  useEffect(() => {
+    localStorage.setItem("telNumber", JSON.stringify(telNumber));
+  }, [telNumber]);
 
   useEffect(() => {
     localStorage.setItem("name", JSON.stringify(name));
@@ -156,6 +161,8 @@ function Dashboard() {
           setMainProfilePicture={setMainProfilePicture}
           name={name}
           setName={setName}
+          setTelNumber={setTelNumber}
+          telNumber={telNumber}
         />
       )}
       <div className="flex w-screen h-screen text-gray-700 dark:bg-gray-800  ">

@@ -29,7 +29,6 @@ function Dashboard() {
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
-  const [units, setUnits] = useState("metric");
   const [profilePicture, setProfilePicture] = useState("");
   const [temperature, setTemperature] = useState("");
   const [events, setEvents] = useState(() => {
@@ -64,6 +63,11 @@ function Dashboard() {
   const [telNumber, setTelNumber] = useState(
     JSON.parse(localStorage.getItem("telNumber")) || []
   );
+
+  const [units, setUnits] = useState(
+    JSON.parse(localStorage.getItem("units")) || "metric"
+  );
+
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
@@ -77,6 +81,11 @@ function Dashboard() {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
+
+  useEffect(() => {
+    localStorage.setItem("units", JSON.stringify(units));
+  }, [units]);
+
   useEffect(() => {
     localStorage.setItem("telNumber", JSON.stringify(telNumber));
   }, [telNumber]);

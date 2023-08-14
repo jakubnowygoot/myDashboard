@@ -33,7 +33,7 @@ function SettingsMenu({
   return (
     <CardSettings>
       <form>
-        <ImageSection profilePicture={profilePicture} />
+        <ImageSection profilePicture={profilePicture} name={name} />
         <div className="bg-white space-y-6 dark:bg-gray-800">
           <AccountSection setProfilePicture={setProfilePicture} />
           <hr className="dark:border-gray-600" />

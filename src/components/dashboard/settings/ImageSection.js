@@ -1,4 +1,4 @@
-function ImageSection({ profilePicture }) {
+function ImageSection({ profilePicture, name }) {
   return (
     <div className="bg-primary-600 p-4">
       <div className="max-w-sm mx-auto md:w-full md:mx-0 ">
@@ -12,7 +12,9 @@ function ImageSection({ profilePicture }) {
             }
             alt=""
           />
-          <h1 className="text-black dark:text-white">Jakub Siepiela</h1>
+          <h1 className="text-black dark:text-white">
+            {name.length === 0 ? "Jakub Siepiela" : name}
+          </h1>
         </div>
       </div>
     </div>

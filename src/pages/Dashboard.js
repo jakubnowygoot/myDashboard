@@ -24,7 +24,6 @@ function Dashboard() {
   const [newError, setNewError] = useState(false);
   const [selectedDay, setSelectedDay] = useState(today);
   const [addEvent, setAddEvent] = useState(true);
-  const [checkEvent, setCheckEvent] = useState(0);
   const [textArea, setTextArea] = useState("");
   const [firstTime, setFirstTime] = useState("");
   const [secondTime, setSecondTime] = useState("");
@@ -67,7 +66,9 @@ function Dashboard() {
   const [units, setUnits] = useState(
     JSON.parse(localStorage.getItem("units")) || "metric"
   );
-
+  const [checkEvent, setCheckEvent] = useState(
+    JSON.parse(localStorage.getItem("checkEvent")) || 0
+  );
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
@@ -81,7 +82,9 @@ function Dashboard() {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
-
+  useEffect(() => {
+    localStorage.setItem("checkEvent", JSON.stringify(checkEvent));
+  }, [checkEvent]);
   useEffect(() => {
     localStorage.setItem("units", JSON.stringify(units));
   }, [units]);

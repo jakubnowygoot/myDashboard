@@ -4,7 +4,7 @@ import TermsElem from "./TermsElem";
 
 function Form() {
   return (
-    <form className="space-y-4 md:space-y-6" action="#">
+    <form className="space-y-4 md:space-y-6" action="/login">
       <DefaultInput
         htmlFor="fullName"
         type="text"

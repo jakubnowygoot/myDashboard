@@ -2,7 +2,14 @@ import { useRef, useCallback, useState } from "react";
 import OpenEyeIcon from "./OpenEyeIcon";
 import CloseEyeIcon from "./CloseEyeIcon";
 
-function InputPassword({ children, name, id, htmlFor, onChange }) {
+function InputPassword({
+  children,
+  name,
+  id,
+  htmlFor,
+  onChange,
+  defaultValue,
+}) {
   const [hidePass, setHidePass] = useState(true);
 
   const ShowPassHandler = useCallback(() => {
@@ -26,6 +33,7 @@ function InputPassword({ children, name, id, htmlFor, onChange }) {
           name={name}
           id={id}
           ref={ref}
+          defaultValue={defaultValue}
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}

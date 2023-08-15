@@ -1,11 +1,15 @@
-function RememberMe() {
+function RememberMe({ rememberMe, setRememberMe }) {
   return (
     <div className="flex items-start">
       <div className="flex items-center h-5">
         <input
+          checked={rememberMe}
           id="remember"
-          aria-describedby="remember"
           type="checkbox"
+          onChange={(e) => {
+            localStorage.setItem("rememberMe", `${e.target.checked}`);
+            setRememberMe(e.target.checked);
+          }}
           className="w-4 h-4 border accent-primary-600 border-gray-300 rounded bg-gray-50 focus:ring-indigo-600 focus:ring-indigo-600 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
           required=""
         />

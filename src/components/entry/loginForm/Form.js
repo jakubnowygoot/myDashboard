@@ -6,20 +6,53 @@ import InputPassword from "../../ui/inputs/InputPassword";
 import RememberMe from "./RememberMe";
 
 function Form({ setIsAuth, isAuth }) {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(
+    JSON.parse(localStorage.getItem("password")) || ""
+  );
+  const [email, setEmail] = useState(
+    JSON.parse(localStorage.getItem("email")) || ""
+  );
+  const [changeInput, setChangeInput] = useState(
+    JSON.parse(localStorage.getItem("changeInput")) || false
+  );
+
   const [wongPass, setWrongPass] = useState(
     JSON.parse(localStorage.getItem("passCheck")) || false
   );
+  const [rememberMe, setRememberMe] = useState(
+    localStorage.getItem("rememberMe") === "true"
+  );
+  useEffect(() => {
+    localStorage.setItem("password", JSON.stringify(password));
+  }, [password]);
+  useEffect(() => {
+    localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
+
+  useEffect(() => {
+    localStorage.setItem("changeInput", JSON.stringify(changeInput));
+  }, [changeInput]);
 
   useEffect(() => {
     localStorage.setItem("passCheck", JSON.stringify(wongPass));
   }, [wongPass]);
-
   const onSubmit = () => {
-    setWrongPass(false);
     if (password === "test123" && email === "test123@gmail.com") {
       setIsAuth(true);
+      setWrongPass(false);
+      if (rememberMe === true) {
+        setChangeInput(true);
+        setEmail("test123@gmail.com");
+        setPassword("test123");
+      } else {
+        setEmail("");
+        setPassword("");
+        setChangeInput(false);
+      }
+    } else {
+      setEmail("");
+      setPassword("");
+      setChangeInput(false);
     }
     setWrongPass(true);
     return false;
@@ -27,7 +60,11 @@ function Form({ setIsAuth, isAuth }) {
 
   useEffect(() => {
     setTimeout(() => {
-      setWrongPass(false);
+      if (isAuth) {
+        setWrongPass(true);
+      } else {
+        setWrongPass(false);
+      }
     }, 2000);
   }, [onSubmit]);
 
@@ -39,6 +76,7 @@ function Form({ setIsAuth, isAuth }) {
       <DefaultInput
         type="email"
         id="email"
+        defaultValue={changeInput ? "test123@gmail.com" : ""}
         placeholder={
           wongPass ? "Invalid password or email" : "email@expample.com"
         }
@@ -50,13 +88,14 @@ function Form({ setIsAuth, isAuth }) {
 
       <InputPassword
         id="password"
+        defaultValue={changeInput ? "test123" : ""}
         onChange={(e) => setPassword(e.target.value)}
       >
         Password
       </InputPassword>
 
       <div className="flex items-center justify-between">
-        <RememberMe />
+        <RememberMe setRememberMe={setRememberMe} rememberMe={rememberMe} />
       </div>
       <div className="flex justify-center">
         <Button type="submit" onClick={onSubmit} addStyle="w-28">

@@ -12,6 +12,7 @@ function DefaultInput({
   addStyle,
   addSecondStyle,
   onClick,
+  defaultValue,
 }) {
   return (
     <div className={`${addStyle}`}>
@@ -24,6 +25,7 @@ function DefaultInput({
       <input
         onClick={onClick}
         value={value}
+        defaultValue={defaultValue}
         onKeyDown={onKeyDown}
         type={type}
         name={name}

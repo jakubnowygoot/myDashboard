@@ -1,26 +1,59 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Button from "../../ui/Button";
 import DefaultInput from "../../ui/inputs/DefaultInput";
 import InputPassword from "../../ui/inputs/InputPassword";
 import RememberMe from "./RememberMe";
 
-function Form({ setIsAuth }) {
+function Form({ setIsAuth, isAuth }) {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [wongPass, setWrongPass] = useState(
+    JSON.parse(localStorage.getItem("passCheck")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("passCheck", JSON.stringify(wongPass));
+  }, [wongPass]);
+
   const onSubmit = () => {
-    setIsAuth(true);
+    setWrongPass(false);
+    if (password === "test123" && email === "test123@gmail.com") {
+      setIsAuth(true);
+    }
+    setWrongPass(true);
+    return false;
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setWrongPass(false);
+    }, 2000);
+  }, [onSubmit]);
+
   return (
-    <form className="space-y-4 md:space-y-6" action="/dashboard">
+    <form
+      className="space-y-4 md:space-y-6"
+      action={isAuth ? "/dashboard" : ""}
+    >
       <DefaultInput
         type="email"
         id="email"
-        placeholder="email@expample.com"
+        placeholder={
+          wongPass ? "Invalid password or email" : "email@expample.com"
+        }
         requried
+        onChange={(e) => setEmail(e.target.value)}
       >
         Your Email
       </DefaultInput>
 
-      <InputPassword id="password">Password</InputPassword>
+      <InputPassword
+        id="password"
+        onChange={(e) => setPassword(e.target.value)}
+      >
+        Password
+      </InputPassword>
 
       <div className="flex items-center justify-between">
         <RememberMe />

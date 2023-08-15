@@ -24,7 +24,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login setIsAuth={setIsAuth} />,
+      element: <Login setIsAuth={setIsAuth} isAuth={isAuth} />,
     },
     {
       path: "forgot-password",
@@ -53,17 +53,6 @@ function App() {
     },
   ]);
 
-  // createRoutesFromElements(
-  //   <Routes>
-  //     <Route path="/" element={<HomePage />} />
-  //     <Route path="/dashboard" element={<Dashboard />} />
-  //     <Route path="/restart-password" element={<ResetPass />} />
-  //     <Route path="/login" element={<Login />} />
-  //     <Route path="/register" element={<Register />} />
-  //     <Route path="/terms-and-condition" element={<TermsAndCondition />} />
-  //     <Route path="forgot-password" element={<ForgotPass />} />
-  //   </Routes>
-  // );
   return <RouterProvider router={router} />;
 }
 

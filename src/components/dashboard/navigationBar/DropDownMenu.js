@@ -74,14 +74,6 @@ function DropDownMenu({ menuToggle, setIsAuth }) {
           >
             <DarkMode addStyle="flex px-4 py-2" />
             <li>
-              <a
-                href="#"
-                className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white"
-              >
-                Dashboard
-              </a>
-            </li>
-            <li>
               <div className="pb-1.5">
                 <a
                   href="#"
@@ -95,7 +87,10 @@ function DropDownMenu({ menuToggle, setIsAuth }) {
             <li className="w-full">
               <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
                 <Link to="/">
-                  <button className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white flex w-full">
+                  <button
+                    onClick={Logout}
+                    className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white flex w-full"
+                  >
                     Logout
                   </button>
                 </Link>

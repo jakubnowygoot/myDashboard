@@ -1,7 +1,7 @@
 import DropDownMenu from "./DropDownMenu";
 import DarkMode from "./DarkMode";
 
-function NavBar({ menuToggle }) {
+function NavBar({ menuToggle, setIsAuth }) {
   return (
     <div className="w-full flex flex-wrap items-center justify-between">
       <a className="flex items-center">
@@ -35,7 +35,7 @@ function NavBar({ menuToggle }) {
         </ul>
       </div>
       <div className="flex gap-2 md:flex-row flex-row md:order-1">
-        <DropDownMenu menuToggle={menuToggle} />
+        <DropDownMenu menuToggle={menuToggle} setIsAuth={setIsAuth} />
         <DarkMode addStyle="hidden" />
       </div>
     </div>

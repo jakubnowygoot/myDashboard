@@ -14,7 +14,7 @@ import Calendar from "../components/dashboard/body/calendar/Calendar";
 import Events from "../components/dashboard/body/calendar/Events";
 import Notes from "../components/dashboard/body/noteWidget/Notes";
 
-function Dashboard() {
+function Dashboard({ setIsAuth }) {
   const today = startOfToday();
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [showNextDays, setShowNextDays] = useState(false);
@@ -193,7 +193,7 @@ function Dashboard() {
         />
         <div className="flex flex-col flex-grow">
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
-            <NavBar menuToggle={SettingsMenuHandler} />
+            <NavBar menuToggle={SettingsMenuHandler} setIsAuth={setIsAuth} />
           </div>
           <Card>
             {showCalendar && (

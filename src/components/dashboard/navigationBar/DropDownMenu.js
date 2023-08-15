@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
-function DropDownMenu({ menuToggle }) {
+function DropDownMenu({ menuToggle, setIsAuth }) {
   const [dropDownMenu, setDropDownMenu] = useState(false);
   const [toggleBurger, setToggleBurger] = useState(false);
 
@@ -25,11 +25,16 @@ function DropDownMenu({ menuToggle }) {
     BurgerHandler();
   }
 
+  function Logout() {
+    setIsAuth(false);
+  }
+
   return (
     <div className="flex md:order-2">
       <Link to="/">
         <button
           type="button"
+          onClick={Logout}
           className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:ml-3 md:mr-0 dark:md:hover:bg-primary-700 dark:md:focus:ring-primary-800 "
         >
           Logout
@@ -87,12 +92,12 @@ function DropDownMenu({ menuToggle }) {
                 </a>
               </div>
             </li>
-            <li>
+            <li className="w-full">
               <div className="pt-1.5 border-t-gray-300 border-t dark:border-t-gray-700">
                 <Link to="/">
-                  <div className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white">
+                  <button className="block text-black px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white flex w-full">
                     Logout
-                  </div>
+                  </button>
                 </Link>
               </div>
             </li>

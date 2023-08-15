@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useEffect, useState } from "react";
 import HomePage from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -6,8 +7,16 @@ import TermsAndCondition from "./pages/TermsAndCondition";
 import ForgotPass from "./pages/ForgotPass";
 import ResetPass from "./pages/ResetPass";
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+  const [isAuth, setIsAuth] = useState(
+    JSON.parse(localStorage.getItem("auth")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("auth", isAuth.toString());
+  }, [isAuth]);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -15,7 +24,11 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <Login setIsAuth={setIsAuth} />,
+    },
+    {
+      path: "forgot-password",
+      element: <ForgotPass />,
     },
     {
       path: "/register",
@@ -26,19 +39,31 @@ function App() {
       element: <TermsAndCondition />,
     },
     {
-      path: "/forgot-password",
-      element: <ForgotPass />,
-    },
-    {
       path: "/restart-password",
       element: <ResetPass />,
     },
     {
-      path: "/dashboard",
-      element: <Dashboard />,
+      element: <ProtectedRoute isAuth={isAuth} />,
+      children: [
+        {
+          path: "/dashboard",
+          element: <Dashboard setIsAuth={setIsAuth} />,
+        },
+      ],
     },
   ]);
 
+  // createRoutesFromElements(
+  //   <Routes>
+  //     <Route path="/" element={<HomePage />} />
+  //     <Route path="/dashboard" element={<Dashboard />} />
+  //     <Route path="/restart-password" element={<ResetPass />} />
+  //     <Route path="/login" element={<Login />} />
+  //     <Route path="/register" element={<Register />} />
+  //     <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+  //     <Route path="forgot-password" element={<ForgotPass />} />
+  //   </Routes>
+  // );
   return <RouterProvider router={router} />;
 }
 

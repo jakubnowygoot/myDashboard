@@ -19,6 +19,7 @@ function Weather({
   const [isLoading, setIsLoading] = useState(false);
   const [newError, setNewError] = useState(false);
   const [toggleInputLocation, setToggleInputLocation] = useState(true);
+  const [changeIcon, setChangeIcon] = useState(false);
 
   const date = new Date().toDateString();
 
@@ -41,6 +42,7 @@ function Weather({
       setIsLoading(true);
       try {
         const resp = await axios.get(url);
+        setChangeIcon(true);
         weatherNextDays();
         setLocation("");
         setData(resp.data);
@@ -59,6 +61,7 @@ function Weather({
 
   function InputHandler() {
     setToggleInputLocation(!toggleInputLocation);
+    setChangeIcon(false);
     setData({});
   }
 
@@ -136,11 +139,15 @@ function Weather({
               viewBox="0 0 16 16"
             >
               <path
-                d={`${
-                  Icons[
-                    `${data.weather ? `${data.weather[0].main}` : undefined}`
-                  ]
-                }`}
+                d={
+                  !changeIcon
+                    ? ""
+                    : `${
+                        Icons[
+                          `${data.weather ? `${data.weather[0].main}` : null}`
+                        ]
+                      }`
+                }
               />
             </svg>
           </div>

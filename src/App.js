@@ -8,6 +8,7 @@ import ForgotPass from "./pages/ForgotPass";
 import ResetPass from "./pages/ResetPass";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const [isAuth, setIsAuth] = useState(
@@ -50,6 +51,10 @@ function App() {
           element: <Dashboard setIsAuth={setIsAuth} />,
         },
       ],
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
 

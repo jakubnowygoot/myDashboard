@@ -170,6 +170,7 @@ function Notes() {
         setText={setText}
         setTitle={setTitle}
         text={text}
+        title={title}
         emptyTittleNote={emptyTittleNote}
       />
       <div className=" flex justify-between">

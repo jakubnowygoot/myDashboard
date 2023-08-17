@@ -21,7 +21,7 @@ function AccountSection({ setProfilePicture }) {
             Change profile picture
           </label>
           <input
-            onChange={(e) => setProfilePicture(e.target.files[0])}
+            onChange={(e) => setProfilePicture(e.target)}
             accept="image/*"
             className="border m-0 border-solid dark:file:bg-gray-600 dark:hover:file:bg-gray-500 hover:file:bg-neutral-200 bg-clip-padding px-3 py-[0.32rem]  relative m-0 min-w-0 flex-auto file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit  file:px-3 file:py-[0.32rem] file:text-black file:dark:text-white file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] bg-gray-50 border border-gray-300 text-gray-400 outline-none sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-indigo-600 dark:focus:border-indigo-600 dark:outline-none"
             id="user_avatar"

@@ -53,9 +53,8 @@ function ToDoSection({
         <>
           <div className="pb-2">
             <div>
-              {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-              <label className="block mb-2 text-sm text-gray-900 dark:text-white">
-                {getInput ? (
+              {getInput ? (
+                <label className="block mb-2 text-sm text-gray-900 dark:text-white">
                   <input
                     onClick={getNote}
                     value={taskText}
@@ -65,7 +64,9 @@ function ToDoSection({
                     placeholder="Write a note"
                     required
                   />
-                ) : (
+                </label>
+              ) : (
+                <label className="block mb-2 text-sm text-gray-900 dark:text-white">
                   <input
                     value={taskText}
                     onChange={(e) => setTaskText(e.target.value)}
@@ -74,8 +75,8 @@ function ToDoSection({
                     placeholder="Task to do"
                     required
                   />
-                )}
-              </label>
+                </label>
+              )}
             </div>
           </div>
           <div className="overflow-auto h-[48.3%] overflow-anywhere	pt-2 space-y-3.5">

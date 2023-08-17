@@ -8,7 +8,7 @@ function ImageSection({ profilePicture, name }) {
             src={
               profilePicture.length === 0
                 ? "https://wallpapercave.com/wp/wp6819375.jpg"
-                : window.URL.createObjectURL(profilePicture)
+                : window.URL.createObjectURL(profilePicture.files[0])
             }
             alt=""
           />

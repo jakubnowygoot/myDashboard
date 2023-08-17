@@ -6,7 +6,7 @@ function ProfilePicture({ mainProfilePicture }) {
         src={
           mainProfilePicture.length === 0
             ? "https://wallpapercave.com/wp/wp6819375.jpg"
-            : mainProfilePicture
+            : window.URL.createObjectURL(mainProfilePicture.files[0])
         }
         alt=""
       />

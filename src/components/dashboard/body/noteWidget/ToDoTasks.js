@@ -4,13 +4,12 @@ function ToDoTasks({ taskList, DeleteTask }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = (event) => {
-    if (event.target.checked) {
-      // eslint-disable-next-line no-param-reassign
-      event.target.nextElementSibling.className =
+    const e = event;
+    if (e.target.checked) {
+      e.target.nextElementSibling.className =
         "w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 line-through";
     } else {
-      // eslint-disable-next-line no-param-reassign
-      event.target.nextElementSibling.className =
+      e.target.nextElementSibling.className =
         "w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300";
     }
     setIsChecked(!isChecked);

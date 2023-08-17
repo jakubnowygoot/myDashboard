@@ -53,9 +53,6 @@ function Dashboard({ setIsAuth }) {
   const [showMoon, setShowMoon] = useState(
     JSON.parse(localStorage.getItem("moon")) || false
   );
-  const [mainProfilePicture, setMainProfilePicture] = useState(
-    JSON.parse(localStorage.getItem("profilePicture")) || []
-  );
   const [name, setName] = useState(
     JSON.parse(localStorage.getItem("name")) || []
   );
@@ -82,6 +79,9 @@ function Dashboard({ setIsAuth }) {
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
+
+  const [mainProfilePicture, setMainProfilePicture] = useState([]);
+
   useEffect(() => {
     localStorage.setItem("checkEvent", JSON.stringify(checkEvent));
   }, [checkEvent]);
@@ -96,17 +96,6 @@ function Dashboard({ setIsAuth }) {
   useEffect(() => {
     localStorage.setItem("name", JSON.stringify(name));
   }, [name]);
-
-  useEffect(() => {
-    if (mainProfilePicture.length === 0) {
-      console.log("sad");
-    } else {
-      localStorage.setItem(
-        "profilePicture",
-        JSON.stringify(mainProfilePicture)
-      );
-    }
-  }, [mainProfilePicture]);
 
   useEffect(() => {
     localStorage.setItem("calendarData", JSON.stringify(events));

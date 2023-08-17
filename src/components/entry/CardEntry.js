@@ -1,6 +1,12 @@
-function CardEntry({ children, parentStyle, childrenStyle, darkStyle }) {
+function CardEntry({
+  children,
+  parentStyle,
+  childrenStyle,
+  darkStyle,
+  sectionStyle,
+}) {
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 h-91">
+    <section className={`bg-gray-50 dark:bg-gray-900 h-91  ${sectionStyle}`}>
       <div
         className={`flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0  ${parentStyle}`}
       >

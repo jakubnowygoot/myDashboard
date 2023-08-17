@@ -13,6 +13,8 @@ import { GetRightHour } from "../components/ui/RightHour";
 import Calendar from "../components/dashboard/body/calendar/Calendar";
 import Events from "../components/dashboard/body/calendar/Events";
 import Notes from "../components/dashboard/body/noteWidget/Notes";
+import CardEntry from "../components/entry/CardEntry";
+import Button from "../components/ui/Button";
 
 function Dashboard({ setIsAuth }) {
   const today = startOfToday();
@@ -66,6 +68,10 @@ function Dashboard({ setIsAuth }) {
   const [checkEvent, setCheckEvent] = useState(
     JSON.parse(localStorage.getItem("checkEvent")) || 0
   );
+  const [displayPopUp, setDisplayPopUp] = useState(
+    JSON.parse(localStorage.getItem("displayPopUp")) || false
+  );
+
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
   const month = `0${date.getMonth() + 1}`.slice(-2);
@@ -119,6 +125,9 @@ function Dashboard({ setIsAuth }) {
   useEffect(() => {
     localStorage.setItem("note", JSON.stringify(showNote));
   }, [showNote]);
+  useEffect(() => {
+    localStorage.setItem("displayPopUp", true);
+  }, []);
 
   const RenderMoonData = async () => {
     try {
@@ -148,6 +157,10 @@ function Dashboard({ setIsAuth }) {
   const SettingsMenuHandler = useCallback(() => {
     setSettingsMenu(!settingsMenu);
   }, [settingsMenu]);
+
+  const closePopUp = useCallback(() => {
+    setDisplayPopUp(true);
+  }, [displayPopUp]);
 
   return (
     <>
@@ -184,72 +197,95 @@ function Dashboard({ setIsAuth }) {
           <div className="flex items-center flex-shrink-0 h-16 px-8 border-gray-300">
             <NavBar menuToggle={SettingsMenuHandler} setIsAuth={setIsAuth} />
           </div>
-          <Card>
-            {showCalendar && (
-              <Calendar
-                selectedDay={selectedDay}
-                setSelectedDay={setSelectedDay}
-                setAddEvent={setAddEvent}
-                events={events}
-                setCheckEvent={setCheckEvent}
-                setFirstTime={setFirstTime}
-                setSecondTime={setSecondTime}
-                setTextArea={setTextArea}
-                setCheckEdit={setCheckEdit}
-              />
-            )}
-            {showCalendar && (
-              <Events
-                selectedDay={selectedDay}
-                addEvent={addEvent}
-                setAddEvent={setAddEvent}
-                setEvents={setEvents}
-                events={events}
-                selectedDayMeetings={selectedDayMeetings}
-                setCheckEvent={setCheckEvent}
-                checkEvent={checkEvent}
-                textArea={textArea}
-                setTextArea={setTextArea}
-                firstTime={firstTime}
-                setFirstTime={setFirstTime}
-                secondTime={secondTime}
-                setSecondTime={setSecondTime}
-                setCheckEdit={setCheckEdit}
-                checkEdit={checkEdit}
-              />
-            )}
-            {showWeather && (
-              <>
-                <Weather
-                  Icons={weatherIcon}
-                  setShowNextDays={setShowNextDays}
-                  showNextDays={showNextDays}
-                  weatherNextDays={weatherNextDays}
-                  location={location}
-                  setLocation={setLocation}
-                  units={units}
-                  setTemperature={setTemperature}
-                  temperature={temperature}
+          {!displayPopUp ? (
+            <CardEntry
+              childrenStyle="sm:max-w-md"
+              sectionStyle="h-full"
+              parentStyle="h-full flex"
+            >
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Hey, first time?
+              </h1>
+              <p className="dark:text-white">
+                Use our icons on the left to display widgets.
+              </p>
+
+              <Button
+                className="text-sm font-extralight text-gray-500 dark:text-gray-400  whitespace-nowrap flex gap-1 flex-wrap"
+                onClick={closePopUp}
+              >
+                Dont show this again
+              </Button>
+            </CardEntry>
+          ) : (
+            <Card>
+              {" "}
+              {showCalendar && (
+                <Calendar
+                  selectedDay={selectedDay}
+                  setSelectedDay={setSelectedDay}
+                  setAddEvent={setAddEvent}
+                  events={events}
+                  setCheckEvent={setCheckEvent}
+                  setFirstTime={setFirstTime}
+                  setSecondTime={setSecondTime}
+                  setTextArea={setTextArea}
+                  setCheckEdit={setCheckEdit}
                 />
-                {showNextDays ? (
-                  <WeatherDays
+              )}
+              {showCalendar && (
+                <Events
+                  selectedDay={selectedDay}
+                  addEvent={addEvent}
+                  setAddEvent={setAddEvent}
+                  setEvents={setEvents}
+                  events={events}
+                  selectedDayMeetings={selectedDayMeetings}
+                  setCheckEvent={setCheckEvent}
+                  checkEvent={checkEvent}
+                  textArea={textArea}
+                  setTextArea={setTextArea}
+                  firstTime={firstTime}
+                  setFirstTime={setFirstTime}
+                  secondTime={secondTime}
+                  setSecondTime={setSecondTime}
+                  setCheckEdit={setCheckEdit}
+                  checkEdit={checkEdit}
+                />
+              )}
+              {showWeather && (
+                <>
+                  <Weather
                     Icons={weatherIcon}
-                    daysData={daysData}
+                    setShowNextDays={setShowNextDays}
+                    showNextDays={showNextDays}
+                    weatherNextDays={weatherNextDays}
+                    location={location}
+                    setLocation={setLocation}
+                    units={units}
+                    setTemperature={setTemperature}
                     temperature={temperature}
                   />
-                ) : null}
-              </>
-            )}
-            {showMoon && (
-              <Moon
-                RenderMoonData={RenderMoonData}
-                dataMoon={dataMoon}
-                isLoading={isLoading}
-                newError={newError}
-              />
-            )}
-            {showNote && <Notes />}
-          </Card>
+                  {showNextDays ? (
+                    <WeatherDays
+                      Icons={weatherIcon}
+                      daysData={daysData}
+                      temperature={temperature}
+                    />
+                  ) : null}
+                </>
+              )}
+              {showMoon && (
+                <Moon
+                  RenderMoonData={RenderMoonData}
+                  dataMoon={dataMoon}
+                  isLoading={isLoading}
+                  newError={newError}
+                />
+              )}
+              {showNote && <Notes />}
+            </Card>
+          )}
         </div>
       </div>
     </>

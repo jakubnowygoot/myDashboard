@@ -4,7 +4,7 @@ import DarkMode from "./DarkMode";
 function NavBar({ menuToggle, setIsAuth }) {
   return (
     <div className="w-full flex flex-wrap items-center justify-between">
-      <a className="flex items-center">
+      <a className="flex items-center md:w-200">
         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
           My Dashboard
         </span>
@@ -13,7 +13,7 @@ function NavBar({ menuToggle, setIsAuth }) {
         className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
         id="navbar-cta"
       >
-        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 ">
+        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:w-200 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 ">
           <li>
             <a
               href="#"
@@ -34,7 +34,7 @@ function NavBar({ menuToggle, setIsAuth }) {
           </li>
         </ul>
       </div>
-      <div className="flex gap-2 md:flex-row flex-row md:order-1">
+      <div className="flex gap-2 md:w-200 md:flex-row flex-row md:order-1">
         <DropDownMenu menuToggle={menuToggle} setIsAuth={setIsAuth} />
         <DarkMode addStyle="hidden" />
       </div>

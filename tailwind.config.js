@@ -17,6 +17,9 @@ module.exports = {
         91: "91vh",
         300: "30rem",
       },
+      width: {
+        200: "200px",
+      },
       colors: {
         primary: {
           50: "#eef2ff",

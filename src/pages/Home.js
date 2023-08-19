@@ -4,10 +4,10 @@ import Button from "../components/ui/Button";
 import HomeText from "../components/startPage/HomeText";
 import NavBarHome from "../components/dashboard/navigationBar/NavBarHome";
 
-function HomePage() {
+function HomePage({ isAuth }) {
   return (
     <>
-      <NavBarHome />
+      <NavBarHome isAuth={isAuth} />
       <CardStartPage>
         <HomeText />
         <div className="mt-8 flex flex-wrap justify-center gap-4">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
-function DropDownMenu() {
+function DropDownMenu({ isAuth }) {
   const [dropDownMenuHome, setDropDownMenuHome] = useState(false);
   const [toggleBurgerHome, setToggleBurgerHome] = useState(false);
 
@@ -21,7 +21,7 @@ function DropDownMenu() {
 
   return (
     <div className="flex md:order-2">
-      <Link to="/login">
+      <Link to={isAuth ? "/dashboard" : "/login"}>
         <button
           type="button"
           className="hidden md:flex md:text-white md:bg-primary-600 md:hover:bg-primary-700 md:focus:ring-4 md:focus:outline-none md:focus:ring-primary-300 md:font-medium md:rounded-lg md:text-sm md:px-5 md:py-2.5 md:text-center md:ml-3 md:mr-0 dark:md:hover:bg-primary-700 dark:md:focus:ring-primary-800 "

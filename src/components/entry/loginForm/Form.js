@@ -16,8 +16,8 @@ function Form({ setIsAuth, isAuth }) {
     JSON.parse(localStorage.getItem("changeInput")) || false
   );
 
-  const [wongPass, setWrongPass] = useState(
-    JSON.parse(localStorage.getItem("passCheck")) || false
+  const [wrongPass, setWrongPass] = useState(
+    JSON.parse(localStorage.getItem("passCheck"))
   );
   const [rememberMe, setRememberMe] = useState(
     localStorage.getItem("rememberMe") === "true"
@@ -34,8 +34,8 @@ function Form({ setIsAuth, isAuth }) {
   }, [changeInput]);
 
   useEffect(() => {
-    localStorage.setItem("passCheck", JSON.stringify(wongPass));
-  }, [wongPass]);
+    localStorage.setItem("passCheck", JSON.stringify(wrongPass));
+  }, [wrongPass]);
   const onSubmit = () => {
     if (password === "test123" && email === "test123@gmail.com") {
       setIsAuth(true);
@@ -54,19 +54,20 @@ function Form({ setIsAuth, isAuth }) {
       setPassword("");
       setChangeInput(false);
     }
-    setWrongPass(true);
+    if (password !== "test123" || email !== "test123@gmail.com") {
+      setWrongPass(true);
+    }
     return false;
   };
 
   useEffect(() => {
     setTimeout(() => {
       if (isAuth) {
-        setWrongPass(true);
-      } else {
         setWrongPass(false);
       }
+      setWrongPass(false);
     }, 2000);
-  }, [onSubmit]);
+  }, [wrongPass]);
 
   return (
     <form
@@ -78,7 +79,7 @@ function Form({ setIsAuth, isAuth }) {
         id="email"
         defaultValue={changeInput ? "test123@gmail.com" : ""}
         placeholder={
-          wongPass ? "Invalid password or email" : "email@expample.com"
+          wrongPass ? "Invalid password or email" : "email@expample.com"
         }
         requried
         onChange={(e) => setEmail(e.target.value)}

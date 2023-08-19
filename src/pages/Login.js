@@ -5,7 +5,7 @@ import NavBarHome from "../components/dashboard/navigationBar/NavBarHome";
 function Login({ setIsAuth, isAuth }) {
   return (
     <>
-      <NavBarHome setIsAuth={setIsAuth} />
+      <NavBarHome />
       <CardEntry childrenStyle="sm:max-w-md">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Sign in to your account

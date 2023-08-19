@@ -1,7 +1,7 @@
 
 # Dashboard
 
-Hi, I'm Jacob! 👋 Chcialbym zaprezenotwac moja Aplikacje zrobiona przy pomocy react. Aplikacja pozwala zalogować się do konta które jest stworzone bez polaczenia z back-endem.Po zalogowaniu mozemy korzystac z wielu widgetow takimi jak pogoda,faza ksiezyca, notatnik/todo list, kalendarz.
+Hi, I'm Jacob! 👋 I would like to introduce you to my app created in react. It enables you to log in to an account by using hard coded email and password without authorization and connection to back-end. After you log in you get to use various widgets such as weather, moon phase, notes/to-do list, calendar.
 
 
 
@@ -10,36 +10,36 @@ Hi, I'm Jacob! 👋 Chcialbym zaprezenotwac moja Aplikacje zrobiona przy pomocy 
 
 ![App Screenshot](https://snipboard.io/32Rroh.jpg)
 
-* Aby przejsc dalej kliknij Login
+* To go further click Login
 
 ![App Screenshot](https://snipboard.io/bqUXGj.jpg)
 
-* zaloguj sie podanymi danymi po zaznaczeniu przycisku remeber me nastepnym razem dane do logowania bede juz wypelnione
+* Login by using email and password shown above. If you press remember me your data will be saved.
 
 ![App Screenshot](https://snipboard.io/kyx76O.jpg)
 
-* po zalogowaniu sie poraz pierwszy dostaniemy male  powiadomienie ktore po zamknieciu juz sie nie pojawi
+* After first log you get small notification which will not appear again after you click the button.
 
 ![App Screenshot](https://snipboard.io/gkLJTp.jpg)
 
-* pierwszy widget pokazuje pogode po wpisaniu lokalizacji ktora nas interesuje pobiora sie dane ze strony https://openweathermap.org/api
+* First widget shows weather according to the location that you put in. Api is from the website: https://openweathermap.org/api
 
 ![App Screenshot](https://snipboard.io/pIK7Dq.jpg)
 
-Klikajac w strzalke na widgecie wyswietlimy pogode na kolejne dni w danej lokalizacji by zmienic miejsce klikami dwa razy na obecne.w ustawieniach mozemy zmienic wyswietlana temperature miedzy innymi: celsiusa, kelvina, fahrenhaita
+* If you click an arrow in a widget the five-days forecast will appear. If you want to change the location just click twice on the current one. In the settings you can choose in which scale the temperature will be displayed (Celsius, Kelvins, Fahrenheit)
 
 ![App Screenshot](https://snipboard.io/WUzfx5.jpg)
 
-Faza ksiezyca pobierania jest z https://dev.qweather.com/en/docs/api/astronomy/moon-and-moon-phase/
+* The moon phase Api comes from: https://dev.qweather.com/en/docs/api/astronomy/moon-and-moon-phase/
 
 ![App Screenshot](https://snipboard.io/yTnisY.jpg)
 
-notatnik / to do list wpisujemy rzeczy ktore planujemy zrobic po wcisnieciu toogle note mozemy wpisywac tytul oraz tresc naszej notatki
+* To-do section allowes you to type things you have to do later and mark them as completed when you finish. After selecting notes you can create title and fill the rest with any type of text you want, for example shopping list. You can easily edit or delete them.
 
 
 ![App Screenshot](https://snipboard.io/HbrxSP.jpg)
 
-kalendarz w ktorym mozemy wpisywac nasze plany na nadchodzace dni edytowac je oraz usuwac
+* Calendar helps you organize uppcoming events and appointments. You can edit and delete them any time.
 
 
 ![App Screenshot](https://snipboard.io/ho14xj.jpg)
@@ -63,6 +63,7 @@ Project is created with:
 
 
 
+
 ## Features
 
 - Light/dark mode toggle
@@ -72,8 +73,8 @@ Project is created with:
 
 
 ## Installation
-
-Install my-dashboard with npm
+Aplication was create with react-create-app
+so install my-dashboard with npm
 
 ```bash
 $ npm install

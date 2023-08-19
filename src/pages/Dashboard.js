@@ -66,7 +66,7 @@ function Dashboard({ setIsAuth }) {
     JSON.parse(localStorage.getItem("units")) || "metric"
   );
   const [checkEvent, setCheckEvent] = useState(
-    JSON.parse(localStorage.getItem("checkEvent")) || 0
+    JSON.parse(localStorage.getItem("checkEvent"))
   );
   const [displayPopUp, setDisplayPopUp] = useState(
     JSON.parse(localStorage.getItem("displayPopUp")) || false

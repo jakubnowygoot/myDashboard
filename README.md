@@ -12,7 +12,7 @@ Hi, I'm Jacob! 👋 I would like to introduce you to my app created in react. It
 
 * To go further click Login
 
-![App Screenshot](https://snipboard.io/bqUXGj.jpg)
+![App Screenshot](https://snipboard.io/zN1V9M.jpg)
 
 * Login by using email and password shown above. If you press remember me your data will be saved.
 

@@ -1,8 +1,4 @@
-import { useState } from "react";
-
 function ToDoTasks({ taskList, DeleteTask }) {
-  const [isChecked, setIsChecked] = useState(false);
-
   const handleChange = (event) => {
     const e = event;
     if (e.target.checked) {
@@ -12,9 +8,7 @@ function ToDoTasks({ taskList, DeleteTask }) {
       e.target.nextElementSibling.className =
         "w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300";
     }
-    setIsChecked(!isChecked);
   };
-
   return (
     <>
       {taskList.map((tasks) => (
@@ -25,8 +19,6 @@ function ToDoTasks({ taskList, DeleteTask }) {
           <input
             id={tasks.id}
             type="checkbox"
-            value={isChecked}
-            name="checked"
             onChange={handleChange}
             className="w-4 h-4 border accent-primary-600 border-gray-300 rounded bg-gray-50 focus:ring-indigo-600 focus:ring-indigo-600 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
           />

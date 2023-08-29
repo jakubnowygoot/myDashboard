@@ -37,7 +37,6 @@ function Dashboard({ setIsAuth }) {
     const calendarData = JSON.parse(savedStateCalendar);
     return calendarData || [];
   });
-
   const [showNote, setShowNote] = useState(
     JSON.parse(localStorage.getItem("note")) || false
   );
@@ -71,6 +70,7 @@ function Dashboard({ setIsAuth }) {
   const [displayPopUp, setDisplayPopUp] = useState(
     JSON.parse(localStorage.getItem("displayPopUp")) || false
   );
+  const [mainProfilePicture, setMainProfilePicture] = useState([]);
 
   const date = new Date();
   const day = `0${date.getUTCDate() + 1}`.slice(-2);
@@ -81,12 +81,9 @@ function Dashboard({ setIsAuth }) {
   const urlMoon = `https://devapi.qweather.com/v7/astronomy/moon?location=274D0&lang=en&date=${currentDate}&key=${keyMoon}`;
   const keyWeather = "62bf8f2f137d858cde8784170789de51";
   const urlWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${keyWeather}`;
-
   const selectedDayMeetings = events.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
-
-  const [mainProfilePicture, setMainProfilePicture] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("checkEvent", JSON.stringify(checkEvent));

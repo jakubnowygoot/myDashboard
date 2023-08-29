@@ -1,7 +1,8 @@
 
 # Dashboard
 
-Hi, I'm Jacob! 👋 I would like to introduce you to my app created in react. It enables you to log in to an account by using hard coded email and password without authorization and connection to back-end. After you log in you get to use various widgets such as weather, moon phase, notes/to-do list, calendar.
+Hi, I'm Jacob! 👋 I would like to introduce you to my app created in react. 
+After you log in you get to use various widgets such as weather, moon phase, notes/to-do list, calendar.
 
 
 
@@ -14,7 +15,8 @@ Hi, I'm Jacob! 👋 I would like to introduce you to my app created in react. It
 
 ![App Screenshot](https://snipboard.io/zN1V9M.jpg)
 
-* Login by using email and password shown above. If you press remember me your data will be saved.
+* Login info shown above enables you to log in to an account by using hard coded email and password without authorization and connection to back-end.
+Browser only checks if user is in local storage. If you press remember me your data will be saved.
 
 ![App Screenshot](https://snipboard.io/kyx76O.jpg)
 
@@ -64,16 +66,15 @@ Project is created with:
 
 
 
-## Features
+## Additional features
 
 - Light/dark mode toggle
-- Remeber me checkbox
-- Local storage
-- Cross platform
+- Remember me checkbox
+- Cross platforms
 
 
 ## Installation
-Aplication was create with react-create-app
+Aplication was created with react-create-app
 so install my-dashboard with npm
 
 ```bash
